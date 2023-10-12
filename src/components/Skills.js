@@ -34,12 +34,9 @@ function Skills() {
       ],
     },
   ];
-  //• Domain Knowledge: Backend Development, Frontend Development, Web Development, Machine Learning, Databases, Agile
-  // • Tools, Languages and Frameworks: C++, Javascript, Python, Java, Reactjs, Nodejs, SQL, Firebase, MongoDB, HTML, CSS,
-  // AWS, GIT, JIRA, Figma
 
   return (
-    <div>
+    <div id="skills">
       <div>
         {content.map((element) => {
           return (
