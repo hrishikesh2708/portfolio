@@ -1,26 +1,21 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
+import Footer from "./components/footer";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
+import Education from "./components/Education";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div className="bg-blue-500">
-          <h1>This is a Tailwind React app!</h1>
-        </div>
-      </header>
+    <div className="bg-blue-500 text-gray-500">
+      {/* navbar */}
+      {/* about me */}
+      <Education />
+      <Skills />
+      <Experience />
+      {/* projects */}
+      {/* connect */}
+      <Footer />
     </div>
   );
 }
