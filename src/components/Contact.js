@@ -4,6 +4,11 @@ import { HiOutlineMail } from "react-icons/hi";
 function Contact() {
   const content = [
     {
+      label: "Email",
+      icon: <HiOutlineMail />,
+      link: "mailto:hthakur@usc.edu",
+    },
+    {
       label: "linkedIn",
       icon: <BsLinkedin />,
       link: "https://www.linkedin.com/in/hrishikesh--thakur/",
@@ -13,11 +18,7 @@ function Contact() {
       icon: <BsGithub />,
       link: "https://github.com/hrishikesh2708",
     },
-    {
-      label: "Email",
-      icon: <HiOutlineMail />,
-      link: "mailto:hthakur@usc.edu",
-    },
+
     {
       label: "Instagram",
       icon: <BsInstagram />,
@@ -26,9 +27,12 @@ function Contact() {
   ];
   return (
     <div id="contact">
-      <div>
-        <h3>Let's Talk!</h3>
-        <p>
+      <h4 class="text-md font-bold text-shade-1 p-1 m-2 underline underline-offset-8">
+        Contact
+      </h4>
+      <div className="block min-w-0 max-w-sm h-auto p-6 m-6 bg-shade-4 border border-shade-3 text-shade-1 rounded-lg flex flex-col">
+        <h1 className="text-lg font-bold flex flex-center">Let's Talk!</h1>
+        <p className="text-sm italic">
           Interested in working together or have a question? Feel free to reach
           out. I'm here to help you turn your ideas into amazing digital
           realities. Looking forward to hearing from you soon!
@@ -39,10 +43,12 @@ function Contact() {
               <a
                 type="button"
                 href={element.link}
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-shade-1 stroke-2 bg-shade-5 hover:bg-shade-4 focus:ring-2 focus:outline-none focus:ring-shade-2 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
               >
                 {element.icon}
-                <span class="sr-only">{element.label}</span>
+                <span class="text-xs">
+                  {element.label === "Email" ? "hthakur@usc.edu" : ""}
+                </span>
               </a>
             );
           })}

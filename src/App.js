@@ -9,7 +9,7 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="">
+    <div className="bg-shade-5">
       <Navbar />
       {/* about me */}
       <Education />
