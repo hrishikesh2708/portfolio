@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="bg-blue-500 text-gray-500">
+    <div className="">
       <Navbar />
       {/* about me */}
       <Education />
