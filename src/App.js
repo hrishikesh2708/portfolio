@@ -12,9 +12,9 @@ function App() {
     <div className="bg-shade-5">
       <Navbar />
       {/* about me */}
-      <Education />
-      <Skills />
       <Experience />
+      <Skills />
+      <Education /> 
       {/* projects */}
       <Contact />
       <Footer />
