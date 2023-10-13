@@ -123,37 +123,31 @@ function Experience() {
             <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
               <div class="container mx-auto w-full h-full">
                 <div class="relative wrap overflow-hidden p-10 h-full">
-                  <div
-                    class="border-2-2 border-yellow-555 absolute h-full border"
-                    // style="right: 50%; border: 2px solid #FFC100; border-radius: 1%;"
-                  ></div>
-                  <div
-                    class="border-2-2 border-yellow-555 absolute h-full border"
-                    // style="left: 50%; border: 2px solid #FFC100; border-radius: 1%;"
-                  ></div>
+                  <div class="border-2-2 border-accent-2 absolute h-full border right-border-radius"></div>
+                  <div class="border-2-2 border-accent-2 absolute h-full border left-border-radius"></div>
                   {content.map((element, index) => {
                     return index % 2 === 0 ? (
                       <>
                         <div class="mb-8 flex justify-between items-center w-full right-timeline text-shade-1">
                           <div class="order-1 w-5/12"></div>
                           <div class="order-1  w-5/12 px-1 py-4 text-left">
-                            <p class="mb-2 text-sm text-accent-2">
+                            <p class="mb-2 text-xs text-accent-2">
                               {element.startDate}
                               {`~`}
                               {element?.endDate}
                             </p>
-                            <h4 class="mb-3 font-bold text-md md:text-2xl">
+                            <h5 class="font-bold text-md md:text-2xl">
                               {element?.company}
-                            </h4>
-                            <h4 class="mb-1 italic text-xs md:text-2xl">
+                            </h5>
+                            <h4 class="mb-2 italic text-xs md:text-2xl">
                               {element?.role}
                             </h4>
                             {element?.project.map((ele) => {
                               return (
-                                <p class="text-xs md:text-base leading-snug text-shade-1 text-opacity-100">
+                                <p class="text-xs md:text-base leading-tight text-shade-1 text-opacity-100">
                                   {ele?.title}
                                   {` : `}
-                                  <span class="text-xs md:text-base leading-snug text-shade-2 text-opacity-100">
+                                  <span class="text-xs md:text-base leading-tight text-shade-2 text-opacity-100">
                                     {ele?.discription}
                                   </span>
                                 </p>
@@ -167,23 +161,23 @@ function Experience() {
                         <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline text-shade-1">
                           <div class="order-1 w-5/12"></div>
                           <div class="order-1 w-5/12 px-1 py-4 text-right">
-                            <p class="mb-2 text-sm text-accent-2">
+                            <p class="mb-2 text-xs text-accent-2">
                               {element.startDate}
                               {`~`}
                               {element?.endDate}
                             </p>
-                            <h4 class="mb-3 font-bold text-md md:text-2xl">
+                            <h4 class="font-bold text-md md:text-2xl">
                               {element?.company}
                             </h4>
-                            <h4 class="mb-1 italic text-xs md:text-2xl">
+                            <h4 class="mb-2 italic text-xs md:text-2xl">
                               {element?.role}
                             </h4>
                             {element?.project.map((ele) => {
                               return (
-                                <p class="text-xs md:text-base leading-snug text-shade-1 text-opacity-100">
+                                <p class="text-xs md:text-base leading-tight text-shade-1 text-opacity-100">
                                   {ele?.title}
                                   {` : `}
-                                  <span class="text-xs md:text-base leading-snug text-shade-2 text-opacity-100">
+                                  <span class="text-xs md:text-base leading-tight text-shade-2 text-opacity-100">
                                     {ele?.discription}
                                   </span>
                                 </p>
@@ -195,7 +189,11 @@ function Experience() {
                     );
                   })}
                 </div>
-                {/* <img class="mx-auto -mt-36 md:-mt-36" src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png" /> */}
+                <img
+                  class="mx-auto -mt-36 md:-mt-36"
+                  src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png"
+                  alt="rocket"
+                />
               </div>
             </div>
           </div>

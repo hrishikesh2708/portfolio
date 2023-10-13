@@ -6,6 +6,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  plugins: [require("./src/plugins/myCustomUtilities")],
   theme: {
     colors: {
       blue: {
@@ -51,6 +52,10 @@ module.exports = {
       },
       borderRadius: {
         "4xl": "2rem",
+      },
+      customUtilities: {
+        "right-border-radius":
+          "right: 50%; border: 2px solid #FFC100; border-radius: 1%;",
       },
     },
   },
