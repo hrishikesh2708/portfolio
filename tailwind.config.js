@@ -26,7 +26,19 @@ module.exports = {
       "gray-dark": "#273444",
       gray: "#8492a6",
       "gray-light": "#d3dce6",
-    
+      shade: {
+        1: "#FFFFFF",
+        2: "#B3B3B3",
+        3: "#3B3B3B",
+        4: "#121212",
+        5: "#0A0A0A",
+      },
+      accent: {
+        1: "#9B5CFF",
+        2: "#FFE074",
+        3: "#5EE2FF",
+      },
+      gradient01: "#5EE2FF",
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],

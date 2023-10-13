@@ -89,6 +89,9 @@ function Experience() {
   ];
   return (
     <div id="experience">
+      <h4 class="text-md font-bold dark:text-white p-1 m-2 underline underline-offset-8">
+        Experience
+      </h4>
       <div>
         {content.map((element) => {
           return (

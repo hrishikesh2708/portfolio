@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css"
 
 function Skills() {
   const content = [
@@ -36,26 +37,30 @@ function Skills() {
   ];
 
   return (
-    <div
-      id="skills"
-      className="block min-w-0 max-w-sm h-auto p-6 m-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-    >
-      {content.map((element) => {
-        return (
-          <div className="flex flex-col">
-            <h6 class="text-sm font-bold dark:text-white p-1 mt-2">{element?.label}</h6>
-            <div className="flex flex-wrap">
-              {element?.skills?.map((ele) => {
-                return (
-                  <span class="bg-blue-100 text-blue-800 text-xs font-medium m-1 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                    {ele}
-                  </span>
-                );
-              })}
+    <div id="skills">
+      <h4 class="text-md font-bold text-shade-1 p-1 m-2 underline underline-offset-8">
+        Skills
+      </h4>
+      <div className="block min-w-0 max-w-sm h-auto p-6 m-6 bg-shade-4 border border-shade-3 text-shade-1 rounded-lg ">
+        {content.map((element) => {
+          return (
+            <div className="flex flex-col">
+              <h6 class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r to-accent-3 from-accent-2 p-1 mt-2">
+                {element?.label}
+              </h6>
+              <div className="flex flex-wrap">
+                {element?.skills?.map((ele) => {
+                  return (
+                    <span class="bg-shade-5 text-shade-1 border border-shade-3 text-xs font-medium m-1 px-2.5 py-0.5 rounded">
+                      {ele}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
