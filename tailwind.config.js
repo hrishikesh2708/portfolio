@@ -57,6 +57,10 @@ module.exports = {
         "right-border-radius":
           "right: 50%; border: 2px solid #FFC100; border-radius: 1%;",
       },
+      backgroundImage: {
+        usc: "url('../assets/usc.webp')",
+        srm: "url('../assets/srm.jpeg')",
+      },
     },
   },
 };

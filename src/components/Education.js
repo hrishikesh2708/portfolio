@@ -4,6 +4,8 @@ function Education() {
   const content = [
     {
       college: "University of Southern California",
+      image:
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.usc.edu%2Fvisit-usc%2F&psig=AOvVaw1hvr-XHn6Q8jpox1S0hufi&ust=1697318527839000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOio4NX684EDFQAAAAAdAAAAABAE",
       startDate: "August 2023",
       endDate: "Present",
       location: "Los Angeles, USA",
@@ -14,6 +16,8 @@ function Education() {
     },
     {
       college: "SRM Institute of Science & Technology",
+      image:
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.usc.edu%2Fvisit-usc%2F&psig=AOvVaw1hvr-XHn6Q8jpox1S0hufi&ust=1697318527839000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOio4NX684EDFQAAAAAdAAAAABAE",
       startDate: "June 2018",
       endDate: "May 2022",
       location: "Chennai, India",
@@ -46,8 +50,11 @@ function Education() {
             <div class="container mt-4 mx-auto p-4 md:p-0 text-shade-1">
               <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
                 <div
-                  class="bg-cover bg-bottom border border-shade-3 w-full md:w-1/3 h-64 md:h-auto relative"
-                  // style="background-image:url('https://images7.alphacoders.com/347/347549.jpg')"
+                  class={`bg-cover bg-bottom border border-shade-3 w-full md:w-1/3 h-64 md:h-auto relative ${
+                    element.college === "University of Southern California"
+                      ? "bg-usc"
+                      : "bg-srm"
+                  }`}
                 >
                   <div class="absolute text-xl">
                     <i class="fa fa-heart text-white hover:text-red-light ml-4 mt-4 cursor-pointer"></i>
