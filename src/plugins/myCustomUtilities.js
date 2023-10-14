@@ -12,6 +12,10 @@ module.exports = plugin(function ({ addUtilities }) {
       border: "2px solid #FFC100",
       borderRadius: "1%",
     },
+    ".bg-clip-text": {
+      "-webkit-background-clip": "text",
+      "background-clip": "text",
+    },
   };
 
   addUtilities(newUtilities, {

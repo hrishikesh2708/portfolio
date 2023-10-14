@@ -11,6 +11,7 @@ function Education() {
       location: "Los Angeles, USA",
       degree: "Masters Of Science",
       major: "Computer Science",
+      discription: `I am currently pursuing a Master of Science degree in Computer Science at the prestigious University of Southern California. While my educational journey is still in progress, I am committed to excelling in my coursework and research projects, which will contribute to the development of my expertise in computer science`,
       courses: ["Analysis Of Algorithm", "Database Systems"],
       grade: "",
     },
@@ -23,6 +24,8 @@ function Education() {
       location: "Chennai, India",
       degree: "Bachelor of Technology",
       major: "Computer Science Engineering",
+      discription:
+        "I completed my Bachelor of Technology (B.Tech) in Computer Science Engineering from the esteemed SRM Institute of Science & Technology, located in Chennai, India. I am excited to pursue a promising career in the world of computer science and engineering, applying the knowledge and skills I've acquired throughout my undergraduate studies.",
       courses: [
         "Data Structures And Algorithms",
         "Object Oriented Design And Programming",
@@ -55,11 +58,7 @@ function Education() {
                       ? "bg-usc"
                       : "bg-srm"
                   }`}
-                >
-                  <div class="absolute text-xl">
-                    <i class="fa fa-heart text-white hover:text-red-light ml-4 mt-4 cursor-pointer"></i>
-                  </div>
-                </div>
+                ></div>
 
                 <div class="bg-shade-4 w-full md:w-2/3">
                   <div class="h-full mx-auto px-6 md:px-0 md:pt-6 md:-ml-6 relative">
@@ -74,15 +73,25 @@ function Education() {
                           {` ~ `}
                           {element.endDate}
                         </p>
+                        {element.grade !== "" ? (
+                          <p class="mb-0 text-shade-2 text-sm italic">
+                            GPA : {element.grade}
+                          </p>
+                        ) : (
+                          <></>
+                        )}
                         <hr class="w-1/4 md:ml-0 mt-4 border border-shade-3 lg:hidden"></hr>
                       </div>
 
                       <div class="w-full lg:w-3/5 lg:px-3">
+                        <p class="text-md mt-1 lg:mt-0 text-justify md:text-left text-xs text-shade-2">
+                          {element.discription}
+                        </p>
                         <ul>
                           Courses :
                           {element.courses.map((ele) => {
                             return (
-                              <li class="text-md mt-1 lg:mt-0 text-justify md:text-left text-xs list-disc list-inside">
+                              <li class="text-shade-2 text-md mt-1 lg:mt-0 text-justify md:text-left text-xs list-disc list-inside">
                                 {ele}
                               </li>
                             );
