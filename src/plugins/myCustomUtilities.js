@@ -8,10 +8,10 @@ module.exports = plugin(function ({ addUtilities }) {
       borderRadius: "1%",
     },
     ".left-border-radius": {
-        left: "50%",
-        border: "2px solid #FFC100",
-        borderRadius: "1%",
-      },
+      left: "50%",
+      border: "2px solid #FFC100",
+      borderRadius: "1%",
+    },
   };
 
   addUtilities(newUtilities, {
