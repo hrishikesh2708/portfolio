@@ -1,6 +1,8 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "./Logo";
+import { LinkedIn, Github, Instagram, Email } from "./Icons";
+import { motion } from "framer-motion";
 const contentl = [
   {
     label: "About Me",
@@ -56,8 +58,6 @@ function Navbar() {
             />
           );
         })}
-      </nav>
-      <nav class="">
         {contentr.map((element) => {
           return (
             <Customlink
@@ -67,6 +67,40 @@ function Navbar() {
             />
           );
         })}
+      </nav>
+      <nav class="flex items-center justify-center flex-wrap">
+        <motion.a
+          href="#"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          class="w-6 mr-3"
+        >
+          <Github />
+        </motion.a>
+        <motion.a
+          href="#"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          class="w-6 mx-3"
+        >
+          <LinkedIn />
+        </motion.a>
+        <motion.a
+          href="#"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          class="w-6 mx-3"
+        >
+          <Instagram />
+        </motion.a>
+        <motion.a
+          href="#"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          class="w-6 ml-3"
+        >
+          <Email />
+        </motion.a>
       </nav>
     </header>
   );

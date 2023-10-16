@@ -6,7 +6,7 @@ function Logo() {
     <div class="flex items-center justify-center mt-2">
       <motion.a
         href="/"
-        class=" w-16 h-16 bg-accent-3 text-shade-1 flex items-center justify-center rounded-full text-2xl font-bold"
+        class=" w-12 h-12 bg-accent-3 text-shade-1 flex items-center justify-center rounded text-xl font-bold"
         whileHover={{
           backgroundColor: [
             "#121212",
