@@ -6,12 +6,13 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
+import About from "./components/About";
 
 function App() {
   return (
     <div className="bg-shade-5">
       <Navbar />
-      {/* about me */}
+      <About />
       <Education />
       <Experience />
       <Skills />

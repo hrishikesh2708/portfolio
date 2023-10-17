@@ -1,5 +1,4 @@
 import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "./Logo";
 import { LinkedIn, Github, Instagram, Email } from "./Icons";
 import { motion } from "framer-motion";
