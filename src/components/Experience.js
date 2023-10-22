@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useRef } from "react";
+import { useScroll, motion } from "framer-motion";
+import ScrollIcon from "./ScrollIcon";
 function Experience() {
   const content = [
     // {
@@ -87,118 +88,69 @@ function Experience() {
       project: [
         {
           title: "Heart Attack Risk Prediction",
-          discription: ` Conducted exploratory data analysis and preprocessed data to devise ML models to
+          discription: `Conducted exploratory data analysis and preprocessed data to devise ML models to
       anticipate heart attacks using K-nearest neighbor, decision tree, random forest, SVM, and logistic regression to predict heart
       attacks in patients.`,
         },
       ],
     },
   ];
-  return (
-    <div id="experience">
-      <h4 class="text-md font-bold dark:text-white p-1 m-2 underline underline-offset-8">
-        Experience
-      </h4>
-      <section>
-        <div class="bg-black text-white py-8">
-          <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-            <div class="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
-              <p class="ml-2 text-yellow-300 uppercase tracking-loose">
-                Working Process
+
+  const Details = ({ ...args }) => {
+    const reference = useRef(null);
+    return (
+      <li
+        ref={reference}
+        class="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between text-shade-1"
+      >
+        <ScrollIcon reference />
+        <div>
+          <h3 class=" capitalize font-bold text-2xl">
+            {args.role}&nbsp;
+            <a href="#" class="text-accent-3 capitalize">
+              {" "}
+              @{args.company}
+            </a>
+          </h3>
+          <span class="capitalize font-medium">
+            {args.startDate}
+            {" ~ "}
+            {args.endDate} | {args.location}
+          </span>
+          {args.project.map((ele) => {
+            return (
+              <p class="font-medium w-full text-shade-2">
+                <span class="font-bold">{ele.title}</span>
+                {" ~ "}
+                {ele.discription}
               </p>
-              <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">
-                Working Process of Fest
-              </p>
-              <p class="text-sm md:text-base text-gray-50 mb-4">
-                Here’s your guide to the tech fest 2021 process. Go through all
-                the steps to know the exact process of the fest.
-              </p>
-              <a
-                href="#"
-                class="bg-transparent mr-auto hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
-              >
-                Explore Now
-              </a>
-            </div>
-            <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
-              <div class="container mx-auto w-full h-full">
-                <div class="relative wrap overflow-hidden p-10 h-full">
-                  <div class="border-2-2 border-accent-2 absolute h-full border right-border-radius"></div>
-                  <div class="border-2-2 border-accent-2 absolute h-full border left-border-radius"></div>
-                  {content.map((element, index) => {
-                    return index % 2 === 0 ? (
-                      <>
-                        <div class="mb-8 flex justify-between items-center w-full right-timeline text-shade-1">
-                          <div class="order-1 w-5/12"></div>
-                          <div class="order-1  w-5/12 px-1 py-4 text-left">
-                            <p class="mb-2 text-xs text-accent-2">
-                              {element.startDate}
-                              {`~`}
-                              {element?.endDate}
-                            </p>
-                            <h5 class="font-bold text-md md:text-2xl">
-                              {element?.company}
-                            </h5>
-                            <h4 class="mb-2 italic text-xs md:text-2xl">
-                              {element?.role}
-                            </h4>
-                            {element?.project.map((ele) => {
-                              return (
-                                <p class="text-xs md:text-base leading-tight text-shade-1 text-opacity-100">
-                                  {ele?.title}
-                                  {` : `}
-                                  <span class="text-xs md:text-base leading-tight text-shade-2 text-opacity-100">
-                                    {ele?.discription}
-                                  </span>
-                                </p>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline text-shade-1">
-                          <div class="order-1 w-5/12"></div>
-                          <div class="order-1 w-5/12 px-1 py-4 text-right">
-                            <p class="mb-2 text-xs text-accent-2">
-                              {element.startDate}
-                              {`~`}
-                              {element?.endDate}
-                            </p>
-                            <h4 class="font-bold text-md md:text-2xl">
-                              {element?.company}
-                            </h4>
-                            <h4 class="mb-2 italic text-xs md:text-2xl">
-                              {element?.role}
-                            </h4>
-                            {element?.project.map((ele) => {
-                              return (
-                                <p class="text-xs md:text-base leading-tight text-shade-1 text-opacity-100">
-                                  {ele?.title}
-                                  {` : `}
-                                  <span class="text-xs md:text-base leading-tight text-shade-2 text-opacity-100">
-                                    {ele?.discription}
-                                  </span>
-                                </p>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
-                <img
-                  class="mx-auto -mt-36 md:-mt-36"
-                  src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png"
-                  alt="rocket"
-                />
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
-      </section>
+      </li>
+    );
+  };
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center start"],
+  });
+  return (
+    <div class="my-64">
+      <h2 class=" font-bold text-shade-1 text-8xl w-full text-center">
+        Experience
+      </h2>
+      <div ref={ref} class="w-[75%] mx-auto relative">
+        <motion.div
+          style={{ scaleY: scrollYProgress }}
+          class="absolute left-8 top-0 w-[4px] h-full bg-shade-1 origin-top"
+        ></motion.div>
+        <ul class="w-full flex flex-col items-start justify-between ml-4">
+          {content.map((ele) => {
+            return <Details {...ele} />;
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
