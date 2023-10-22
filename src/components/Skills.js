@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css"
+import "../App.css";
 
 function Skills() {
   const content = [
@@ -37,10 +37,10 @@ function Skills() {
   ];
 
   return (
-    <div id="skills">
-      <h4 class="text-md font-bold text-shade-1 p-1 m-2 underline underline-offset-8">
+    <div id="skills" class="">
+      <h2 class=" font-bold text-shade-1 text-6xl w-full text-center mb-8">
         Skills
-      </h4>
+      </h2>
       <div className="block min-w-0 max-w-sm h-auto p-6 m-6 bg-shade-4 border border-shade-3 text-shade-1 rounded-lg ">
         {content.map((element) => {
           return (

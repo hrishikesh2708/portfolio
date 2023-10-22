@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Education() {
   const content = [
@@ -43,17 +44,22 @@ function Education() {
   ];
   return (
     <div id="education">
-      <h4 class="text-md font-bold text-shade-1 p-1 m-2 underline underline-offset-8">
+      <h2 class=" font-bold text-shade-1 text-6xl w-full text-center mb-8">
         Education
-      </h4>
+      </h2>
 
       <div>
         {content?.map((element) => {
           return (
-            <div class="container mt-4 mx-auto p-4 md:p-0 text-shade-1">
+            <motion.div
+              class="container mt-4 mx-auto p-4 md:p-0 text-shade-1"
+              initial={{ y: 80 }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 1.2, type: "spring" }}
+            >
               <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
                 <div
-                  class={`bg-cover bg-bottom border border-shade-3 w-full md:w-1/3 h-64 md:h-auto relative ${
+                  class={`bg-cover bg-bottom border border-shade-3 w-full md:w-1/3 h-auto :h-auto relative ${
                     element.college === "University of Southern California"
                       ? "bg-usc"
                       : "bg-srm"
@@ -102,7 +108,7 @@ function Education() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

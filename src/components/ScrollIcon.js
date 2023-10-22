@@ -8,12 +8,12 @@ function ScrollIcon({ reference }) {
   });
   return (
     <figure class="absolute left-0 stroke-shade-1">
-      <svg width="75" height="75" viewBox="0 0 100 100">
+      <svg width="75" height="75" viewBox="0 0 100 100" class="-rotate-90">
         <circle
           cx="75"
           cy="50"
           r="20"
-          class="stroke-accent-3 stroke-1 fill-none"
+          class="stroke-accent-2 stroke-1 fill-none"
         />
         <motion.circle
           cx="75"
@@ -22,7 +22,7 @@ function ScrollIcon({ reference }) {
           class="stroke-[5px] fill-shade-5"
           style={{ pathLength: scrollYProgress }}
         />
-        <circle cx="75" cy="50" r="10" class="stroke-1 fill-accent-3" />
+        <circle cx="75" cy="50" r="10" class="stroke-1 fill-accent-2 animate-pulse" />
       </svg>
     </figure>
   );

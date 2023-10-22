@@ -27,16 +27,20 @@ function Contact() {
   ];
   return (
     <div id="contact">
-      <h4 class="text-md font-bold text-shade-1 p-1 m-2 underline underline-offset-8">
+      <h2 class=" font-bold text-shade-1 text-6xl w-full text-center mb-8">
         Contact
-      </h4>
-      <div className="block min-w-0 max-w-sm h-auto p-6 m-6 bg-shade-4 border border-shade-3 text-shade-1 rounded-lg flex flex-col">
-        <h1 className="text-lg font-bold flex justify-center mt-4">Let's Talk!</h1>
-        <p className="text-sm italic subpixel-antialiased text-shade-2 text-center mt-4">
-          Interested in working together or have a question? Feel free to reach
-          out. I'm here to help you turn your ideas into amazing digital
-          realities. Looking forward to hearing from you soon!
-        </p>
+      </h2>
+      <div className="min-w-0 h-auto p-6 m-6 bg-shade-4 border border-shade-3 text-shade-1 rounded-lg flex flex-col justify-center">
+        <h1 className="text-lg font-bold flex justify-center mt-4">
+          Let's Talk!
+        </h1>
+        <div class="flex justify-center">
+          <p className="text-sm italic subpixel-antialiased text-shade-2 text-center mt-4 w-[70%] md:w-[50%]">
+            Interested in working together or have a question? Feel free to
+            reach out. I'm here to help you turn your ideas into amazing digital
+            realities. Looking forward to hearing from you soon!
+          </p>
+        </div>
         <div className="flex justify-center mt-4">
           {content.map((element) => {
             return (

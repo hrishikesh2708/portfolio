@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
 import ScrollIcon from "./ScrollIcon";
+
 function Experience() {
   const content = [
     // {
@@ -104,7 +105,11 @@ function Experience() {
         class="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between text-shade-1"
       >
         <ScrollIcon reference />
-        <div>
+        <motion.div
+          initial={{ y: 80 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1.2, type: "spring" }}
+        >
           <h3 class=" capitalize font-bold text-2xl">
             {args.role}&nbsp;
             <a href="#" class="text-accent-3 capitalize">
@@ -126,7 +131,7 @@ function Experience() {
               </p>
             );
           })}
-        </div>
+        </motion.div>
       </li>
     );
   };
@@ -136,14 +141,14 @@ function Experience() {
     offset: ["start end", "center start"],
   });
   return (
-    <div class="my-64">
-      <h2 class=" font-bold text-shade-1 text-8xl w-full text-center">
+    <div id="experience" class="my-64">
+      <h2 class=" font-bold text-shade-1 text-6xl w-full text-center mb-8">
         Experience
       </h2>
       <div ref={ref} class="w-[75%] mx-auto relative">
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          class="absolute left-8 top-0 w-[4px] h-full bg-shade-1 origin-top"
+          class="absolute left-9 top-0 w-[4px] h-full bg-accent-3 origin-top"
         ></motion.div>
         <ul class="w-full flex flex-col items-start justify-between ml-4">
           {content.map((ele) => {
