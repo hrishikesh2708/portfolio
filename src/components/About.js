@@ -9,10 +9,19 @@ function About() {
       <Layout className="pt-0">
         <div class="flex items-center justify-between w-full">
           <div class="w-1/2">
-            <img src={stockimg} alt="image" class="w-full h-auto" />
+            <img
+              src={stockimg}
+              alt="image"
+              class="w-full h-auto"
+              priority
+              sizes="(max-width: 768px) 100vw,(max-width:1200px) 50vw,50vw"
+            />
           </div>
           <div class="w-1/2 flex flex-col items-center self-center">
-            <Animatedtext text="Turning Vision Into Reality With Code And Design." className="!text-6xl !text-left" />
+            <Animatedtext
+              text="Turning Vision Into Reality With Code And Design."
+              className="!text-6xl !text-left"
+            />
             <p class=" my-4 font-medium">
               As a skilled full-stack developer, I am dedicated to turning ideas
               into innovative web applications. Explore my latest projects and
