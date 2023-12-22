@@ -5,7 +5,7 @@ import Animatedtext from "./Animatedtext";
 
 function About() {
   return (
-    <div class="flex items-center w-full min-h-screen text-shade-1">
+    <div id="aboutMe" class="flex items-center w-full min-h-screen text-shade-1 2xl">
       <Layout className="pt-0">
         <div class="flex items-center justify-between w-full">
           <div class="w-1/2">

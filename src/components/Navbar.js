@@ -6,11 +6,13 @@ const contentl = [
   {
     label: "About Me",
     path: "#aboutMe",
+    id: "aboutMe",
     class: "mr-4",
   },
   {
     label: "Education",
     path: "#education",
+    id: "education",
     class: "mx-4",
   },
   // {
@@ -23,11 +25,13 @@ const contentr = [
   {
     label: "Experience",
     path: "#experience",
+    id: "experience",
     class: "mx-4",
   },
   {
     label: "Project",
     path: "#project",
+    id: "project",
     class: "mx-4",
   },
 ];
@@ -41,25 +45,29 @@ const Customlink = ({ href, title, className = "" }) => {
     </a>
   );
 };
-
+const CustomMobileLink = ({ href, title, className = "", toggle }) => {
+  const click = () => {
+    const targetElement = document.getElementById(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+    toggle();
+  };
+  return (
+    <button href={href} class={`${className} relative group`} onClick={click}>
+      {title}
+      <span class=" h-[0.1px] inline-block w-full bg-shade-1 left-0 -bottom-0.5 absolute group-hover:w-full transition-[width] ease duration-300">
+        &nbsp;
+      </span>
+    </button>
+  );
+};
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const handelClick = () => {
     setIsOpen(!isOpen);
   };
-  const CustomMobileLink = ({ href, title, className = "", toggle }) => {
-    const click = () => {
-      toggle();
-    };
-    return (
-      <button href={href} class={`${className} relative group`} onClick={click}>
-        {title}
-        <span class=" h-[0.1px] inline-block w-full bg-shade-1 left-0 -bottom-0.5 absolute group-hover:w-full transition-[width] ease duration-300">
-          &nbsp;
-        </span>
-      </button>
-    );
-  };
+
   return (
     <header class="w-full px-32 py-8 font-medium flex items-center justify-between text-shade-1 relative">
       <button
@@ -147,7 +155,7 @@ function Navbar() {
             {contentl.map((element) => {
               return (
                 <CustomMobileLink
-                  href={element.path}
+                  href={element.id}
                   title={element.label}
                   className={`${element.class}`}
                   toggle={handelClick}
@@ -156,10 +164,11 @@ function Navbar() {
             })}
             {contentr.map((element) => {
               return (
-                <Customlink
-                  href={element.path}
+                <CustomMobileLink
+                  href={element.id}
                   title={element.label}
                   className={`${element.class}`}
+                  toggle={handelClick}
                 />
               );
             })}

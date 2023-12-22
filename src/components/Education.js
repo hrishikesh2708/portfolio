@@ -57,19 +57,19 @@ function Education() {
               whileInView={{ y: 0 }}
               transition={{ duration: 1.2, type: "spring" }}
             >
-              <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
+              <div class="shadow-lg flex flex-wrap xs:w-full w-4/5 mx-auto p-4">
                 <div
-                  class={`bg-cover bg-bottom border border-shade-3 w-full lg:w-1/3 h-64 lg:h-auto relative ${
+                  class={`bg-cover bg-bottom border border-shade-3 lg:w-full w-1/3 lg:h-64 h-auto relative ${
                     element.college === "University of Southern California"
                       ? "bg-usc"
                       : "bg-srm"
                   }`}
                 ></div>
 
-                <div class="bg-shade-4 w-full md:w-2/3">
-                  <div class="h-full mx-auto px-6 md:px-0 md:pt-6 md:-ml-6 relative">
-                    <div class="bg-white lg:h-full p-6 -mt-6 md:mt-0 relative mb-4 md:mb-0 flex flex-wrap md:flex-wrap items-center">
-                      <div class="w-full lg:w-2/5 lg:border-right lg:border-solid text-center md:text-left">
+                <div class="bg-shade-4 lg:w-full w-2/3 p-4 border border-shade-3">
+                  <div class="h-full mx-auto px-0 relative">
+                    <div class="bg-white h-full mt-4 relative mb-4 flex flex-wrap items-center">
+                      <div class="md:w-full w-2/6 md:text-center text-left">
                         <h3>{element.college}</h3>
                         <p class="mb-0 mt-3 text-shade-2 text-sm italic">
                           {element.location}
@@ -86,18 +86,18 @@ function Education() {
                         ) : (
                           <></>
                         )}
-                        <hr class="w-1/4 md:ml-0 mt-4 border border-shade-3 lg:hidden"></hr>
+                        <hr class="w-1/4 mx-auto mt-4 border border-shade-3 md:block hidden"></hr>
                       </div>
 
-                      <div class="w-full lg:w-3/5 lg:px-3">
-                        <p class="text-md mt-1 lg:mt-0 text-justify md:text-left text-xs text-shade-2">
+                      <div class="md:w-full w-4/6 mx-auto px-4  py-2 md:border-0 border-l-4 border-shade-3">
+                        <p class="text-md text-justify text-xs text-shade-2">
                           {element.discription}
                         </p>
                         <ul>
-                          Courses :
+                          <span>Courses</span>
                           {element.courses.map((ele) => {
                             return (
-                              <li class="text-shade-2 text-md mt-1 lg:mt-0 text-justify md:text-left text-xs list-disc list-inside">
+                              <li class="text-shade-2 text-md text-left text-xs list-disc list-inside">
                                 {ele}
                               </li>
                             );

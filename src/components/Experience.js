@@ -99,62 +99,81 @@ function Experience() {
 
   const Details = ({ ...args }) => {
     const reference = useRef(null);
+
     return (
       <li
         ref={reference}
-        class="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between text-shade-1"
+        className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between text-shade-1"
       >
-        <ScrollIcon reference />
+        <ScrollIcon reference={reference} />
         <motion.div
           initial={{ y: 80 }}
           whileInView={{ y: 0 }}
           transition={{ duration: 1.2, type: "spring" }}
         >
-          <h3 class=" capitalize font-bold text-2xl">
+          <h3 className="capitalize font-bold text-2xl">
             {args.role}&nbsp;
-            <a href="#" class="text-accent-3 capitalize">
+            <a href="#" className="text-accent-3 capitalize">
               {" "}
               @{args.company}
             </a>
           </h3>
-          <span class="capitalize font-medium">
+          <span className="capitalize font-medium">
             {args.startDate}
             {" ~ "}
             {args.endDate} | {args.location}
           </span>
-          {args.project.map((ele) => {
-            return (
-              <p class="font-medium w-full text-shade-2">
-                <span class="font-bold">{ele.title}</span>
-                {" ~ "}
-                {ele.discription}
-              </p>
-            );
-          })}
+          {args.project.map((ele, index) => (
+            <motion.p
+              key={index}
+              className="font-medium w-full text-shade-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+            >
+              <span className="font-bold">{ele.title}</span>
+              {" ~ "}
+              {ele.discription}
+            </motion.p>
+          ))}
         </motion.div>
       </li>
     );
   };
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "center start"],
   });
+
   return (
-    <div id="experience" class="my-64">
-      <h2 class=" font-bold text-shade-1 text-6xl w-full text-center mb-8">
+    <div id="experience" className="my-64">
+      <h2 className="font-bold text-shade-1 text-6xl w-full text-center mb-8">
         Experience
       </h2>
-      <div ref={ref} class="w-[75%] mx-auto relative">
+      <div ref={ref} className="w-[75%] mx-auto relative">
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          class="absolute left-9 top-0 w-[4px] h-full bg-accent-3 origin-top"
+          className="absolute left-9 top-0 w-[4px] h-full bg-accent-3 origin-top"
         ></motion.div>
-        <ul class="w-full flex flex-col items-start justify-between ml-4">
-          {content.map((ele) => {
-            return <Details {...ele} />;
-          })}
-        </ul>
+        <motion.ul
+          className="w-full flex flex-col items-start justify-between ml-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          {content.map((ele, index) => (
+            <motion.li
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+            >
+              <Details {...ele} />
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
     </div>
   );
