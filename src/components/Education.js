@@ -59,7 +59,7 @@ function Education() {
             >
               <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
                 <div
-                  class={`bg-cover bg-bottom border border-shade-3 w-full md:w-1/3 h-64 lg:h-auto relative ${
+                  class={`bg-cover bg-bottom border border-shade-3 w-full lg:w-1/3 h-64 lg:h-auto relative ${
                     element.college === "University of Southern California"
                       ? "bg-usc"
                       : "bg-srm"
