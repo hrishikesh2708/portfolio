@@ -96,7 +96,6 @@ function Experience() {
       ],
     },
   ];
-
   const Details = ({ ...args }) => {
     const reference = useRef(null);
 
