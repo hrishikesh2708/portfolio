@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "./Logo";
 import { LinkedIn, Github, Instagram, Email } from "./Icons";
 import { motion } from "framer-motion";
@@ -45,6 +45,24 @@ const Customlink = ({ href, title, className = "" }) => {
     </a>
   );
 };
+const linkVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      opacity: { duration: 0.3 },
+      y: { stiffness: 1000, velocity: -100 },
+    },
+  },
+  closed: {
+    opacity: 0,
+    y: 50,
+    transition: {
+      opacity: { duration: 0.3 },
+      y: { stiffness: 1000 },
+    },
+  },
+};
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
   const click = () => {
     const targetElement = document.getElementById(href);
@@ -54,19 +72,34 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     toggle();
   };
   return (
-    <button href={href} class={`${className} relative group`} onClick={click}>
+    <motion.button href={href} class={`${className} relative group`} onClick={click} variants={linkVariants}>
       {title}
-      <span class=" h-[0.1px] inline-block w-full bg-shade-1 left-0 -bottom-0.5 absolute group-hover:w-full transition-[width] ease duration-300">
+      <motion.span class=" h-[0.1px] inline-block w-full bg-shade-1 left-0 -bottom-0.5 absolute group-hover:w-full transition-[width] ease duration-300">
         &nbsp;
-      </span>
-    </button>
+      </motion.span>
+    </motion.button>
   );
 };
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  // const menuRef = useRef(null);
+
+  // const handleClickOutside = (event) => {
+  //   if (menuRef.current && !menuRef.current.contains(event.target)) {
+  //     setIsOpen(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
   const handelClick = () => {
     setIsOpen(!isOpen);
-  };
+      };
 
   return (
     <header class="w-full px-32 py-8 font-medium flex items-center justify-between text-shade-1 relative">
@@ -116,7 +149,7 @@ function Navbar() {
         </nav>
         <nav class="flex items-center justify-center flex-wrap">
           <motion.a
-            href="#"
+            href="https://github.com/hrishikesh2708"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
             class="w-6 mr-3"
@@ -124,7 +157,7 @@ function Navbar() {
             <Github />
           </motion.a>
           <motion.a
-            href="#"
+            href="https://www.linkedin.com/in/hrishikesh--thakur/"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
             class="w-6 mx-3"
@@ -140,7 +173,7 @@ function Navbar() {
             <Instagram />
           </motion.a>
           <motion.a
-            href="#"
+            href="mailto:hthakur@usc.edu"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
             class="w-6 ml-3"
@@ -150,14 +183,17 @@ function Navbar() {
         </nav>
       </div>
       {isOpen ? (
-        <div class="bg-shade-3/90 rounded-lg min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 backdrop-blur-md py-32">
-          <nav class=" flex items-center flex-col justify-center">
+        <div
+          // ref={menuRef}
+          class="bg-shade-3/90 rounded-lg min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 backdrop-blur-md py-32"
+        >
+          <nav class=" flex items-center flex-col justify-center mb-8">
             {contentl.map((element) => {
               return (
                 <CustomMobileLink
                   href={element.id}
                   title={element.label}
-                  className={`${element.class}`}
+                  className={`mt-2`}
                   toggle={handelClick}
                 />
               );
@@ -167,7 +203,7 @@ function Navbar() {
                 <CustomMobileLink
                   href={element.id}
                   title={element.label}
-                  className={`${element.class}`}
+                  className={`mt-2`}
                   toggle={handelClick}
                 />
               );
@@ -175,7 +211,7 @@ function Navbar() {
           </nav>
           <nav class="flex items-center justify-center flex-wrap">
             <motion.a
-              href="#"
+              href="https://github.com/hrishikesh2708"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
               class="w-6 mr-3"
@@ -183,7 +219,7 @@ function Navbar() {
               <Github />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.linkedin.com/in/hrishikesh--thakur/"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
               class="w-6 mx-3"
@@ -199,7 +235,7 @@ function Navbar() {
               <Instagram />
             </motion.a>
             <motion.a
-              href="#"
+              href="mailto:hthakur@usc.edu"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
               class="w-6 ml-3"

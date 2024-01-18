@@ -168,6 +168,7 @@ function Experience() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="mt-20"
             >
               <Details {...ele} />
             </motion.li>
