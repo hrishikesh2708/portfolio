@@ -2,8 +2,10 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background: #000;
-  background: #fff;
+  background: $themeClrPrimary_black;
+  // background: #fff;
+  border-bottom: 1px solid;
+  border-color: rgba($themeClrPrimary_contrast, 0.5);
   box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1);
 
   &__content {
@@ -20,7 +22,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: #333;
+    color: $themeClrPrimary_white;
     transition: color .3s;
 
     &:hover {
@@ -33,7 +35,7 @@
     border-radius: 50px;
     overflow: hidden;
     margin-right: 1.5rem;
-    background: $themeClrPrimary;
+    background: $themeClrPrimary_white;
 
     @include respond(tab-port) {
       width: 4.5rem;
@@ -49,14 +51,18 @@
     display: block;
   }
   &__logo-sub {
-    font-size: 1.8rem;
-    text-transform: uppercase;
+    font-family: $primaryFont;
+    font-size: 2.5rem;
+    // text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+  }
+  &__logo-sub-highlight{
+    color: $themeClrPrimary_contrast;
   }
   &__links {
     display: flex;
-    @include respond(phone) {
+    @include respond(tab-port) {
       display: none;
     }
   }
@@ -64,14 +70,14 @@
     padding: 2.2rem 3rem;
     display: inline-block;
     font-size: 1.6rem;
-    color: #333;
+    color: $themeClrPrimary_white;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
     transition: color .3s;
 
     &:hover {
-      color: $themeClrPrimary;
+      color: $themeClrPrimary_contrast;
     }
     @include respond(tab-port) {
       padding: 3rem 1.8rem;
@@ -85,7 +91,7 @@
 
     padding: 2.2rem 0;
 
-    @include respond(phone) {
+    @include respond(tab-port) {
       display: block;
     }
   }
@@ -97,7 +103,7 @@
   }
 
   &__sm-menu {
-    background: #fff;
+    background: $themeClrPrimary_white;
     position: absolute;
     width: 100%;
     top: 100%;
@@ -112,7 +118,7 @@
       visibility: hidden;
       opacity: 0;
    
-      @include respond(phone) {
+      @include respond(tab-port) {
         visibility: visible;
         opacity: 1;
       }
@@ -124,9 +130,9 @@
       text-decoration: none;
       padding: 2.5rem 3rem;
       font-size: 1.6rem;
-      color: #333;
+      color: $themeClrPrimary_tertiary;
       text-align: right;
-      border-bottom: 1px solid #eee;
+      border-bottom: 0.2px solid $themeClrPrimary_tertiary;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;

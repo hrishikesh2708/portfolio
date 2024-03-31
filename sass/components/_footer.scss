@@ -1,6 +1,9 @@
 .main-footer {
-  background: #000;
-  color: #fff;
+  background: $themeClrPrimary_black
+    url(../../assets/svg/confetti-doodles.svg);
+  // background-size: cover;
+  background-position: bottom;
+  color: $themeClrPrimary_contrast;
   &__upper {
     display: flex;
     justify-content: space-between;
@@ -30,7 +33,7 @@
 
   &__short-desc {
     margin-top: 2rem;
-    color: #eee;
+    color: $themeClrPrimary_white;
     font-size: 1.5rem;
     line-height: 1.7;
   }
@@ -41,7 +44,10 @@
 
   &__icon {
     margin-right: 1rem;
-    width: 2.5rem;
+    width: 3rem;
+    background-color: $themeClrPrimary_tertiary;
+    border-radius: $commonBorderRadius;
+    padding: 0.5rem;
     &--mr-none {
       margin-right: 0;
     }
