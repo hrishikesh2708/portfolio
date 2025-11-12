@@ -1,6 +1,7 @@
 import { Moon, Sun, Zap } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState, useRef, useEffect } from 'react';
+import { Button } from './ui/button';
 
 export function ThemeDropdown() {
   const { theme, setTheme } = useTheme();
@@ -29,32 +30,29 @@ export function ThemeDropdown() {
 
   return (
     <div ref={dropdownRef} className="relative">
-      <button
+      <Button
+        variant="outline" size="icon"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors"
+        className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors rounded-full"
       >
-        <CurrentIcon size={18} />
-        <span className="capitalize">{theme}</span>
-      </button>
+        <CurrentIcon />
+      </Button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-popover border border-border rounded-lg shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-30 bg-popover border border-border rounded-lg shadow-lg z-50">
           {options.map(({ value, label, icon: Icon }) => (
-            <button
+            <Button
               key={value}
               onClick={() => {
                 setTheme(value);
                 setIsOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                theme === value
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-popover-foreground hover:bg-muted'
-              } ${value === 'light' ? 'rounded-t-md' : ''} ${value === 'auto' ? 'rounded-b-md' : ''}`}
+              className={`w-full flex items-center gap-2 px-2 py-2.5 text-left transition-colors text-popover-foreground bg-primary-foreground hover:bg-muted
+              ${value === 'light' ? 'rounded-t-md' : ''} ${value === 'auto' ? 'rounded-b-md' : ''}`}
             >
               <Icon size={18} />
               <span>{label}</span>
-            </button>
+            </Button>
           ))}
         </div>
       )}
