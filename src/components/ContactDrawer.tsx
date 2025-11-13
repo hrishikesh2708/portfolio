@@ -31,7 +31,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
-import { openNewTab, socials, openEmail} from "./utils/uitility";
+import { openNewTab, socials, openEmail } from "./utils/uitility";
 
 const ContactDrawer = () => {
   const [name, setName] = useState("");
@@ -100,25 +100,25 @@ const ContactDrawer = () => {
       <DrawerContent className="sm:w-sm md:w-lg mx-auto">
         <DrawerHeader className="gap-4">
           <DrawerTitle className="flex w-full gap-2 justify-center">
-    <TooltipProvider>
-      <div className="flex gap-2">
-        {socials.map((social) => (
-          <Tooltip key={social.name}>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full"
-                onClick={() => openNewTab(social.url)}
-              >
-                {social.icon}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="top">{social.name}</TooltipContent>
-          </Tooltip>
-        ))}
-      </div>
-    </TooltipProvider>  
+            <TooltipProvider>
+              <div className="flex gap-2">
+                {socials.map((social) => (
+                  <Tooltip key={social.name}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                        onClick={() => openNewTab(social.url)}
+                      >
+                        {social.icon}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">{social.name}</TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
           </DrawerTitle>
           <DrawerDescription className="flex w-full flex-col gap-6">
             <Tabs defaultValue="quick_contact" className="gap-4">
