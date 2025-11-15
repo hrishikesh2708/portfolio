@@ -35,19 +35,30 @@ import { useEffect, useMemo, useState } from "react";
 import { Globe, Calendar1 } from "lucide-react";
 
 const Contact = () => {
-  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [date, setDate] = useState<Date>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 2);
+    return d;
+  });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
   const timezones = useMemo(() => Intl.supportedValuesOf("timeZone"), []);
   const [timezone, setTimezone] = useState("America/Los_Angeles");
-  const [selectedTime, setSelectedTime] = useState<string | null>("10:00");
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [formState, setFormState] = useState<boolean>(false);
   const [availableDates, setAvailableDates] = useState<Date[]>([]);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-
   const [timeFormat, setTimeFormat] = useState("24"); // "12" or "24"
+  const [allAvailability, setAllAvailability] = useState<
+    {
+      start_time: string;
+      status: string;
+      invitees_remaining: number;
+      scheduling_url: string;
+    }[]
+  >([]);
 
   // Confirmation form state (fields inside the confirmation/login card)
   const [confName, setConfName] = useState("");
@@ -60,39 +71,38 @@ const Contact = () => {
   const [touchedEmail, setTouchedEmail] = useState(false);
   const [touchedAbout, setTouchedAbout] = useState(false);
 
-  const timeSlots = Array.from({ length: 37 }, (_, i) => {
-    const totalMinutes = i * 15;
-    const hour = Math.floor(totalMinutes / 60) + 9;
-    const minute = totalMinutes % 60;
-    return `${hour.toString().padStart(2, "0")}:${minute
-      .toString()
-      .padStart(2, "0")}`;
-  });
-
   const handle12Hr = () => setTimeFormat("12");
   const handle24Hr = () => setTimeFormat("24");
 
+  // time: "HH:MM"
+  const formatTime = (time: string): string => {
+    const [hRaw, mRaw] = time.split(":");
+    const h = Number(hRaw);
+    const m = Number(mRaw);
 
-  const formatTime = (time) => {
-    // time is "HH:MM"
-    let [h, m] = time.split(":").map(Number);
+    if (isNaN(h) || isNaN(m)) return "";
 
     if (timeFormat === "24") {
       return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
     }
 
-    // 12-hour format
     const period = h >= 12 ? "PM" : "AM";
-    h = h % 12 || 12;
-    return `${h}:${String(m).padStart(2, "0")} ${period}`;
+    const hour12 = h % 12 || 12;
+
+    return `${hour12}:${String(m).padStart(2, "0")} ${period}`;
   };
 
-  const add30 = (time) => {
+  const add30 = (time: string): string => {
     if (!time) return "";
 
-    let [h, m] = time.split(":").map(Number);
+    const [hRaw, mRaw] = time.split(":");
+    let h = Number(hRaw);
+    let m = Number(mRaw);
+
+    if (isNaN(h) || isNaN(m)) return "";
 
     m += 30;
+
     if (m >= 60) {
       m -= 60;
       h = (h + 1) % 24;
@@ -101,7 +111,8 @@ const Contact = () => {
     const hh = String(h).padStart(2, "0");
     const mm = String(m).padStart(2, "0");
 
-    return `${hh}:${mm}`; // return raw 24h → formatter handles view
+    // return raw 24h → formatting done by formatTime()
+    return `${hh}:${mm}`;
   };
 
   const isEmailValid = (email: string) =>
@@ -165,113 +176,161 @@ const Contact = () => {
     }
   }
 
+  function combineDateTimeInTimeZone(date: Date, time: string, tz: string) {
+    const [hours, minutes] = time.split(":").map(Number);
+
+    // get year, month, day
+    const y = date.getFullYear();
+    const m = date.getMonth();
+    const d = date.getDate();
+
+    // construct Date in the target timezone by using Intl.DateTimeFormat hack
+    const local = new Date(Date.UTC(y, m, d, hours, minutes));
+    const offset =
+      new Date(local.toLocaleString("en-US", { timeZone: tz })).getTime() -
+      local.getTime();
+
+    return new Date(local.getTime() - offset).toISOString(); // ISO in UTC but Calendly sees timezone correctly
+  }
+
   // Back button handler in confirmation form -> return to calendar card
   const handleBackFromConfirmation = () => {
     setFormState(false);
     // preserve previously selected date/time; do not reset them.
   };
 
-  // Continue button on confirmation form -> print JSON of all data
-  const handleConfirmationContinue = (e?: React.MouseEvent) => {
-    e?.preventDefault();
+  async function handleConfirmationContinue(
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> {
+    e.preventDefault();
 
-    // gather data: confirmation form + calendar selection + timezone + selectedTime
-    const payload = {
-      confirmationForm: {
-        name: confName,
-        email: confEmail,
-        about: confAbout,
-        notes: confNotes,
+    if (!date) return; // TS: date might be null/undefined
+    if (!selectedTime) return;
+
+    // date: Date → ensure correct ISO
+
+    const startUTC = combineDateTimeInTimeZone(date, selectedTime, timezone);
+
+    const res = await fetch("https://api.calendly.com/scheduled_events", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_CALENDLY_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      calendar: {
-        date: date ? date.toISOString() : null,
-        time: selectedTime,
-        timezone,
-      },
-    };
+      body: JSON.stringify({
+        event_type: import.meta.env.VITE_CALENDLY_EVENT_TYPE,
+        invitee_email: confEmail,
+        invitee_name: confName,
+        start_time: startUTC,
+        timezone, // pass selected timezone
+        cancel_url: "",
+        reschedule_url: "",
+      }),
+    });
 
-    console.log("Scheduling payload:", JSON.stringify(payload, null, 2));
-    // keep UI on confirmation screen (no navigation change requested).
-  };
+    const data = (await res.json()) as unknown;
+    console.log("Calendly created:", data);
+  }
 
-  async function handleConfirmationContinue(e) {
-  e.preventDefault();
+  function utcToTimeZone(utcTime: string, tz: string): string {
+    const date = new Date(utcTime);
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz,
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false, // we will format later if needed
+    });
 
-  const startLocal = `${date.toISOString().split("T")[0]}T${selectedTime}:00`;
-  const startUTC = new Date(startLocal).toISOString();
+    return formatter.format(date); // returns "HH:MM" in the selected timezone
+  }
+  useEffect(() => {
+    if (!date || allAvailability.length === 0) return;
 
-  const res = await fetch("https://api.calendly.com/scheduled_events", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_CALENDLY_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      event_type: import.meta.env.VITE_CALENDLY_EVENT_TYPE,
-      invitee_email: confEmail,
-      invitee_name: confName,
-      start_time: startUTC,
-      timezone,
-      cancel_url: "",
-      reschedule_url: "",
-    }),
-  });
+    const times: string[] = allAvailability
+      .filter((slot) => {
+        const slotDateInTZ = new Date(slot.start_time).toLocaleDateString(
+          "en-US",
+          { timeZone: timezone }
+        );
+        return (
+          slotDateInTZ ===
+          date.toLocaleDateString("en-US", { timeZone: timezone })
+        );
+      })
+      .map((slot) => utcToTimeZone(slot.start_time, timezone));
 
-  const data = await res.json();
-  console.log("Calendly created:", data);
-}
-
+    setAvailableTimes(times);
+  }, [date, allAvailability, timezone]);
 
   useEffect(() => {
-    async function loadAvailableDates() {
-      const res = await fetch(
-        "https://api.calendly.com/availability_schedules/YOUR_SCHEDULE_ID",
-        {
+    async function loadTwoWeekAvailability() {
+      const today = new Date();
+      today.setDate(today.getDate() + 1);
+      const startISO = today.toISOString();
+
+      const week1End = new Date();
+      week1End.setDate(today.getDate() + 7);
+      const week1EndISO = week1End.toISOString();
+
+      const week2End = new Date();
+      week2End.setDate(today.getDate() + 14);
+      const week2EndISO = week2End.toISOString();
+
+      async function fetchWindow(start: string, end: string) {
+        const url =
+          `https://api.calendly.com/event_type_available_times` +
+          `?event_type=${import.meta.env.VITE_CALENDLY_EVENT_TYPE}` +
+          `&start_time=${start}` +
+          `&end_time=${end}`;
+
+        const res = await fetch(url, {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_CALENDLY_TOKEN}`,
           },
-        }
-      );
+        });
 
-      const data = await res.json();
-      const blocks = data.resource.intervals || [];
+        const data: {
+          collection: {
+            start_time: string;
+            status: string;
+            invitees_remaining: number;
+            scheduling_url: string;
+          }[];
+        } = await res.json();
 
-      const dates = blocks.map((b) => new Date(b.start_time));
-      setAvailableDates(dates);
+        return data.collection;
+      }
+
+      const week1 = await fetchWindow(startISO, week1EndISO);
+      const week2 = await fetchWindow(week1EndISO, week2EndISO);
+
+      const allSlots = [...week1, ...week2];
+      setAllAvailability(allSlots);
     }
 
-    loadAvailableDates();
+    loadTwoWeekAvailability();
   }, []);
 
   useEffect(() => {
-    if (!date) return;
+    if (!allAvailability.length) return;
 
-    async function loadTimes() {
-      const startISO = date.toISOString().split("T")[0] + "T00:00:00Z";
-      const endISO = date.toISOString().split("T")[0] + "T23:59:00Z";
+    const dates = Array.from(
+      new Set(
+        allAvailability.map((slot) => new Date(slot.start_time).toDateString())
+      )
+    ).map((d) => new Date(d));
 
-      const url =
-        `https://api.calendly.com/availability/event_type_available_times` +
-        `?event_type=${import.meta.env.VITE_CALENDLY_EVENT_TYPE}` +
-        `&start_time=${startISO}` +
-        `&end_time=${endISO}`;
+    setAvailableDates(dates);
 
-      const res = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_CALENDLY_TOKEN}`,
-        },
-      });
+    // Preselect current + 2 days if available
+    const defaultDate = new Date();
+    defaultDate.setDate(defaultDate.getDate() + 2);
 
-      const data = await res.json();
-      const slots = data.collection.map((t) =>
-        new Date(t.start_time).toISOString().substring(11, 16)
-      );
-
-      setAvailableTimes(slots);
-    }
-
-    loadTimes();
-  }, [date]);
+    const found = dates.find(
+      (d) => d.toDateString() === defaultDate.toDateString()
+    );
+    if (found) setDate(found);
+  }, [allAvailability]);
 
   return (
     <div>
@@ -392,7 +451,7 @@ const Contact = () => {
                 </div>
 
                 {formState ? (
-                  <div>
+                  <div className="lg:col-span-2">
                     <Card className="w-full">
                       <CardHeader>
                         <CardTitle>Login to your account</CardTitle>
@@ -542,6 +601,7 @@ const Contact = () => {
                           {/* Calendar */}
                           <div className="p-6 md:col-span-2">
                             <Calendar
+                              required={true}
                               mode="single"
                               selected={date}
                               onSelect={setDate}
@@ -553,10 +613,6 @@ const Contact = () => {
                                 );
                               }}
                               showOutsideDays={false}
-                              // modifiers={{ booked: bookedDates }}
-                              // modifiersClassNames={{
-                              //   booked: "[&>button]:line-through opacity-100",
-                              // }}
                               className="bg-transparent p-0 [--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)] w-full"
                               formatters={{
                                 formatWeekdayName: (date) => {
@@ -630,7 +686,7 @@ const Contact = () => {
                         </div>
                       </CardContent>
 
-                      <CardFooter className="flex flex-col gap-4 border-t px-6 !py-5 md:flex-row">
+                      <CardFooter className="flex flex-col gap-4 border-t px-6 py-5 md:flex-row">
                         <div className="text-sm">
                           {date && selectedTime ? (
                             <>
