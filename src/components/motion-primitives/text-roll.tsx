@@ -1,10 +1,12 @@
 "use client";
+
+// import { motion } from "motion/react";
 import {
   motion,
-  VariantLabels,
-  Target,
-  TargetAndTransition,
-  Transition,
+  type VariantLabels,
+  type Target,
+  type TargetAndTransition,
+  type Transition,
 } from "motion/react";
 
 export type TextRollProps = {

@@ -5,8 +5,8 @@ import {
   Button,
   type ButtonProps,
 } from "@/components/animate-ui/components/buttons/button";
-import { Magnetic } from "./animate-ui/components/buttons/magnetic";
-import { TextRoll } from "../../components/motion-primitives/text-roll";
+import { Magnetic } from "@/components/animate-ui/components/buttons/magnetic";
+import { TextRoll } from "@/components/motion-primitives/text-roll";
 
 const ContactHero = () => {
   const springOptions = { bounce: 0.1 };

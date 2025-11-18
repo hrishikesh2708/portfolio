@@ -30,7 +30,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
-import { getGMTOffset, openNewTab, socials } from "./utils/uitility";
+import { getGMTOffset, openNewTab, socials } from "@/components/utils/uitility";
 import { useEffect, useMemo, useState } from "react";
 import { Globe, Calendar1 } from "lucide-react";
 

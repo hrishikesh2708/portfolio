@@ -31,7 +31,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
-import { openNewTab, socials, openEmail } from "./utils/uitility";
+import { openNewTab, socials, openEmail } from "../utils/uitility";
 
 const ContactDrawer = () => {
   const [name, setName] = useState("");

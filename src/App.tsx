@@ -1,13 +1,14 @@
 import "./App.css";
-import Contact from "./components/Contact.tsx";
+import Contact from "@/components/contact/Contact.tsx";
 import Navigation from "./components/Navigation.tsx";
 import { Toaster } from "@/components/ui/sonner";
 import { Routes, Route } from "react-router-dom";
-import Project from "./components/Project.tsx";
-import Skills from "./components/Skills.tsx";
+import Project from "@/components/project/Project.tsx";
+import Skills from "@/components/Skills.tsx";
 import Lanyard from "./components/Lanyard.tsx";
-import AnimatedWaveFooter from "./components/Footer.tsx";
-import ContactHero from "./components/ContactHero.tsx"
+import AnimatedWaveFooter from "@/components/footer/Footer.tsx";
+import ContactHero from "@/components/contact/ContactHero.tsx";
+import ProjectHero from "@/components/project/ProjectHero.tsx"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Navigation />
         <Toaster />
         <Skills />
+        <ProjectHero />
         <ContactHero />
         <AnimatedWaveFooter />
         <Routes>
