@@ -74,7 +74,7 @@ export function TextRoll({
                 duration,
                 delay: getEnterDelay(i),
                 repeat: Infinity,
-                repeatDelay: 2,
+                repeatDelay: 4,
               }}
             >
               {letter === " " ? "\u00A0" : letter}
@@ -88,7 +88,7 @@ export function TextRoll({
                 duration,
                 delay: getExitDelay(i),
                 repeat: Infinity,
-                repeatDelay: 2,
+                repeatDelay: 4,
               }}
               onAnimationComplete={
                 letters.length === i + 1 ? onAnimationComplete : undefined

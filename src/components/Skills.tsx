@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { skills } from "./utils/uitility";
-import { TextShimmer } from "../../components/motion-primitives/text-shimmer";
+import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 
 const listVariants = {
   hidden: { opacity: 0 },

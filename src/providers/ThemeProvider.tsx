@@ -1,0 +1,18 @@
+"use client";
+
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ReactNode } from "react";
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  return (
+    <NextThemesProvider
+      attribute="class"           // use `.dark`
+      defaultTheme="system"       // default = auto
+      enableSystem={true}         // respect OS setting
+      storageKey="theme"          // saves preference in localStorage
+      enableColorScheme={true}    // improves first-render behavior
+    >
+      {children}
+    </NextThemesProvider>
+  );
+}

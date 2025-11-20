@@ -1,5 +1,3 @@
-
-import { ThemeDropdown } from "@/components/ThemeDropdown";
 import { Globe } from "lucide-react";
 // import { useIsMobile } from '@/hooks/use-mobile';
 import {
@@ -11,7 +9,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import ContactDrawer from "./Contact/ContactDrawer";
+import ContactDrawer from "@/components/contact/ContactDrawer";
+import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 // const components: { title: string; href: string; description: string }[] = [
 //   {
 //     title: 'Skills',
@@ -147,7 +146,7 @@ function Navigation() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <ThemeDropdown />
+        <ThemeTogglerButton variant={"outline"} direction={"rtl"} className="rounded-full"/>
       </div>
     </>
   );

@@ -15,7 +15,7 @@ const ContactHero = () => {
 <div className="flex flex-col mx-auto gap-4 mt-10 container relative z-10 w-full items-center justify-center gap-y-2 py-10 text-center">
           <div className="mt-4 font-light text-2xl text-black tracking-wide sm:text-4xl lg:text-5xl dark:text-white">
         <h3>
-          From Concept to{" "}
+          FROM CONCEPT TO{" "}
           <TextRoll className="font-extrabold">CREATION</TextRoll>
         </h3>
         <h3 className="self-center">

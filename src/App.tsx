@@ -5,26 +5,33 @@ import { Toaster } from "@/components/ui/sonner";
 import { Routes, Route } from "react-router-dom";
 import Project from "@/components/project/Project.tsx";
 import Skills from "@/components/Skills.tsx";
-import Lanyard from "./components/Lanyard.tsx";
+import Lanyard from "@/components/Lanyard.tsx";
 import AnimatedWaveFooter from "@/components/footer/Footer.tsx";
 import ContactHero from "@/components/contact/ContactHero.tsx";
-import ProjectHero from "@/components/project/ProjectHero.tsx"
+import ProjectHero from "@/components/project/ProjectHero.tsx";
+import Introduction from '@/components/Introduction.tsx'
 
 function App() {
   return (
-    <div className="min-h-screen px-1 sm:px-6 md:px-8 lg:px-12 py-6 mx-auto max-w-[2560px]">
-      <div className="w-full">
-        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
+    <div className="mx-auto max-w-[1440px]">
+      <div className="fixed top-0  max-w-[1440px] w-full left-0 z-50 h-16">
         <Navigation />
-        <Toaster />
+      </div>
+      {/* <div className="w-full">
+        <Introduction />
+      </div> */}
+      <div>
+        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
+        {/* <AboutMe /> */}
+        {/* <ProjectHero />
         <Skills />
-        <ProjectHero />
         <ContactHero />
         <AnimatedWaveFooter />
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/project" element={<Project />} />
         </Routes>
+        <Toaster /> */}
       </div>
     </div>
   );
