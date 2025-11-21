@@ -19,9 +19,9 @@ function App() {
       <div className="fixed top-6 max-w-[1440px] w-full z-50 h-16">
         <Navigation />
       </div>
-      {/* <div className="w-full">
+      <div className="w-full">
         <Introduction />
-      </div> */}
+      </div>
       <div>
         {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/>
         <AboutMe />

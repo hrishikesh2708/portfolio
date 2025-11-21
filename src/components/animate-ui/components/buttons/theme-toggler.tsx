@@ -14,6 +14,7 @@ import {
 
 import { buttonVariants } from "@/components/animate-ui/components/buttons/icon";
 import { cn } from "@/lib/utils";
+import GlassSurface from "@/components/GlassSurface";
 
 const getIcon = (
   effective: ThemeSelection,
@@ -74,17 +75,30 @@ function ThemeTogglerButton({
       onImmediateChange={onImmediateChange}
     >
       {({ effective, resolved, toggleTheme }) => (
-        <button
-          data-slot="theme-toggler-button"
-          className={cn(buttonVariants({ variant, size, className }))}
-          onClick={(e) => {
-            onClick?.(e);
-            toggleTheme(getNextTheme(effective, modes));
-          }}
-          {...props}
+        <GlassSurface
+          displace={15}
+          distortionScale={-150}
+          brightness={60}
+          opacity={0.8}
+          mixBlendMode="screen"
+          backgroundOpacity={0.09}
+          width={"2.5rem"}
+          height={"2.5rem"}
+          borderRadius={50}
+          className="rounded-full"
         >
-          {getIcon(effective, resolved, modes)}
-        </button>
+          <button
+            data-slot="theme-toggler-button"
+            className={cn(buttonVariants({ variant, size, className }))}
+            onClick={(e) => {
+              onClick?.(e);
+              toggleTheme(getNextTheme(effective, modes));
+            }}
+            {...props}
+          >
+            {getIcon(effective, resolved, modes)}
+          </button>
+        </GlassSurface>
       )}
     </ThemeTogglerPrimitive>
   );

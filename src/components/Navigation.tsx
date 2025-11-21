@@ -87,7 +87,7 @@ function Navigation() {
         width={"16rem"}
         height={"fit-content"}
         borderRadius={50}
-        className="rounded-full lg:hidden animate-expand-center"
+        className="rounded-full lg:hidden"
       >
         <div className="flex felx-row w-3xs align-center items-center justify-between px-4 py-1">
           <Command />
@@ -181,9 +181,10 @@ function Navigation() {
         </div>
         <div className="hidden md:block">
           <ThemeTogglerButton
-            variant={"outline"}
+            variant={"ghost"}
+            size={"lg"}
             direction={"rtl"}
-            className="rounded-full"
+            className="rounded-full bg-transparent border-none outline-none ring-0"
           />
         </div>
     </div>
