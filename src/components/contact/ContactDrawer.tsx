@@ -32,6 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 import { openNewTab, socials, openEmail } from "../utils/uitility";
+import GradientText from "../GradientText";
 
 const ContactDrawer = () => {
   const [name, setName] = useState("");
@@ -94,8 +95,16 @@ const ContactDrawer = () => {
 
   return (
     <Drawer>
-      <DrawerTrigger className="rounded-full px-4 py-0.5  outline bg-linear-to-t dark:from-neutral-200/20 dark:outline-neutral-200/20">
-        Connect
+      <DrawerTrigger className="">
+        <GradientText
+          colors={["#F27121", "#E94057", "#8A2387", "#E94057", "#F27121"]}
+          animationSpeed={5}
+          showBorder={false}
+          className=""
+        >
+          Connect
+        </GradientText>
+        
       </DrawerTrigger>
       <DrawerContent className="sm:w-sm md:w-lg mx-auto">
         <DrawerHeader className="gap-4">

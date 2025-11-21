@@ -1,4 +1,4 @@
-import { Globe } from "lucide-react";
+import { Command, Globe } from "lucide-react";
 // import { useIsMobile } from '@/hooks/use-mobile';
 import {
   NavigationMenu,
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import ContactDrawer from "@/components/contact/ContactDrawer";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
+import GlassSurface from "@/components/GlassSurface";
 // const components: { title: string; href: string; description: string }[] = [
 //   {
 //     title: 'Skills',
@@ -71,84 +72,121 @@ function ListItem({
 
 function Navigation() {
   return (
-    <>
-      <div className="grid grid-cols-12 gap-2 place-items-center">
-        <Globe />
-        {/* <NavigationMenu viewport={isMobile}> */}
-        <NavigationMenu
-          viewport={true}
-          className="col-span-10  rounded-full px-4 py-1 border dark:border-neutral-300/30 dark:bg-neutral-300/20 backdrop-blur-[2px]"
-        >
-          <NavigationMenuList className="flex-wrap">
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <p>Home</p>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <p>About</p>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <p>Work</p>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="dark:bg-transparent">
-                More
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
-                        href="/"
-                      >
-                        <div className="mb-2 text-lg font-medium sm:mt-4">
-                          shadcn/ui
-                        </div>
-                        <p className="text-muted-foreground text-sm leading-tight">
-                          Beautifully designed components built with Tailwind
-                          CSS.
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <ListItem href="/docs" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
-                  </ListItem>
-                  <ListItem href="/docs/installation" title="Installation">
-                    How to install dependencies and structure your app.
-                  </ListItem>
-                  <ListItem
-                    href="/docs/primitives/typography"
-                    title="Typography"
-                  >
-                    Styles for headings, paragraphs, lists...etc
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <ContactDrawer/>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-        <ThemeTogglerButton variant={"outline"} direction={"rtl"} className="rounded-full"/>
-      </div>
-    </>
+    <div className="flex flex-row items-center justify-center md:justify-between px-6 align-middle">
+        <div className="hidden md:block">
+          <Globe />
+        </div>
+        <div>
+      <GlassSurface
+        displace={15}
+        distortionScale={-150}
+        brightness={60}
+        opacity={0.8}
+        mixBlendMode="screen"
+        backgroundOpacity={0.09}
+        width={"16rem"}
+        height={"fit-content"}
+        borderRadius={50}
+        className="rounded-full lg:hidden animate-expand-center"
+      >
+        <div className="flex felx-row w-3xs align-center items-center justify-between px-4 py-1">
+          <Command />
+          <p className="tracking-widest text-xl font-bold font-geist">
+            Hrishikesh
+          </p>
+        </div>
+      </GlassSurface>
+      <GlassSurface
+        displace={15}
+        distortionScale={-150}
+        brightness={60}
+        opacity={0.8}
+        mixBlendMode="screen"
+        backgroundOpacity={0.09}
+        width={"32rem"}
+        height={"fit-content"}
+        borderRadius={50}
+        className="rounded-full hidden lg:block overflow-visible"
+      >
+          <NavigationMenu>
+            <NavigationMenuList className="gap-5">
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <p>Home</p>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <p>About</p>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <p>Work</p>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="dark:bg-transparent">
+                  More
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] z-100">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <a
+                          className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
+                          href="/"
+                        >
+                          <div className="mb-2 text-lg font-medium sm:mt-4">
+                            shadcn/ui
+                          </div>
+                          <p className="text-muted-foreground text-sm leading-tight">
+                            Beautifully designed components built with Tailwind
+                            CSS.
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <ListItem href="/docs" title="Experience">
+                      Re-usable components built using Radix UI and Tailwind
+                      CSS.
+                    </ListItem>
+                    <ListItem href="/docs/installation" title="Education">
+                      How to install dependencies and structure your app.
+                    </ListItem>
+                    <ListItem
+                      href="/docs/primitives/typography"
+                      title="Typography"
+                    >
+                      Styles for headings, paragraphs, lists...etc
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <ContactDrawer />
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+      </GlassSurface>
+        </div>
+        <div className="hidden md:block">
+          <ThemeTogglerButton
+            variant={"outline"}
+            direction={"rtl"}
+            className="rounded-full"
+          />
+        </div>
+    </div>
   );
 }
 
