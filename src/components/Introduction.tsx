@@ -1,11 +1,8 @@
 import React from "react";
 import LiquidEther from "@/components/LiquidEther";
-import FloatingLines from "@/components/FloatingLines";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
 import { Download } from "lucide-react";
-import { TextRoll } from "@/components/motion-primitives/text-roll";
-import RotatingText from "@/components/RotatingText";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
 
 const Introduction = () => {
@@ -41,7 +38,7 @@ const Introduction = () => {
             <br className="hidden md:block" /> and solutions that drive
             <span className="text-transparent bg-clip-text bg-linear-to-b dark:to-zinc-100 dark:from-zinc-300/90 to-zinc-900 from-zinc-500 italic">
               {" "}
-              real impact.
+              real impact
             </span>
           </h2>
         </div>

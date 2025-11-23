@@ -12,6 +12,7 @@ import ProjectHero from "@/components/project/ProjectHero.tsx";
 import Introduction from "@/components/Introduction.tsx";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import AboutMe from "@/components/about/AboutMe.tsx";
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
         <Introduction />
       </div>
       <div>
-        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/>
+        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
         <AboutMe />
-        <ProjectHero />
+        {/* <ProjectHero />
         <Skills />
         <ContactHero />
         <AnimatedWaveFooter /> */}
