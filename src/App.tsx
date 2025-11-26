@@ -1,17 +1,15 @@
 import "./App.css";
 import Contact from "@/components/contact/Contact.tsx";
-import Navigation from "./components/Navigation.tsx";
+import Navigation from "@/components/navigation/Navigation.tsx";
 import { Toaster } from "@/components/ui/sonner";
 import { Routes, Route } from "react-router-dom";
 import Project from "@/components/project/Project.tsx";
-import Skills from "@/components/Skills.tsx";
-import Lanyard from "@/components/Lanyard.tsx";
+import Skills from "@/components/skills/Skills.tsx";
+import Lanyard from "@/components/ui/Lanyard.tsx";
 import AnimatedWaveFooter from "@/components/footer/Footer.tsx";
 import ContactHero from "@/components/contact/ContactHero.tsx";
 import ProjectHero from "@/components/project/ProjectHero.tsx";
-import Introduction from "@/components/Introduction.tsx";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import Introduction from "@/components/introduction/Introduction";
 import AboutMe from "@/components/about/AboutMe.tsx";
 
 function App() {
@@ -26,10 +24,10 @@ function App() {
       <div>
         {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
         <AboutMe />
-        {/* <ProjectHero />
         <Skills />
+        <ProjectHero />
         <ContactHero />
-        <AnimatedWaveFooter /> */}
+        <AnimatedWaveFooter />
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/project" element={<Project />} />

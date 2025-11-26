@@ -79,7 +79,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   rounded-[1.8rem]
                   text-4xl font-semibold
                   flex items-center justify-center
-                  h-[var(--slide-height)]
+                  h-(--slide-height)
                   select-none
                   bg-amber-400
                 "

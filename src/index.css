@@ -78,6 +78,10 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --default-font-family: "Montserrat", sans-serif;
+  --color-pink-600: #db2777;
+  --color-fuchsia-600: #c026d3;
+  --color-blue-600: #2563eb;
+  --color-teal-600: #0d9488;
 }
 
 .dark {

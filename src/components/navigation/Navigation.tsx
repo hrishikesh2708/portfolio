@@ -1,5 +1,4 @@
 import { Command, Globe } from "lucide-react";
-// import { useIsMobile } from '@/hooks/use-mobile';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,7 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import ContactDrawer from "@/components/contact/ContactDrawer";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
-import GlassSurface from "@/components/GlassSurface";
+import GlassSurface from "@/components/ui/GlassSurface";
 // const components: { title: string; href: string; description: string }[] = [
 //   {
 //     title: 'Skills',

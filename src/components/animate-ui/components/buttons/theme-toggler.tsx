@@ -14,7 +14,7 @@ import {
 
 import { buttonVariants } from "@/components/animate-ui/components/buttons/icon";
 import { cn } from "@/lib/utils";
-import GlassSurface from "@/components/GlassSurface";
+import GlassSurface from "@/components/ui/GlassSurface";
 
 const getIcon = (
   effective: ThemeSelection,

@@ -32,7 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 import { openNewTab, socials, openEmail } from "../utils/uitility";
-import GradientText from "../GradientText";
+import GradientText from "@/components/ui/GradientText";
 
 const ContactDrawer = () => {
   const [name, setName] = useState("");

@@ -1,9 +1,5 @@
-import React from "react";
-
-import { PlusIcon, MoveRightIcon } from "lucide-react";
 import {
   Button,
-  type ButtonProps,
 } from "@/components/animate-ui/components/buttons/button";
 import { Magnetic } from "@/components/animate-ui/components/buttons/magnetic";
 import { TextRoll } from "@/components/motion-primitives/text-roll";

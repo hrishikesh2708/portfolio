@@ -1,5 +1,4 @@
-import React from "react";
-import LiquidEther from "@/components/LiquidEther";
+import LiquidEther from "@/components/ui/LiquidEther";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
 import { Download } from "lucide-react";
