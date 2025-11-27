@@ -5,6 +5,7 @@ import { motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Minus, Sparkle } from "lucide-react";
 import { Badge } from "./badge";
+import { Button } from "@/components/animate-ui/components/buttons/button";
 
 const rightPanelVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -99,142 +100,220 @@ export const StickyScroll = ({
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
   return (
-    <motion.div
-      className="relative hidden xl:flex justify-center w-full space-x-5"
-      ref={ref}
-    >
-      <div className="w-6xl flex items-start px-4">
-        <div className="w-full">
-          {content.map((item, index) => (
-            <div
-              key={item.title + index}
-              className={cn(
-                "flex items-center mb-20 mt-10",
-                // index === content.length - 1
-                //   ? "min-h-[100vh] items-start mt-20"
-                //   : "min-h-[80vh]"
-              )}
-            >
-              <div className="relative w-full rounded-2xl border bg-muted/40 overflow-hidden">
-                <div
-                  className="absolute inset-x-0 top-0 h-px hidden dark:block
+    <div>
+      <motion.div
+        className="relative hidden xl:flex justify-center w-full space-x-5"
+        ref={ref}
+      >
+        <div className="w-6xl flex items-start px-4">
+          <div className="w-full">
+            {content.map((item, index) => (
+              <div
+                key={item.title + index}
+                className={cn(
+                  "flex items-center mb-20 mt-10"
+                  // index === content.length - 1
+                  //   ? "min-h-[100vh] items-start mt-20"
+                  //   : "min-h-[80vh]"
+                )}
+              >
+                <div className="relative w-full rounded-2xl border bg-muted/40 overflow-hidden">
+                  <div
+                    className="absolute inset-x-0 top-0 h-px hidden dark:block
                   bg-[linear-gradient(90deg,rgba(0,0,0,0)_5%,rgba(255,255,255,0.8)_35%,#fff_50%,rgba(255,255,255,0.8)_65%,rgba(0,0,0,0)_95%)]"
-                />
+                  />
 
-                <div className="relative m-1.5 rounded-lg overflow-hidden aspect-16/9 min-h-140 max-h-160">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
-                    style={{
-                      background: `${gradientMap[item.color]}`,
-                    }}
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 z-10 hidden h-px opacity-70 dark:block
+                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-16/9 min-h-140 max-h-160">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
+                      style={{
+                        background: `${gradientMap[item.color]}`,
+                      }}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 top-0 z-10 hidden h-px opacity-70 dark:block
                  bg-[linear-gradient(90deg,rgba(0,0,0,0)_20%,#fff_50%,rgba(0,0,0,0)_80%)]"
-                  />
-                  <div className="relative z-20 hidden lg:flex px-10 py-8 items-center justify-between text-white/70">
-                    <div>
-                      <h3 className="text-lg xl:text-2xl">{item.subtitle}</h3>
-                    </div>
-                    <div>
-                      <ArrowRight size={24} />
-                    </div>
-                    <div className="w-full absolute lg:top-20 left-0 right-0">
-                      <div className="w-full h-full flex justify-center items-center group perspective-[2000px] pt-4">
-                        <img
-                          alt="NextVenture1"
-                          draggable="false"
-                          loading="lazy"
-                          width="800"
-                          height="800"
-                          decoding="async"
-                          data-nimg="1"
-                          className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:rotate-0 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
-                          style={{ color: "transparent" }}
-                          src={item.url}
-                        ></img>
+                    />
+                    <div className="relative z-20 hidden lg:flex px-10 py-8 items-center justify-between text-white/70">
+                      <div>
+                        <h3 className="text-lg xl:text-2xl">{item.subtitle}</h3>
+                      </div>
+                      <div>
+                        <Button variant={"outline"} size={"icon-sm"}>
+                          <ArrowRight />
+                        </Button>
+                      </div>
+                      <div className="w-full absolute lg:top-20 left-0 right-0">
+                        <div className="w-full h-full flex justify-center items-center group perspective-[2000px] pt-4">
+                          <img
+                            alt={item.title}
+                            draggable="false"
+                            loading="lazy"
+                            width="800"
+                            height="800"
+                            decoding="async"
+                            data-nimg="1"
+                            className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:rotate-0 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
+                            style={{ color: "transparent" }}
+                            src={item.url}
+                          ></img>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-      <motion.div
-        key={activeCard}
-        variants={rightPanelVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ height: panelHeight }} 
-        className={cn(
-          "sticky top-30 hidden lg:block w-lg overflow-hidden pt-20",
-          contentClassName
-        )}
-      >
-        {/* Title + Description */}
-        <div className="space-y-2">
-          <motion.div variants={itemVariants}>
-            <div className="flex items-center gap-2">
-              <Minus
-                style={{
-                  fill: `var(--color-${content[activeCard].color}-600, #db2777)`,
-                  color: `var(--color-${content[activeCard].color}-600, #db2777)`,
-                }}
-                size={49}
-              />
-              <h4 className="font-semibold font-instrument text-2xl">
-                {content[activeCard].title}
-              </h4>
-            </div>
-          </motion.div>
-
-          <motion.p variants={itemVariants} className="text-muted-foreground">
-            {content[activeCard].description}
-          </motion.p>
-        </div>
-
-        {/* Points */}
-        <div className="mt-6 space-y-3">
-          {content[activeCard].points.map((item, idx) => (
-            <motion.div
-              variants={itemVariants}
-              key={idx}
-              className="flex items-start gap-2"
-            >
-              <Sparkle
-                style={{
-                  fill: `var(--color-${content[activeCard].color}-600, #db2777)`,
-                  color: `var(--color-${content[activeCard].color}-600, #db2777)`,
-                }}
-                size={18}
-              />
-              <p>{item}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Tech Stack */}
         <motion.div
+          key={activeCard}
           variants={rightPanelVariants}
-          className="mt-6 flex flex-wrap gap-2"
+          initial="hidden"
+          animate="visible"
+          style={{ height: panelHeight }}
+          className={cn(
+            "sticky top-30 hidden lg:block w-lg overflow-hidden pt-20",
+            contentClassName
+          )}
         >
-          {content[activeCard].techStack.map((item, idx) => (
-            <motion.div key={idx} variants={badgeVariants}>
-              <Badge
-                variant="outline"
-                className="flex items-center gap-1 rounded-lg"
-              >
-                {item.icon}
-                {item.name}
-              </Badge>
+          {/* Title + Description */}
+          <div className="space-y-2">
+            <motion.div variants={itemVariants}>
+              <div className="flex items-center gap-2">
+                <Minus
+                  style={{
+                    fill: `var(--color-${content[activeCard].color}-600, #db2777)`,
+                    color: `var(--color-${content[activeCard].color}-600, #db2777)`,
+                  }}
+                  size={49}
+                />
+                <h4 className="font-semibold font-instrument text-2xl">
+                  {content[activeCard].title}
+                </h4>
+              </div>
             </motion.div>
-          ))}
+
+            <motion.p variants={itemVariants} className="text-muted-foreground">
+              {content[activeCard].description}
+            </motion.p>
+          </div>
+
+          {/* Points */}
+          <div className="mt-6 space-y-3">
+            {content[activeCard].points.map((item, idx) => (
+              <motion.div
+                variants={itemVariants}
+                key={idx}
+                className="flex items-start gap-2"
+              >
+                <Sparkle
+                  style={{
+                    fill: `var(--color-${content[activeCard].color}-600, #db2777)`,
+                    color: `var(--color-${content[activeCard].color}-600, #db2777)`,
+                  }}
+                  size={18}
+                />
+                <p>{item}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Tech Stack */}
+          <motion.div
+            variants={rightPanelVariants}
+            className="mt-6 flex flex-wrap gap-2"
+          >
+            {content[activeCard].techStack.map((item, idx) => (
+              <motion.div key={idx} variants={badgeVariants}>
+                <Badge
+                  variant="outline"
+                  className="flex items-center gap-1 rounded-lg"
+                >
+                  {item.icon}
+                  {item.name}
+                </Badge>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
+
+      <motion.div
+        className="flex justify-center w-full xl:hidden px-4"
+      >
+        <div>
+          <div className="w-xs xs:w-sm sm:w-md md:w-xl lg:w-3xl space-y-20 my-10">
+            {content.map((item, index) => (
+              <div className="flex flex-col gap-4">
+                <div className="relative w-full rounded-2xl border bg-muted/40 overflow-hidden">
+                  <div
+                    className="absolute inset-x-0 top-0 h-px hidden dark:block
+                  bg-[linear-gradient(90deg,rgba(0,0,0,0)_5%,rgba(255,255,255,0.8)_35%,#fff_50%,rgba(255,255,255,0.8)_65%,rgba(0,0,0,0)_95%)]"
+                  />
+                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-16/9 min-h-30 max-h-90 lg:max-h-120">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
+                      style={{
+                        background: `${gradientMap[item.color]}`,
+                      }}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 top-0 z-10 hidden h-px opacity-70 dark:block bg-[linear-gradient(90deg,rgba(0,0,0,0)_20%,#fff_50%,rgba(0,0,0,0)_80%)]"
+                    />
+                    <div className="relative">
+                      <div className="w-full absolute top-2 left-0 right-0">
+                        <div className="w-full h-full flex justify-center items-center group perspective-[2000px] pt-4">
+                          <img
+                            alt={item.title}
+                            draggable="false"
+                            loading="lazy"
+                            width="800"
+                            height="800"
+                            decoding="async"
+                            data-nimg="1"
+                            className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
+                            style={{ color: "transparent" }}
+                            src={item.url}
+                          ></img>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-row justify-between items-center px-2">
+                  <div className="flex flex-col items-start gap-1">
+                    <h4 className="block font-semibold font-instrument text-2xl tracking-wider">
+                      {item.title}
+                    </h4>
+                    <h3 className="block text-lg text-muted-foreground">{item.subtitle}</h3>
+                  </div>
+                  <div>
+                    <Button variant={"outline"} size={"icon-sm"}>
+                      <ArrowRight />
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 px-1">
+                  {item.techStack.map((list, idx) => (
+                    <Badge
+                      variant="outline"
+                      className="flex items-center gap-1 rounded-sm"
+                    >
+                      {list.icon}
+                      {list.name}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 };
