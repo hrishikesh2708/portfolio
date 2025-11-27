@@ -14,17 +14,19 @@ import AboutMe from "@/components/about/AboutMe.tsx";
 
 function App() {
   return (
-    <div className="mx-auto max-w-[1440px]">
+    <div className="w-full">
+      <Introduction />
+    <div className="mx-auto max-w-[1440px] overflow-visible">
       <div className="fixed top-6 max-w-[1440px] w-full z-50 h-16">
         <Navigation />
       </div>
-      <div className="w-full">
+      {/* <div className="w-full">
         <Introduction />
-      </div>
+      </div> */}
       <div>
         {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
         <AboutMe />
-        <Skills />
+        {/* <Skills /> */}
         <ProjectHero />
         <ContactHero />
         <AnimatedWaveFooter />
@@ -34,6 +36,7 @@ function App() {
         </Routes>
         <Toaster />
       </div>
+    </div>
     </div>
   );
 }
