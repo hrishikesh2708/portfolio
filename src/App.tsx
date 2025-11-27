@@ -26,7 +26,7 @@ function App() {
       <div>
         {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20}/> */}
         <AboutMe />
-        {/* <Skills /> */}
+        <Skills />
         <ProjectHero />
         <ContactHero />
         <AnimatedWaveFooter />

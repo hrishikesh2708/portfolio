@@ -1,53 +1,38 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import GradientText from "@/components/ui/GradientText";
+import { techStack } from "@/components/utils/uitility";
 
 const Skills = () => {
-  const ref = useRef(null);
+  // Decide how many columns you want (use any number)
+  const COLS = 15; // for example, 8 icons per row
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0.2 0.8", "0.2 0.1"],
-  });
+  const total = techStack.length;
+  const ROWS = Math.ceil(total / COLS);
 
-  // --------------------------------------------
-  // Generate 4 rows × 8 icons, evenly spaced
-  // --------------------------------------------
-  const icons = useMemo(() => {
-    const rows = 4;
-    const perRow = 8;
+  const BASE_DELAY = 0.5;
+  const NOISE = 0.05;
 
-    const initialSpacing = 140; // wide spacing (2×)
-    const finalSpacing = 90; // compressed spacing (1×)
-    const rowHeight = 90;
+  // Pick a random origin based on dynamic rows/cols
+  const getRandomCoordinate = (): [number, number] => [
+    Math.floor(Math.random() * ROWS),
+    Math.floor(Math.random() * COLS),
+  ];
 
-    let result = [];
+  const [origin, setOrigin] = useState<[number, number]>();
 
-    for (let r = 0; r < rows; r++) {
-      const yBase = r * rowHeight - (rowHeight * (rows - 1)) / 2;
-
-      for (let i = 0; i < perRow; i++) {
-        // center index = 3.5 so icon positions are symmetric
-        const indexOffset = i - (perRow - 1) / 2;
-
-        // Start far apart: x spaced by initialSpacing
-        const startX = indexOffset * initialSpacing;
-
-        // End closer: x spaced by finalSpacing
-        const finalX = indexOffset * finalSpacing;
-
-        result.push({
-          row: r,
-          startX,
-          finalX,
-          startY: yBase,
-          finalY: yBase,
-          startRotate: 180,
-        });
-      }
-    }
-    return result;
+  useEffect(() => {
+    setOrigin(getRandomCoordinate());
   }, []);
+
+  if (!origin) return null;
+
+  const getDistance = (row: number, col: number) => {
+    return (
+      Math.sqrt((row - origin[0]) ** 2 + (col - origin[1]) ** 2) /
+      (ROWS * Math.sqrt(2))
+    );
+  };
 
   return (
     <div className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10">
@@ -75,62 +60,42 @@ const Skills = () => {
         </p>
       </div>
 
-      {/* Animation Container */}
-      <div ref={ref} className="relative hidden md:block w-full">
-        <div className="h-100 flex items-center justify-center">
-          <div className="">
-            {icons.map((icon, i) => {
-              // -------------------------------
-              // X: compress spacing inward
-              // -------------------------------
-              const x = useTransform(
-                scrollYProgress,
-                [0, 1],
-                [icon.startX, icon.finalX]
-              );
+      <div className="flex justify-center items-center p-8">
+        <div
+          className="grid gap-2 sm:gap-3"
+          style={{
+            gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))`,
+          }}
+        >
+          {techStack.map((icon, idx) => {
+            const row = Math.floor(idx / COLS);
+            const col = idx % COLS;
 
-              // -------------------------------
-              // Y: stays constant (row aligned)
-              // -------------------------------
-              const y = useTransform(
-                scrollYProgress,
-                [0, 1],
-                [icon.startY, icon.finalY]
-              );
+            const delay =
+              getDistance(row, col) * BASE_DELAY + Math.random() * NOISE;
 
-              // -------------------------------
-              // Rotation: 0 → random angle
-              // -------------------------------
-              const rotate = useTransform(
-                scrollYProgress,
-                [0, 1],
-                [icon.startRotate,0]
-              );
+            const isOrigin = getDistance(row, col) === 0;
 
-              const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-              const opacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
-
-              return (
-                <motion.div
-                  key={i}
-                  style={{
-                    x,
-                    y,
-                    rotate,
-                    scale,
-                    opacity,
-                    position: "absolute",
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 20,
-                  }}
-                  className="h-20 w-20 rounded-xl bg-neutral-700 left-1/2 top-1/2"
-                />
-              );
-            })}
-          </div>
+            return (
+              <motion.div
+                className="bg-muted/50 border border-muted-foreground/50 rounded-2xl flex justify-center items-center p-4"
+                key={idx}
+                style={{ backgroundColor: isOrigin ? "orange" : "" }}
+                initial={{
+                  opacity: isOrigin ? 1 : 0,
+                  scale: isOrigin ? 1 : 0.3,
+                }}
+                animate={{ opacity: 0.8, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.5,
+                  delay: delay,
+                }}
+              >
+                {icon.icon}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>

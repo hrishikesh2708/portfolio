@@ -1,4 +1,4 @@
-import { Github, Linkedin, Globe, Code} from "lucide-react";
+import { Github, Linkedin, Globe, Code } from "lucide-react";
 
 export const socials = [
   {
@@ -17,7 +17,188 @@ export const socials = [
     url: "https://www.hrishikeshthakur.com/",
   },
 ];
-
+export const techStack = [
+  {
+    name: "Python",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Java",
+    icon: <Linkedin />,
+  },
+  {
+    name: "C++",
+    icon: <Linkedin />,
+  },
+  {
+    name: "C",
+    icon: <Linkedin />,
+  },
+  {
+    name: "JavaScript",
+    icon: <Linkedin />,
+  },
+  {
+    name: "TypeScript",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Swift",
+    icon: <Linkedin />,
+  },
+  {
+    name: "SQL",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Bash/Shell",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Agile",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Scrum",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Jira",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Confluence",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Slack",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Git",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Docker",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Kubernetes",
+    icon: <Linkedin />,
+  },
+  {
+    name: "AWS (EC2, S3, Lambda, RDS)",
+    icon: <Linkedin />,
+  },
+  {
+    name: "GCP (Firestore, App, Engine)",
+    icon: <Linkedin />,
+  },
+  {
+    name: "CI/CD (Jenkins, GitHub Actions)",
+    icon: <Linkedin />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <Linkedin />,
+  },
+  {
+    name: "MySQL",
+    icon: <Linkedin />,
+  },
+  {
+    name: "MongoDB",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Redis",
+    icon: <Linkedin />,
+  },
+  {
+    name: "SQLite",
+    icon: <Linkedin />,
+  },
+  {
+    name: "DynamoDB",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Elasticsearch",
+    icon: <Linkedin />,
+  },
+  {
+    name: "JUnit",
+    icon: <Linkedin />,
+  },
+  {
+    name: "pytest",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Selenium",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Cucumber",
+    icon: <Linkedin />,
+  },
+  {
+    name: "WebDriverIO",
+    icon: <Linkedin />,
+  },
+  {
+    name: "TDD",
+    icon: <Linkedin />,
+  },
+  {
+    name: "BDD",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Postman",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Node.js",
+    icon: <Linkedin />,
+  },
+  {
+    name: "React.js",
+    icon: <Linkedin />,
+  },
+  {
+    name: "REST APIs",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Flask",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Django",
+    icon: <Linkedin />,
+  },
+  {
+    name: "GraphQL",
+    icon: <Linkedin />,
+  },
+  {
+    name: "OAuth2",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <Linkedin />,
+  },
+  {
+    name: "Spring Boot",
+    icon: <Linkedin />,
+  },
+  {
+    name: "JWT",
+    icon: <Linkedin />,
+  },
+];
 export const skills = [
   {
     catagory: "Languages",
@@ -324,7 +505,8 @@ export const projects = [
   {
     title: "Game of Life — Wormhole Edition",
     color: "fuchsia",
-    subtitle: "Extended cellular automata with teleport-linked grids, Extended cellular automata with teleport-linked grids",
+    subtitle:
+      "Extended cellular automata with teleport-linked grids, Extended cellular automata with teleport-linked grids",
     url: "public/asset/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
     description:
       "An experimental simulation engine that merges Conway's Game of Life with wormholes. Cells can connect across non-adjacent regions using tunnel-mapped teleport links.",

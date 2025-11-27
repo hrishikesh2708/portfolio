@@ -5,7 +5,7 @@ import { projects } from "@/components/utils/uitility";
 const ProjectHero = () => {
   return (
     <>
-      <div className="realtive top-0 flex flex-col mx-auto gap-4 w-full mt-10">
+      <div className="realtive top-0 flex flex-col mx-auto gap-4 w-full my-10 mb-40">
         <div>
           <p className=" text-center uppercase tracking-widest text-muted-foreground text-sm font-mono mb-1">
             Project Showcase
