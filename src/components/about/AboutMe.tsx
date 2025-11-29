@@ -7,12 +7,186 @@ import {
 } from "@/components/ui/tooltip";
 import { openNewTab, socials } from "../utils/uitility";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Timeline } from "../ui/timeline";
+import {
+  ContributionGraph,
+  ContributionGraphBlock,
+  ContributionGraphCalendar,
+  ContributionGraphFooter,
+  ContributionGraphLegend,
+  ContributionGraphTotalCount,
+} from "@/components/about/ContributionGraph";
+import { eachDayOfInterval, endOfYear, formatISO, startOfYear } from "date-fns";
+import { BookOpen, GitFork, Star, User } from "lucide-react";
+const maxCount = 20;
+const maxLevel = 4;
+const now = new Date();
+const days = eachDayOfInterval({
+  start: startOfYear(now),
+  end: endOfYear(now),
+});
+const calData = days.map((date) => {
+  const c = Math.round(
+    Math.random() * maxCount - Math.random() * (0.8 * maxCount)
+  );
+  const count = Math.max(0, c);
+  const level = Math.ceil((count / maxCount) * maxLevel);
+  return {
+    date: formatISO(date, { representation: "date" }),
+    count,
+    level,
+  };
+});
+
+const data = [
+  {
+    title: "2024",
+    content: (
+      <div>
+        <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          Built and launched Aceternity UI and Aceternity UI Pro from scratch
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <img
+            src="https://assets.aceternity.com/templates/startup-1.webp"
+            alt="startup template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/templates/startup-2.webp"
+            alt="startup template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/templates/startup-3.webp"
+            alt="startup template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/templates/startup-4.webp"
+            alt="startup template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Early 2023",
+    content: (
+      <div>
+        <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          I usually run out of copy, but when I see content this big, I try to
+          integrate lorem ipsum.
+        </p>
+        <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          Lorem ipsum is for people who are too lazy to write copy. But we are
+          not. Here are some more example of beautiful designs I built.
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <img
+            src="https://assets.aceternity.com/pro/hero-sections.png"
+            alt="hero template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/features-section.png"
+            alt="feature template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/pro/bento-grids.png"
+            alt="bento template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/cards.png"
+            alt="cards template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Changelog",
+    content: (
+      <div>
+        <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          Deployed 5 new components on Aceternity today
+        </p>
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
+            ✅ Card grid component
+          </div>
+          <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
+            ✅ Startup template Aceternity
+          </div>
+          <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
+            ✅ Random file upload lol
+          </div>
+          <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
+            ✅ Himesh Reshammiya Music CD
+          </div>
+          <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
+            ✅ Salman Bhai Fan Club registrations open
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <img
+            src="https://assets.aceternity.com/pro/hero-sections.png"
+            alt="hero template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/features-section.png"
+            alt="feature template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/pro/bento-grids.png"
+            alt="bento template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+          <img
+            src="https://assets.aceternity.com/cards.png"
+            alt="cards template"
+            width={500}
+            height={500}
+            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+          />
+        </div>
+      </div>
+    ),
+  },
+];
 
 const AboutMe = () => {
   return (
-    <div className="py-10 lg:max-h-[1300px] w-full mt-30">
-      <div className="flex flex-col items-center justify-center lg:flex-row gap-2 lg:gap-8 xl:gap-50">
+    <div className="py-10 w-full mt-30 flex flex-col items-center justify-center gap-10">
+      <div className="flex lg:max-h-[1300px] flex-col items-center justify-center lg:flex-row gap-2 lg:gap-8 xl:gap-50">
         <div className="px-3 py-4 max-w-lg">
           <div className="">
             <p className=" text-center lg:text-left uppercase tracking-widest text-muted-foreground text-sm font-mono mb-2">
@@ -47,8 +221,8 @@ const AboutMe = () => {
                 scalable solutions, whether it's in code or insights.
               </p>
               <p>
-                {/* When I'm not coding, I'm experimenting with new tech, analyzing
-              data patterns, or diving into projects that spark my curiosity. */}
+                When I'm not coding, I'm experimenting with new tech, analyzing
+                data patterns, or diving into projects that spark my curiosity.
                 Beyond work, I enjoy outdoor adventures and gaming. I like
                 learning, creating, and making every day count.
               </p>
@@ -74,24 +248,6 @@ const AboutMe = () => {
                 </Tooltip>
               ))}
             </div>
-            <div className="mt-5 py-2 flex items-center justify-center lg:justify-start">
-              <a
-                className="group flex w-fit items-center justify-center gap-2 font-mono text-neutral-500 transition-colors hover:text-neutral-800  dark:hover:text-neutral-200 dark:text-neutral-400 lg:justify-start"
-                href="/about#experience"
-              >
-                Work Experience
-                <div className="size-[25px] overflow-hidden rounded-full border border-neutral-300 bg-white-1/50 transition-all duration-500 group-hover:bg-neutral-200 dark:border-white/10 dark:bg-white/5 dark:group-hover:bg-white/10">
-                  <div className="-translate-x-1/2 flex w-12 transition-transform duration-500 ease-in-out group-hover:translate-x-0">
-                    <span className="flex size-6">
-                      <ArrowRight />
-                    </span>
-                    <span className="flex size-6">
-                      <ArrowRight />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
         <div className="max-w-sm p-4">
@@ -107,6 +263,110 @@ const AboutMe = () => {
             enableMobileTilt={true}
             onContactClick={() => console.log("Contact clicked")}
           />
+        </div>
+      </div>
+      {/* Experience */}
+      <div className="relative w-full overflow-clip">
+        <Timeline data={data} />
+      </div>
+      {/* Developer insights */}
+      <div className="mx-auto my-24 w-full max-w-[984px] px-4 mt-10 mb-32">
+        <div className="">
+          <p className=" text-center uppercase tracking-widest text-muted-foreground text-sm font-mono mb-2">
+            Developer Insights
+          </p>
+          <h2 className="text-center font-instrument text-4xl xs:text-5xl md:text-6xl mb-8">
+            <span className="inline">
+              Github & Leetcode{" "}
+              <GradientText
+                colors={["#F27121", "#E94057", "#8A2387", "#E94057", "#F27121"]}
+                animationSpeed={5}
+                showBorder={false}
+                className="inline italic leading-10 md:leading-18"
+              >
+                Activity
+              </GradientText>
+            </span>
+          </h2>
+        </div>
+        <div className="w-full overflow-x-auto">
+          <ContributionGraph data={calData}>
+            <ContributionGraphCalendar>
+              {({ activity, dayIndex, weekIndex }) => (
+                <ContributionGraphBlock
+                  activity={activity}
+                  dayIndex={dayIndex}
+                  weekIndex={weekIndex}
+                />
+              )}
+            </ContributionGraphCalendar>
+            <ContributionGraphFooter>
+              <ContributionGraphTotalCount />
+              <ContributionGraphLegend />
+            </ContributionGraphFooter>
+          </ContributionGraph>
+        </div>
+        <div className="mx-auto mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="rounded-lg p-3 dark:bg-purple-900/20 bg-purple-500/20">
+                <User className="lucide lucide-users h-6 w-6 text-purple-400" />
+              </div>
+              <div>
+                <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
+                  Followers
+                </p>
+                <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
+                  288
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="rounded-lg p-3 dark:bg-yellow-900/20 bg-yellow-500/20">
+                <Star className="lucide lucide-star h-6 w-6 text-yellow-400" />
+              </div>
+              <div>
+                <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
+                  Total Stars
+                </p>
+                <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
+                  482
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="rounded-lg p-3 dark:bg-green-900/20 bg-green-500/20">
+                <BookOpen className="lucide lucide-book-open h-6 w-6 text-green-400" />
+              </div>
+              <div>
+                <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
+                  Public Repos
+                </p>
+                <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
+                  51
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="rounded-lg p-3 dark:bg-blue-900/20 bg-blue-500/20">
+                <GitFork className="lucide lucide-git-fork h-6 w-6 text-blue-400" />
+              </div>
+              <div>
+                <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
+                  Total Forks
+                </p>
+                <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
+                  58
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

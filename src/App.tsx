@@ -5,6 +5,7 @@ import Project from "@/components/project/Project.tsx";
 import Layout from "@/Layout";
 import HomePage from "@/Homepage";
 import { Analytics, type BeforeSendEvent } from "@vercel/analytics/react";
+import AboutMe from "@/components/about/AboutMe";
 
 function App() {
   return (
@@ -20,9 +21,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutMe />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/projects" element={<Project />} />
-          {/* <Route path="/experience" element={<ExperiencePage />} /> */}
         </Route>
       </Routes>
     </>

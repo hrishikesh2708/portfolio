@@ -11,6 +11,8 @@ import {
 import ContactDrawer from "@/components/contact/ContactDrawer";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import GlassSurface from "@/components/ui/GlassSurface";
+
+import { Link } from "react-router-dom";
 // const components: { title: string; href: string; description: string }[] = [
 //   {
 //     title: 'Skills',
@@ -58,12 +60,12 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <a href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p>
-        </a>
+        <Link to={href}>
+        <div className="text-sm leading-none font-medium">{title}</div>
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          {children}
+        </p>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
@@ -72,41 +74,41 @@ function ListItem({
 function Navigation() {
   return (
     <div className="flex flex-row items-center justify-center md:justify-between px-6 align-middle">
-        <div className="hidden md:block">
-          <Globe />
-        </div>
-        <div>
-      <GlassSurface
-        displace={15}
-        distortionScale={-150}
-        brightness={60}
-        opacity={0.8}
-        mixBlendMode="screen"
-        backgroundOpacity={0.09}
-        width={"16rem"}
-        height={"fit-content"}
-        borderRadius={50}
-        className="rounded-full lg:hidden"
-      >
-        <div className="flex felx-row w-3xs align-center items-center justify-between px-4 py-1">
-          <Command />
-          <p className="tracking-widest text-xl font-bold font-geist">
-            Hrishikesh
-          </p>
-        </div>
-      </GlassSurface>
-      <GlassSurface
-        displace={15}
-        distortionScale={-150}
-        brightness={60}
-        opacity={0.8}
-        mixBlendMode="screen"
-        backgroundOpacity={0.09}
-        width={"32rem"}
-        height={"fit-content"}
-        borderRadius={50}
-        className="rounded-full hidden lg:block overflow-visible"
-      >
+      <div className="hidden md:block">
+        <Globe />
+      </div>
+      <div>
+        <GlassSurface
+          displace={15}
+          distortionScale={-150}
+          brightness={60}
+          opacity={0.8}
+          mixBlendMode="screen"
+          backgroundOpacity={0.09}
+          width={"16rem"}
+          height={"fit-content"}
+          borderRadius={50}
+          className="rounded-full lg:hidden"
+        >
+          <div className="flex felx-row w-3xs align-center items-center justify-between px-4 py-1">
+            <Command />
+            <p className="tracking-widest text-xl font-bold font-geist">
+              Hrishikesh
+            </p>
+          </div>
+        </GlassSurface>
+        <GlassSurface
+          displace={15}
+          distortionScale={-150}
+          brightness={60}
+          opacity={0.8}
+          mixBlendMode="screen"
+          backgroundOpacity={0.09}
+          width={"32rem"}
+          height={"fit-content"}
+          borderRadius={50}
+          className="rounded-full hidden lg:block overflow-visible"
+        >
           <NavigationMenu>
             <NavigationMenuList className="gap-5">
               <NavigationMenuItem>
@@ -114,7 +116,9 @@ function Navigation() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <p>Home</p>
+                  <Link to="/">
+                    <p>Home</p>
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -122,7 +126,9 @@ function Navigation() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <p>About</p>
+                  <Link to="/about">
+                    <p>About</p>
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -130,7 +136,9 @@ function Navigation() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <p>Work</p>
+                  <Link to="/projects">
+                    <p>Work</p>
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -176,16 +184,16 @@ function Navigation() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-      </GlassSurface>
-        </div>
-        <div className="hidden md:block">
-          <ThemeTogglerButton
-            variant={"ghost"}
-            size={"lg"}
-            direction={"rtl"}
-            className="rounded-full bg-transparent border-none outline-none ring-0"
-          />
-        </div>
+        </GlassSurface>
+      </div>
+      <div className="hidden md:block">
+        <ThemeTogglerButton
+          variant={"ghost"}
+          size={"lg"}
+          direction={"rtl"}
+          className="rounded-full bg-transparent border-none outline-none ring-0"
+        />
+      </div>
     </div>
   );
 }
