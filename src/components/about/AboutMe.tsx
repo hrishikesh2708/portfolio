@@ -289,8 +289,8 @@ const AboutMe = () => {
             </span>
           </h2>
         </div>
-        <div className="w-full overflow-x-auto">
-          <ContributionGraph data={calData}>
+        <div className="flex justify-center w-full">
+          <ContributionGraph data={calData} blockSize={14}>
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (
                 <ContributionGraphBlock

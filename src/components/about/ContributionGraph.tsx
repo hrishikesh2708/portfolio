@@ -295,8 +295,9 @@ export const ContributionGraph = ({
       }}
     >
       <div
-        className={cn("flex w-max max-w-full flex-col gap-2", className)}
+        className={cn("flex w-full max-w-full flex-col gap-4", className)}
         style={{ fontSize, ...style }}
+        
         {...props}
       />
     </ContributionGraphContext.Provider>
@@ -479,7 +480,7 @@ export const ContributionGraphLegend = ({
 
   return (
     <div
-      className={cn("ml-auto flex items-center gap-[3px]", className)}
+      className={cn("ml-auto flex items-center gap-1.5", className)}
       {...props}
     >
       <span className="mr-1 text-muted-foreground">
