@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation/Navigation";
 import { Outlet } from "react-router-dom";
-import Lanyard from "@/components/ui/Lanyard.tsx";
+// import Lanyard from "@/components/ui/Lanyard.tsx";
 import AnimatedWaveFooter from "@/components/footer/Footer.tsx";
 import ContactHero from "@/components/contact/ContactHero.tsx";
 import { Toaster } from "@/components/ui/sonner";
@@ -16,7 +16,7 @@ export default function Layout() {
         </div>
 
         {/* Common Lanyard */}
-        <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20} />
+        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20} /> */}
 
         {/* Routed Pages */}
         <Outlet />

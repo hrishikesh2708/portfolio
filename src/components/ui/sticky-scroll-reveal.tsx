@@ -246,7 +246,7 @@ export const StickyScroll = ({
         <div>
           <div className="w-xs xs:w-sm sm:w-md md:w-xl lg:w-3xl space-y-20 my-10">
             {content.map((item, index) => (
-              <div className="flex flex-col gap-4">
+              <div key={index} className="flex flex-col gap-4">
                 <div className="relative w-full rounded-2xl border bg-muted/40 overflow-hidden">
                   <div
                     className="absolute inset-x-0 top-0 h-px hidden dark:block
@@ -300,6 +300,7 @@ export const StickyScroll = ({
                 <div className="flex flex-wrap gap-2 px-1">
                   {item.techStack.map((list, idx) => (
                     <Badge
+                    key={idx}
                       variant="outline"
                       className="flex items-center gap-1 rounded-sm"
                     >
