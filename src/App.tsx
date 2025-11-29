@@ -4,26 +4,28 @@ import { Routes, Route } from "react-router-dom";
 import Project from "@/components/project/Project.tsx";
 import Layout from "@/Layout";
 import HomePage from "@/Homepage";
-import { Analytics, type BeforeSendEvent } from "@vercel/analytics/react"
+import { Analytics, type BeforeSendEvent } from "@vercel/analytics/react";
 
 function App() {
   return (
-    <Routes>
-            <Analytics
+    <>
+      <Analytics
         beforeSend={(event: BeforeSendEvent) => {
-          if (event.url.includes('/private')) {
+          if (event.url.includes("/private")) {
             return null;
           }
           return event;
         }}
       />
-      <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/projects" element={<Project />} />
-        {/* <Route path="/experience" element={<ExperiencePage />} /> */}
-      </Route>
-    </Routes>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/projects" element={<Project />} />
+          {/* <Route path="/experience" element={<ExperiencePage />} /> */}
+        </Route>
+      </Routes>
+    </>
   );
 }
 
