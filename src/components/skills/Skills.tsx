@@ -1,5 +1,5 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import GradientText from "@/components/ui/GradientText";
 import { techStack } from "@/components/utils/uitility";
 

@@ -231,7 +231,6 @@ type LiquidProps = {
 export const Liquid: React.FC<LiquidProps> = ({
   isHovered,
   colors,
-  buttonType,
 }) => {
   return (
     <>
