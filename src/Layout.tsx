@@ -7,9 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 export default function Layout() {
   return (
-    <div className="w-full">
-      <div className="mx-auto max-w-[1440px] overflow-visible">
-        
+    <div className="w-full flex flex-col items-center justify-center">     
         {/* Fixed Navigation */}
         <div className="fixed top-6 max-w-[1440px] w-full z-50 h-16">
           <Navigation />
@@ -26,7 +24,6 @@ export default function Layout() {
         <AnimatedWaveFooter />
 
         <Toaster />
-      </div>
     </div>
   );
 }
