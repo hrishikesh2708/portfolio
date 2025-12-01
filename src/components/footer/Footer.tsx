@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -10,12 +9,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
-  Github,
   Globe,
   Instagram,
-  Linkedin,
   Moon,
-  Send,
   Sun,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -23,7 +19,6 @@ import { openNewTab, socials } from "../utils/uitility";
 
 export default function AnimatedWaveFooter() {
   const [isDarkMode, setIsDarkMode] = React.useState(true);
-  // const [isChatOpen, setIsChatOpen] = React.useState(false);
   React.useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
