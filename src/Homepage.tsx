@@ -7,9 +7,9 @@ export default function HomePage() {
   return (
     <>
       <Introduction />
-      <AboutMeHero />
-      <Skills />
       <ProjectHero />
+      <Skills />
+      <AboutMeHero />
     </>
   );
 }

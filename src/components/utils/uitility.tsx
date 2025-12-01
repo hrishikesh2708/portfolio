@@ -5,20 +5,19 @@ export const socials = [
     name: "LinkedIn",
     icon: <Linkedin />,
     url: "https://www.linkedin.com/in/hrishikesh--thakur/",
-    tooltip: "Connect with me on LinkedIn"
-    
+    tooltip: "Connect with me on LinkedIn",
   },
   {
     name: "GitHub",
     icon: <Github />,
     url: "https://github.com/hrishikesh2708",
-    tooltip: "Follow me on GitHub"
+    tooltip: "Follow me on GitHub",
   },
   {
     name: "Website",
     icon: <Globe />,
     url: "https://www.hrishikeshthakur.com/",
-    tooltip: "Feel free to explore my Portfolio"
+    tooltip: "Feel free to explore my Portfolio",
   },
 ];
 export const techStack = [
@@ -555,6 +554,181 @@ export const openNewTab = (url: string) => {
   window.open(url, "_blank");
 };
 
+export const experience = [
+  {
+    companyName: "USC Alfred E. Mann School of Pharmacy",
+    companyLogoLight: "/asset/usc-mann-logo-light.png",
+    companyLogoDark: "/asset/usc-mann-logo-dark.png",
+    companyLogoWidth: 100,
+    companyLogoHeight: 24,
+    tenure: "May 2024 - May 2025",
+    role: "Student Worker",
+    location: "Los Angeles, California",
+    workType: "Part-time",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Coordinated major university events, improving alumni engagement and
+        donor participation through strategic communication.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Analyzed donor datasets using Salesforce CRM and built Excel dashboards
+        to track fundraising performance.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Designed email campaigns, invitations, and promotional materials using
+        HTML and graphic design tools.
+      </p>,
+    ],
+    skills: [
+      { name: "Salesforce", icon: <Code /> },
+      { name: "Excel", icon: <Code /> },
+      { name: "Data Analysis", icon: <Code /> },
+    ],
+  },
+  {
+    companyName: "Highradius",
+    companyLogoLight: "/asset/highradius-logo.png",
+    companyLogoDark: "/asset/highradius-logo.png",
+    companyLogoWidth: 24,
+    companyLogoHeight: 24,
+    tenure: "July 2022 - July 2023",
+    role: "Associate Software Engineer",
+    location: "Hyderabad, India",
+    workType: "Full-time",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Scaled backend services in Java, Spring Boot for anomaly detection,
+        enhancing reconciliation across 15+ enterprise clients.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Built tenant-specific React components, reducing UI duplication by 40%
+        and accelerating feature rollout across multiple client.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Modularized backend logic to enable cross-module reuse, cutting
+        development time for recurring features by 25%.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Collaborated with QA & product teams to define requirements for 100+
+        features, ensuring timely delivery under tight deadlines.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Engineered a reusable WebDriverIO test framework, increasing bug
+        detection speed by 50% and reducing manual QA effort.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Spearheaded automation of 100+ UI test cases with a team of 5 interns,
+        cutting down total test creation time by 60%.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Integrated tests into a Jenkins CI/CD pipeline, facilitating pre-merge
+        regression checks and decreasing release bugs by 35%.
+      </p>,
+    ],
+    skills: [
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+      {
+        name: "Java",
+        icon: <Code />,
+      },
+    ],
+  },
+  {
+    companyName: "Highradius",
+    companyLogoLight: "/asset/highradius-logo.png",
+    companyLogoDark: "/asset/highradius-logo.png",
+    companyLogoWidth: 24,
+    companyLogoHeight: 24,
+    tenure: "August 2021 - June 2022",
+    role: "Software Engineer Intern",
+    location: "Hyderabad, India",
+    workType: "Internship",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Engineered a Spring Boot Data Catalog for centralized data access,
+        reducing manual data transfer time by 30%.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Standardized ingestion protocols for legacy ERP systems, enabling
+        seamless batch processing of 500M+ records.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Improved data governance through automated validation pipelines and
+        scalable ingestion architecture.
+      </p>,
+    ],
+    skills: [
+      { name: "Spring Boot", icon: <Code /> },
+      { name: "Data Pipelines", icon: <Code /> },
+    ],
+  },
+
+  {
+    companyName: "Atmas Softwares Private Limited",
+    companyLogoLight: undefined,
+    companyLogoDark: undefined,
+    companyLogoWidth: 24,
+    companyLogoHeight: 24,
+    tenure: "April 2021 - June 2021",
+    role: "Software Developer Intern",
+    location: "Remote",
+    workType: "Internship",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Built real-time notifications using Server-Sent Events with offline
+        fallback via Redux Offline.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Increased platform scalability by 28% using Nginx load balancing for
+        high-traffic workloads.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Improved application reliability through optimized state synchronization
+        and low-latency event streaming.
+      </p>,
+    ],
+    skills: [
+      { name: "SSE", icon: <Code /> },
+      { name: "Redux", icon: <Code /> },
+      { name: "Nginx", icon: <Code /> },
+    ],
+  },
+];
 export function openEmail(to: string, subject = "", body = ""): void {
   try {
     const mailto = `mailto:${encodeURIComponent(

@@ -8,7 +8,11 @@ const ContactHero = () => {
   const springOptions = { bounce: 0.1 };
   const navigate = useNavigate();
   return (
-    <div className="relative z-0 mt-pagebuilder flex w-full justify-center overflow-x-hidden bg-[url('public/asset/cta.avif')] bg-center bg-cover px-4 py-20 before:absolute before:inset-0 before:z-0 before:bg-linear-to-b before:from-black before:via-black/82 before:to-black">
+    <div className="relative z-0 mt-pagebuilder flex w-full justify-center overflow-x-hidden 
+    bg-[url('public/asset/cta.avif')] bg-center bg-cover px-4 py-20 
+    before:absolute before:inset-0 before:z-0 before:bg-linear-to-b
+    before:from-neutral-50 before:via-neutral-100/80 before:to-neutral-50
+    dark:before:from-neutral-950 dark:before:via-neutral-900/80 dark:before:to-neutral-950">
       <div className="flex flex-col mx-auto gap-4 mt-10 container relative z-10 w-full items-center justify-center gap-y-2 py-10 text-center">
         <div className="relative">
           <img
