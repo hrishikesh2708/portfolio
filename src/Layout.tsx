@@ -4,26 +4,28 @@ import { Outlet } from "react-router-dom";
 import AnimatedWaveFooter from "@/components/footer/Footer.tsx";
 import ContactHero from "@/components/contact/ContactHero.tsx";
 import { Toaster } from "@/components/ui/sonner";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function Layout() {
   return (
-    <div className="w-full flex flex-col items-center justify-center">     
-        {/* Fixed Navigation */}
-        <div className="fixed top-6 max-w-[1440px] w-full z-50 h-16">
-          <Navigation />
-        </div>
+    <div className="w-full flex flex-col items-center justify-center">
+      <ScrollToTop />
+      {/* Fixed Navigation */}
+      <div className="fixed top-6 max-w-[1440px] w-full z-50 h-16">
+        <Navigation />
+      </div>
 
-        {/* Common Lanyard */}
-        {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20} /> */}
+      {/* Common Lanyard */}
+      {/* <Lanyard position={[10, 0, 30]} gravity={[0, -40, 0]} transparent={true} fov={20} /> */}
 
-        {/* Routed Pages */}
-        <Outlet />
+      {/* Routed Pages */}
+      <Outlet />
 
-        {/* Common Contact Hero + Footer */}
-        <ContactHero />
-        <AnimatedWaveFooter />
+      {/* Common Contact Hero + Footer */}
+      <ContactHero />
+      <AnimatedWaveFooter />
 
-        <Toaster />
+      <Toaster />
     </div>
   );
 }

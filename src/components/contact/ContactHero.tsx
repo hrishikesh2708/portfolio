@@ -2,9 +2,11 @@ import { Button } from "@/components/animate-ui/components/buttons/button";
 import { Magnetic } from "@/components/animate-ui/components/buttons/magnetic";
 import { TextRoll } from "@/components/motion-primitives/text-roll";
 import { Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ContactHero = () => {
   const springOptions = { bounce: 0.1 };
+  const navigate = useNavigate();
   return (
     <div className="relative z-0 mt-pagebuilder flex w-full justify-center overflow-x-hidden bg-[url('public/asset/cta.avif')] bg-center bg-cover px-4 py-20 before:absolute before:inset-0 before:z-0 before:bg-linear-to-b before:from-black before:via-black/82 before:to-black">
       <div className="flex flex-col mx-auto gap-4 mt-10 container relative z-10 w-full items-center justify-center gap-y-2 py-10 text-center">
@@ -38,6 +40,7 @@ const ContactHero = () => {
           >
             <Button
               variant="default"
+              onClick={() => navigate("/contact")}
               size={"lg"}
               className="group relative inline-flex cursor-pointer items-center justify-between overflow-hidden rounded-full border border-black/30 bg-black/20 py-[3px] pr-[3px] pl-2 font-medium text-base opacity-85 backdrop-blur-xs transition-all hover:bg-transparent md:py-1 md:pr-1 md:pl-3 dark:border-white/10 dark:bg-white/10 my-10"
             >
