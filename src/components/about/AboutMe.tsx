@@ -127,8 +127,12 @@ const { totalSolved, profileViews } = useLeetCodeStats()
         </div>
       </div>
       {/* Experience */}
-      <div className="relative w-full overflow-clip">
+      <div id={"experience"} className="relative w-full overflow-clip">
         <Timeline data={experience} />
+      </div>
+      {/* Education */}
+      <div id={"education"}>
+
       </div>
       {/* Developer insights */}
       <div className="mx-auto my-24 w-full max-w-[984px] px-4 mt-10 mb-32">

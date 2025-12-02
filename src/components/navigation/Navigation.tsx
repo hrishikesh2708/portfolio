@@ -154,7 +154,7 @@ function Navigation() {
                           href="/"
                         >
                           <div className="mb-2 text-lg font-medium sm:mt-4">
-                            shadcn/ui
+                            World from my lens
                           </div>
                           <p className="text-muted-foreground text-sm leading-tight">
                             Beautifully designed components built with Tailwind
@@ -163,16 +163,16 @@ function Navigation() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/docs" title="Experience">
+                    <ListItem href="/about#experience" title="Experience">
                       Re-usable components built using Radix UI and Tailwind
                       CSS.
                     </ListItem>
-                    <ListItem href="/docs/installation" title="Education">
+                    <ListItem href="/about#education" title="Education">
                       How to install dependencies and structure your app.
                     </ListItem>
                     <ListItem
-                      href="/docs/primitives/typography"
-                      title="Typography"
+                      href="/Contact"
+                      title="Hire Me"
                     >
                       Styles for headings, paragraphs, lists...etc
                     </ListItem>
