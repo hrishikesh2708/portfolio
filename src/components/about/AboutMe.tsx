@@ -17,7 +17,8 @@ import {
   ContributionGraphTotalCount,
 } from "@/components/about/ContributionGraph";
 import { eachDayOfInterval, endOfYear, formatISO, startOfYear } from "date-fns";
-import { BookOpen, GitFork, Star, User } from "lucide-react";
+import { Book, Code, Eye, NotebookPen } from "lucide-react";
+import { useGithubStats, useLeetCodeStats } from "../utils/api";
 const maxCount = 20;
 const maxLevel = 4;
 const now = new Date();
@@ -41,6 +42,9 @@ const calData = days.map((date) => {
 
 
 const AboutMe = () => {
+const stats = useGithubStats();
+const { totalSolved, profileViews } = useLeetCodeStats()
+
   return (
     <div className="py-10 w-full mt-30 flex flex-col items-center justify-center gap-10">
       <div className="flex lg:max-h-[1300px] flex-col items-center justify-center lg:flex-row gap-2 lg:gap-8 xl:gap-50">
@@ -163,18 +167,18 @@ const AboutMe = () => {
             </ContributionGraphFooter>
           </ContributionGraph>
         </div>
-        <div className="mx-auto mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mx-auto mt-4 grid grid-cols-2 gap-4">
           <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
             <div className="flex items-center gap-3 md:gap-4">
               <div className="rounded-lg p-3 dark:bg-purple-900/20 bg-purple-500/20">
-                <User className="lucide lucide-users h-6 w-6 text-purple-400" />
+                <NotebookPen className="lucide lucide-users h-6 w-6 text-purple-400" />
               </div>
               <div>
                 <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
-                  Followers
+                  GitHub Contributions
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  288
+                  {stats.contributions || 110}
                 </p>
               </div>
             </div>
@@ -182,14 +186,14 @@ const AboutMe = () => {
           <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
             <div className="flex items-center gap-3 md:gap-4">
               <div className="rounded-lg p-3 dark:bg-yellow-900/20 bg-yellow-500/20">
-                <Star className="lucide lucide-star h-6 w-6 text-yellow-400" />
+                <Book className="lucide lucide-star h-6 w-6 text-yellow-400" />
               </div>
               <div>
                 <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
-                  Total Stars
+                  GitHub Repositories
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  482
+                  {stats.repos || 110}
                 </p>
               </div>
             </div>
@@ -197,14 +201,14 @@ const AboutMe = () => {
           <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
             <div className="flex items-center gap-3 md:gap-4">
               <div className="rounded-lg p-3 dark:bg-green-900/20 bg-green-500/20">
-                <BookOpen className="lucide lucide-book-open h-6 w-6 text-green-400" />
+                <Code className="lucide lucide-book-open h-6 w-6 text-green-400" />
               </div>
               <div>
                 <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
-                  Public Repos
+                  Coding Problems Solved
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  51
+                  {totalSolved || 200}
                 </p>
               </div>
             </div>
@@ -212,14 +216,14 @@ const AboutMe = () => {
           <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
             <div className="flex items-center gap-3 md:gap-4">
               <div className="rounded-lg p-3 dark:bg-blue-900/20 bg-blue-500/20">
-                <GitFork className="lucide lucide-git-fork h-6 w-6 text-blue-400" />
+                <Eye className="lucide lucide-git-fork h-6 w-6 text-blue-400" />
               </div>
               <div>
                 <p className="line-clamp-1 text-sm dark:text-zinc-400 text-zinc-600">
-                  Total Forks
+                  Solution Engagement
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  58
+                  {profileViews || 58}
                 </p>
               </div>
             </div>

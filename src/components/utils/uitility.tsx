@@ -556,13 +556,96 @@ export const openNewTab = (url: string) => {
 
 export const experience = [
   {
+    companyName: "Easley-Dunn Productions, Inc.",
+    companyLogoLight: "/asset/easley-dunn-productions-logo.jpeg",
+    companyLogoDark: "/asset/easley-dunn-productions-logo.jpeg",
+    companyLogoWidth: 40,
+    companyLogoHeight: 40,
+    tenure: "August 2025 - Present",
+    role: "Software Engineer",
+    location: "Los Angeles, California",
+    workType: "Voluntary",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Spearheaded C# /.NET Core backend microservices and RESTful APIs to
+        ingest real-time telemetry and implementing asynchronous JSON streaming
+        and back pressure controls
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Drove significant performance enhancements by optimizing a critical C++
+        data processing module and revamping PostgreSQL query logic , cutting
+        memory usage by 40% and reducing query times from 2 seconds to under
+        100ms.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Implemented automated anomaly detection algorithms in Python within the
+        data ingestion pipelines , improving system observability and reducing
+        debugging time by 20%.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Engineered a suite of backend microservices using Java and Spring Boot
+        with RESTful APIs, reducing real-time data ingestion latency by 60%
+        across 5 distributed systems.
+      </p>,
+    ],
+    skills: [
+      { name: "C#", icon: <Code /> },
+      { name: "Python", icon: <Code /> },
+      { name: "Java", icon: <Code /> },
+      { name: "RESTful APIs", icon: <Code /> },
+      { name: "Postgress SQL", icon: <Code /> },
+    ],
+  },
+  {
     companyName: "USC Alfred E. Mann School of Pharmacy",
     companyLogoLight: "/asset/usc-mann-logo-light.png",
     companyLogoDark: "/asset/usc-mann-logo-dark.png",
     companyLogoWidth: 100,
     companyLogoHeight: 24,
     tenure: "May 2024 - May 2025",
-    role: "Student Worker",
+    role: "On-Campus Data Analyst",
+    location: "Los Angeles, California",
+    workType: "Part-time",
+    points: [
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Extracted and managed donor and alumni data using Salesforce CRM,
+        providing actionable insights to optimize event attendance and campaign
+        performance.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Designed and executed outreach campaigns for alumni and donor events,
+        leveraging data-driven strategies that improved engagement and
+        fundraising outcomes.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Collected and analyzed participation and engagement data for university
+        events, creating interactive dashboards and reports to track KPIs and
+        inform decision making.
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Coordinated event logistics and tracked stakeholder interactions,
+        ensuring seamless execution of high-profile university initiatives.
+      </p>,
+    ],
+    skills: [
+      { name: "Salesforce CRM", icon: <Code /> },
+      { name: "Power BI", icon: <Code /> },
+      { name: "SQL", icon: <Code /> },
+      { name: "Excel", icon: <Code /> },
+      { name: "Data Analysis", icon: <Code /> },
+      { name: "Data Visualization", icon: <Code /> },
+      { name: "Analytical Reporting", icon: <Code /> },
+      { name: "Project Coordination", icon: <Code /> },
+    ],
+  },
+  {
+    companyName: "USC Information Sciences Institute",
+    companyLogoLight: "/asset/usc-mann-logo-light.png",
+    companyLogoDark: "/asset/usc-mann-logo-dark.png",
+    companyLogoWidth: 100,
+    companyLogoHeight: 24,
+    tenure: "August 2023 - Dec 2023",
+    role: "Machine Learning Engineer",
     location: "Los Angeles, California",
     workType: "Part-time",
     points: [
@@ -626,46 +709,39 @@ export const experience = [
       </p>,
     ],
     skills: [
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
-      {
-        name: "Java",
-        icon: <Code />,
-      },
+      // Programming Languages
+      { name: "Java", icon: <Code /> },
+      { name: "JavaScript", icon: <Code /> },
+      { name: "TypeScript", icon: <Code /> },
+      { name: "SQL", icon: <Code /> },
+
+      // Frontend Frameworks / Libraries
+      { name: "React.js", icon: <Code /> },
+      { name: "Redux", icon: <Code /> },
+      { name: "Material-UI", icon: <Code /> },
+      { name: "Tailwind CSS", icon: <Code /> },
+
+      // Backend Frameworks / Tools
+      { name: "Spring Boot", icon: <Code /> },
+      { name: "Hibernate", icon: <Code /> },
+
+      // Databases / Data Tools
+      { name: "Snowflake", icon: <Code /> },
+
+      // DevOps / CI-CD / Cloud
+      { name: "Jenkins", icon: <Code /> },
+      { name: "CI/CD", icon: <Code /> },
+      { name: "Amazon Web Services (AWS)", icon: <Code /> },
+      { name: "Amazon S3", icon: <Code /> },
+
+      // Testing / Automation
+      { name: "Selenium", icon: <Code /> },
+      { name: "WebdriverIO", icon: <Code /> },
+      { name: "Websockets", icon: <Code /> },
+
+      // Design / Project Management / Others
+      { name: "Figma", icon: <Code /> },
+      { name: "Jira", icon: <Code /> },
     ],
   },
   {
@@ -693,8 +769,39 @@ export const experience = [
       </p>,
     ],
     skills: [
+      // Programming Languages
+      { name: "Java", icon: <Code /> },
+      { name: "JavaScript", icon: <Code /> },
+      { name: "TypeScript", icon: <Code /> },
+      { name: "SQL", icon: <Code /> },
+
+      // Frontend Frameworks / Libraries
+      { name: "React.js", icon: <Code /> },
+      { name: "Redux", icon: <Code /> },
+      { name: "Material-UI", icon: <Code /> },
+      { name: "Tailwind CSS", icon: <Code /> },
+
+      // Backend Frameworks / Tools
       { name: "Spring Boot", icon: <Code /> },
-      { name: "Data Pipelines", icon: <Code /> },
+      { name: "Hibernate", icon: <Code /> },
+
+      // Databases / Data Tools
+      { name: "Snowflake", icon: <Code /> },
+
+      // DevOps / CI-CD / Cloud
+      { name: "Amazon Web Services (AWS)", icon: <Code /> },
+      { name: "Amazon S3", icon: <Code /> },
+
+      // Testing / Automation
+      { name: "Websockets", icon: <Code /> },
+      { name: "WebdriverIO", icon: <Code /> },
+      { name: "Selenium", icon: <Code /> },
+      { name: "Jenkins", icon: <Code /> },
+      { name: "CI/CD", icon: <Code /> },
+
+      // Design / Project Management / Others
+      { name: "Figma", icon: <Code /> },
+      { name: "Jira", icon: <Code /> },
     ],
   },
 
@@ -723,12 +830,39 @@ export const experience = [
       </p>,
     ],
     skills: [
-      { name: "SSE", icon: <Code /> },
+      // Programming Languages
+      { name: "JavaScript", icon: <Code /> },
+      { name: "HTML", icon: <Code /> },
+      { name: "CSS", icon: <Code /> },
+
+      // Frontend Frameworks / Libraries
+      { name: "React.js", icon: <Code /> },
       { name: "Redux", icon: <Code /> },
+      { name: "Redux Offline", icon: <Code /> },
+
+      // Backend Frameworks / Tools
+      { name: "Node.js", icon: <Code /> },
+      { name: "Express.js", icon: <Code /> },
+
+      // Databases / Data Tools
+      { name: "MongoDB", icon: <Code /> },
+
+      // Real-time / Messaging
+      { name: "Server-Sent Events (SSE)", icon: <Code /> },
+      { name: "Event Streaming", icon: <Code /> },
+
+      // DevOps / Deployment / Scalability
       { name: "Nginx", icon: <Code /> },
+      { name: "Performance Optimization", icon: <Code /> },
+      { name: "Application Scalability", icon: <Code /> },
+
+      // Other / Concepts
+      { name: "Low-Latency Systems", icon: <Code /> },
+      { name: "State Synchronization", icon: <Code /> },
     ],
   },
 ];
+
 export function openEmail(to: string, subject = "", body = ""): void {
   try {
     const mailto = `mailto:${encodeURIComponent(

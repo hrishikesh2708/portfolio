@@ -297,7 +297,6 @@ export const ContributionGraph = ({
       <div
         className={cn("flex w-full max-w-full flex-col gap-4", className)}
         style={{ fontSize, ...style }}
-        
         {...props}
       />
     </ContributionGraphContext.Provider>
@@ -329,11 +328,17 @@ export const ContributionGraphBlock = ({
   return (
     <rect
       className={cn(
-        'data-[level="0"]:fill-muted',
-        'data-[level="1"]:fill-muted-foreground/20',
-        'data-[level="2"]:fill-muted-foreground/40',
-        'data-[level="3"]:fill-muted-foreground/60',
-        'data-[level="4"]:fill-muted-foreground/80',
+        "stroke-[1px] stroke-border border-muted-foreground",
+        'data-[level="0"]:fill-muted-foreground/20',
+        'data-[level="1"]:fill-lime-500/50',
+        'data-[level="2"]:fill-lime-500/70',
+        'data-[level="3"]:fill-lime-500/90',
+        'data-[level="4"]:fill-lime-500',
+        'dark:data-[level="0"]:fill-muted-foreground/20',
+        'dark:data-[level="1"]:fill-lime-300/20',
+        'dark:data-[level="2"]:fill-lime-300/40',
+        'dark:data-[level="3"]:fill-lime-300/60',
+        'dark:data-[level="4"]:fill-lime-300/80',
         className
       )}
       data-count={activity.count}
@@ -494,12 +499,17 @@ export const ContributionGraphLegend = ({
             <title>{`${level} contributions`}</title>
             <rect
               className={cn(
-                "stroke-[1px] stroke-border",
-                'data-[level="0"]:fill-muted',
-                'data-[level="1"]:fill-muted-foreground/20',
-                'data-[level="2"]:fill-muted-foreground/40',
-                'data-[level="3"]:fill-muted-foreground/60',
-                'data-[level="4"]:fill-muted-foreground/80'
+                "stroke-[1px] stroke-border border-muted-foreground",
+                'data-[level="0"]:fill-muted-foreground/20',
+                'data-[level="1"]:fill-lime-500/50',
+                'data-[level="2"]:fill-lime-500/70',
+                'data-[level="3"]:fill-lime-500/90',
+                'data-[level="4"]:fill-lime-500',
+                'dark:data-[level="0"]:fill-muted-foreground/20',
+                'dark:data-[level="1"]:fill-lime-300/20',
+                'dark:data-[level="2"]:fill-lime-300/40',
+                'dark:data-[level="3"]:fill-lime-300/60',
+                'dark:data-[level="4"]:fill-lime-300/80'
               )}
               data-level={level}
               height={blockSize}
