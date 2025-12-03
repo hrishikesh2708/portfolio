@@ -101,7 +101,7 @@ const AboutMeHero = () => {
             handle="hrishith27@gmail.com"
             status="Online"
             contactText="Contact Me"
-            avatarUrl="./../../../public/asset/Subject 2.png"
+            avatarUrl="public/Subject 2.png"
             showUserInfo={false}
             enableTilt={true}
             enableMobileTilt={true}

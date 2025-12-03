@@ -1,10 +1,24 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import GradientText from "@/components/ui/GradientText";
 import { techStack } from "@/components/utils/uitility";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 const Skills = () => {
-  // Decide how many columns you want (use any number)
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const prevScroll = useRef(0);
+  const rotation = useMotionValue(0);
+
+  // Update rotation based on scroll direction
+  useEffect(() => {
+    return scrollY.onChange((currentY) => {
+      const delta = currentY - prevScroll.current;
+      // scroll down -> rotate positive, scroll up -> rotate negative
+      rotation.set(rotation.get() + delta * 0.3); // 0.3 = sensitivity
+      prevScroll.current = currentY;
+    });
+  }, [scrollY, rotation]);
+
   const COLS = 15; // for example, 8 icons per row
 
   const total = techStack.length;
@@ -36,7 +50,26 @@ const Skills = () => {
 
   return (
     <div className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10">
-      <div>
+      <div className="container relative mx-auto">
+        <div className="h-[260px] mask-[linear-gradient(to_top,transparent,black_50%,black_90%,transparent)]">
+          <motion.div
+            ref={ref}
+            style={{
+              rotate: rotation,
+            }}
+            className="relative mx-auto w-[400px] md:w-[380px]"
+          >
+            <img
+              src="/steel-flower.webp"
+              alt="steel flower"
+              className="w-full select-none rounded-full opacity-85"
+              draggable={false}
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="-translate-y-15">
         <p className="text-center uppercase tracking-widest text-muted-foreground text-sm font-mono mb-1">
           My Skills
         </p>

@@ -411,7 +411,7 @@ const Contact = () => {
                     </div>
                     <div className="flex gap-2 p-2 justify-center">
                       <img
-                        src="./public/asset/Google-meet-icon.png"
+                        src="public/Google-meet-icon.png"
                         className=""
                         height={24}
                         width={24}

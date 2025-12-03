@@ -465,7 +465,7 @@ export const projects = [
     title: "AI Privacy Policy Summarizer",
     color: "pink",
     subtitle: "Real-time policy analysis in plain English",
-    url: "public/asset/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
+    url: "public/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
     description:
       "An AI-powered web application that condenses complex privacy policies into readable summaries. Highlights risky clauses, permissions, and data-sharing patterns.",
     points: [
@@ -487,7 +487,7 @@ export const projects = [
     title: "Freelance Pricing Calculator",
     color: "blue",
     subtitle: "Fair pricing engine for freelancers",
-    url: "public/asset/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
+    url: "public/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
     description:
       "A full-stack platform that helps freelancers estimate project fees using historical market data, complexity scoring, and AI-backed recommendations.",
     points: [
@@ -510,7 +510,7 @@ export const projects = [
     color: "fuchsia",
     subtitle:
       "Extended cellular automata with teleport-linked grids, Extended cellular automata with teleport-linked grids",
-    url: "public/asset/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
+    url: "public/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
     description:
       "An experimental simulation engine that merges Conway's Game of Life with wormholes. Cells can connect across non-adjacent regions using tunnel-mapped teleport links.",
     points: [
@@ -532,7 +532,7 @@ export const projects = [
     title: "Sales Demand Forecasting Engine",
     color: "teal",
     subtitle: "MAPE-optimized ML pipeline for retail forecasting",
-    url: "public/asset/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
+    url: "public/lee-campbell-DtDlVpy-vvQ-unsplash.jpg",
     description:
       "A machine learning system built for a HackerRank challenge to predict product-level sales using features like location, price, and seasonality.",
     points: [
@@ -556,7 +556,7 @@ export const educationData = [
     title: "Master of Science in Computer Science",
     university: "University of Southern California",
     location: "Los Angeles, CA",
-    logo: "/asset/usc-logo.png",
+    logo: "/usc-logo.png",
     duration: "August 2023 - May 2025",
     gpa: "3.48 / 4.0",
     description:
@@ -574,7 +574,7 @@ export const educationData = [
     title: "Bachelor of Technology in Computer Science",
     university: "SRM Institute of Science and Technology",
     location: "Chennai, India",
-    logo: "/asset/srm-logo.webp",
+    logo: "/srm-logo.webp",
     duration: "June 2018 - May 2022",
     gpa: "3.8 / 4.0",
     description:
@@ -602,8 +602,8 @@ export const openNewTab = (url: string) => {
 export const experience = [
   {
     companyName: "Easley-Dunn Productions, Inc.",
-    companyLogoLight: "/asset/easley-dunn-productions-logo.jpeg",
-    companyLogoDark: "/asset/easley-dunn-productions-logo.jpeg",
+    companyLogoLight: "/easley-dunn-productions-logo.jpeg",
+    companyLogoDark: "/easley-dunn-productions-logo.jpeg",
     companyLogoWidth: 55,
     companyLogoHeight: 55,
     tenure: "August 2025 - Present",
@@ -643,8 +643,8 @@ export const experience = [
   },
   {
     companyName: "USC Alfred E. Mann School of Pharmacy",
-    companyLogoLight: "/asset/usc-mann-logo-light.png",
-    companyLogoDark: "/asset/usc-mann-logo-dark.png",
+    companyLogoLight: "/usc-mann-logo-light.png",
+    companyLogoDark: "/usc-mann-logo-dark.png",
     companyLogoWidth: 100,
     companyLogoHeight: 24,
     tenure: "May 2024 - May 2025",
@@ -685,8 +685,8 @@ export const experience = [
   },
   {
     companyName: "USC Information Sciences Institute",
-    companyLogoLight: "/asset/usc-isi-logo.webp",
-    companyLogoDark: "/asset/usc-isi-logo.webp",
+    companyLogoLight: "/usc-isi-logo.webp",
+    companyLogoDark: "/usc-isi-logo.webp",
     companyLogoWidth: 100,
     companyLogoHeight: 24,
     tenure: "August 2023 - Dec 2023",
@@ -715,8 +715,8 @@ export const experience = [
   },
   {
     companyName: "Highradius",
-    companyLogoLight: "/asset/highradius-logo.png",
-    companyLogoDark: "/asset/highradius-logo.png",
+    companyLogoLight: "/highradius-logo.png",
+    companyLogoDark: "/highradius-logo.png",
     companyLogoWidth: 24,
     companyLogoHeight: 24,
     tenure: "July 2022 - July 2023",
@@ -791,8 +791,8 @@ export const experience = [
   },
   {
     companyName: "Highradius",
-    companyLogoLight: "/asset/highradius-logo.png",
-    companyLogoDark: "/asset/highradius-logo.png",
+    companyLogoLight: "/highradius-logo.png",
+    companyLogoDark: "/highradius-logo.png",
     companyLogoWidth: 24,
     companyLogoHeight: 24,
     tenure: "August 2021 - June 2022",
