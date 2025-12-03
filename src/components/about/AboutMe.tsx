@@ -40,11 +40,9 @@ const calData = days.map((date) => {
   };
 });
 
-
-
 const AboutMe = () => {
-const stats = useGithubStats();
-const { totalSolved, profileViews } = useLeetCodeStats()
+  const stats = useGithubStats();
+  const { totalSolved, profileViews } = useLeetCodeStats();
 
   return (
     <div className="py-10 w-full mt-30 flex flex-col items-center justify-center gap-10">
@@ -133,7 +131,7 @@ const { totalSolved, profileViews } = useLeetCodeStats()
       </div>
       {/* Education */}
       <div id={"education"} className="w-full">
-<Education />
+        <Education />
       </div>
       {/* Developer insights */}
       <div className="mx-auto my-24 w-full max-w-[984px] px-4 mt-10 mb-32">

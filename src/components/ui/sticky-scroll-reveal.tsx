@@ -123,7 +123,7 @@ export const StickyScroll = ({
                   bg-[linear-gradient(90deg,rgba(0,0,0,0)_5%,rgba(255,255,255,0.8)_35%,#fff_50%,rgba(255,255,255,0.8)_65%,rgba(0,0,0,0)_95%)]"
                   />
 
-                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-16/9 min-h-140 max-h-160">
+                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-video min-h-140 max-h-160">
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -252,7 +252,7 @@ export const StickyScroll = ({
                     className="absolute inset-x-0 top-0 h-px hidden dark:block
                   bg-[linear-gradient(90deg,rgba(0,0,0,0)_5%,rgba(255,255,255,0.8)_35%,#fff_50%,rgba(255,255,255,0.8)_65%,rgba(0,0,0,0)_95%)]"
                   />
-                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-16/9 min-h-30 max-h-90 lg:max-h-120">
+                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-video min-h-30 max-h-90 lg:max-h-120">
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
