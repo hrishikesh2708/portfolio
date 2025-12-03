@@ -550,6 +550,45 @@ export const projects = [
     ],
   },
 ];
+
+export const educationData = [
+  {
+    title: "Bachelor of Science in Computer Science",
+    university: "University of Southern California",
+    location: "Los Angeles, CA",
+    logo: "/asset/usc-logo.png",
+    duration: "August 2023 - May 2025",
+    gpa: "3.48",
+    description:
+      "Pursuing a Bachelor of Science in Computer Science with focus on algorithms, systems, and software engineering. Actively involved in hands-on projects integrating theory and practice.",
+    courses: [
+      "Algorithms",
+      "Data Structures",
+      "Operating Systems",
+      "Database Systems",
+      "Computer Networks"
+    ]
+  },
+  {
+    title: "Bachelor of Technology in Computer Engineering",
+    university: "Pune Institute of Computer Technology",
+    location: "Pune, India",
+    logo: "/asset/pict-logo.png",
+    duration: "August 2019 - May 2023",
+    gpa: "8.67 / 10",
+    description:
+      "Completed a comprehensive program in computer engineering with focus on software development, systems programming, and applied machine learning.",
+    courses: [
+      "Machine Learning",
+      "Object-Oriented Programming",
+      "Computer Architecture",
+      "Operating Systems",
+      "Cloud Computing"
+    ]
+  }
+];
+
+
 export const openNewTab = (url: string) => {
   window.open(url, "_blank");
 };

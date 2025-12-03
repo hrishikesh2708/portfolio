@@ -19,6 +19,7 @@ import {
 import { eachDayOfInterval, endOfYear, formatISO, startOfYear } from "date-fns";
 import { Book, Code, Eye, NotebookPen } from "lucide-react";
 import { useGithubStats, useLeetCodeStats } from "../utils/api";
+import Education from "./Education";
 const maxCount = 20;
 const maxLevel = 4;
 const now = new Date();
@@ -131,8 +132,8 @@ const { totalSolved, profileViews } = useLeetCodeStats()
         <Timeline data={experience} />
       </div>
       {/* Education */}
-      <div id={"education"}>
-
+      <div id={"education"} className="w-full">
+<Education />
       </div>
       {/* Developer insights */}
       <div className="mx-auto my-24 w-full max-w-[984px] px-4 mt-10 mb-32">
