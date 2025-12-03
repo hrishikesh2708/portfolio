@@ -135,7 +135,7 @@ export const EducationCard = ({ data }: { data: EducationCardProps }) => {
                           <Badge
                             key={course}
                             variant="outline"
-                            className="rounded-lg"
+                            className="rounded-lg tracking-widest text-sm lg:text-md text-natural-700 dark:text-neutral-300 px-1 md:px-2"
                           >
                             {course}
                           </Badge>
@@ -150,7 +150,7 @@ export const EducationCard = ({ data }: { data: EducationCardProps }) => {
         </CardContent>
 
         <CardFooter>
-          <div className="flex items-center justify-between w-full text-xs sm:text-sm md:text-md dark:text-neutral-400 text-neutral-500 tracking-wide lg:text-lg">
+          <div className="mt-2 flex items-center justify-between w-full text-xs sm:text-sm md:text-md dark:text-neutral-400 text-neutral-500 tracking-wide lg:text-lg">
             <div className="flex items-center gap-2 md:gap-4 mt-1">
               <CalendarDays />
               <p>{data.duration}</p>

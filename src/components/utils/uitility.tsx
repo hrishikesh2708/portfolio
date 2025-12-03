@@ -553,37 +553,43 @@ export const projects = [
 
 export const educationData = [
   {
-    title: "Bachelor of Science in Computer Science",
+    title: "Master of Science in Computer Science",
     university: "University of Southern California",
     location: "Los Angeles, CA",
     logo: "/asset/usc-logo.png",
     duration: "August 2023 - May 2025",
-    gpa: "3.48",
+    gpa: "3.48 / 4.0",
     description:
-      "Pursuing a Bachelor of Science in Computer Science with focus on algorithms, systems, and software engineering. Actively involved in hands-on projects integrating theory and practice.",
+      "Mastered core and advanced areas of computer science, including algorithms, systems, and machine learning, through hands-on projects and research at USC. Successfully applied theoretical knowledge to build scalable software, enhancing problem-solving skills and technical creativity.",
     courses: [
-      "Algorithms",
-      "Data Structures",
-      "Operating Systems",
+      "Analysis Of Algorithm",
+      "Web Technologies",
       "Database Systems",
-      "Computer Networks"
+      "Information Retrieval",
+      "Natural Language Processing (NLP)",
+      "Machine Learning",
     ]
   },
   {
-    title: "Bachelor of Technology in Computer Engineering",
-    university: "Pune Institute of Computer Technology",
-    location: "Pune, India",
-    logo: "/asset/pict-logo.png",
-    duration: "August 2019 - May 2023",
-    gpa: "8.67 / 10",
+    title: "Bachelor of Technology in Computer Science",
+    university: "SRM Institute of Science and Technology",
+    location: "Chennai, India",
+    logo: "/asset/srm-logo.webp",
+    duration: "June 2018 - May 2022",
+    gpa: "3.8 / 4.0",
     description:
-      "Completed a comprehensive program in computer engineering with focus on software development, systems programming, and applied machine learning.",
+      "Built a solid foundation in computer science through hands-on projects and research, applying software engineering principles, systems programming, and data-driven techniques. Delivered practical solutions and developed strong analytical and collaborative skills.",
     courses: [
-      "Machine Learning",
+      "Data Structures and Algorithms",
+      "Database Management Systems",
       "Object-Oriented Programming",
+      "Sowftware Engineering",
+      "Data Science",
+      "Machine Learning",
       "Computer Architecture",
       "Operating Systems",
-      "Cloud Computing"
+      "Computer Networks",
+      "Cloud Computing",
     ]
   }
 ];
