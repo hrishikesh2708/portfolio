@@ -32,7 +32,7 @@ useEffect(() => {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10"
+      className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10 overflow-hidden"
     >
       {/* Steel-flower */}
       <div className="container relative mx-auto">
