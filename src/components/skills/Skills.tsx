@@ -1,62 +1,43 @@
 import GradientText from "@/components/ui/GradientText";
 import { techStack } from "@/components/utils/uitility";
 import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const Skills = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  // Steel-flower rotation
+  const flowerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const prevScroll = useRef(0);
   const rotation = useMotionValue(0);
 
-  // Update rotation based on scroll direction
   useEffect(() => {
     return scrollY.onChange((currentY) => {
       const delta = currentY - prevScroll.current;
-      // scroll down -> rotate positive, scroll up -> rotate negative
-      rotation.set(rotation.get() + delta * 0.3); // 0.3 = sensitivity
+      rotation.set(rotation.get() + delta * 0.3); // adjust sensitivity
       prevScroll.current = currentY;
     });
   }, [scrollY, rotation]);
 
-  const COLS = 15; // for example, 8 icons per row
+  // Icons animation on entering viewport
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"],
+  });
 
-  const total = techStack.length;
-  const ROWS = Math.ceil(total / COLS);
-
-  const BASE_DELAY = 0.5;
-  const NOISE = 0.05;
-
-  // Pick a random origin based on dynamic rows/cols
-  const getRandomCoordinate = (): [number, number] => [
-    Math.floor(Math.random() * ROWS),
-    Math.floor(Math.random() * COLS),
-  ];
-
-  const [origin, setOrigin] = useState<[number, number]>();
-
-  useEffect(() => {
-    setOrigin(getRandomCoordinate());
-  }, []);
-
-  if (!origin) return null;
-
-  const getDistance = (row: number, col: number) => {
-    return (
-      Math.sqrt((row - origin[0]) ** 2 + (col - origin[1]) ** 2) /
-      (ROWS * Math.sqrt(2))
-    );
-  };
+  const COLS = 12;
 
   return (
-    <div className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10">
+    <div
+      ref={containerRef}
+      className="flex flex-col mx-auto gap-4 w-full max-lg:max-w-xl mt-10"
+    >
+      {/* Steel-flower */}
       <div className="container relative mx-auto">
         <div className="h-[260px] mask-[linear-gradient(to_top,transparent,black_50%,black_90%,transparent)]">
           <motion.div
-            ref={ref}
-            style={{
-              rotate: rotation,
-            }}
+            ref={flowerRef}
+            style={{ rotate: rotation }}
             className="relative mx-auto w-[400px] md:w-[380px]"
           >
             <img
@@ -69,6 +50,7 @@ const Skills = () => {
         </div>
       </div>
 
+      {/* Section title */}
       <div className="-translate-y-15">
         <p className="text-center uppercase tracking-widest text-muted-foreground text-sm font-mono mb-1">
           My Skills
@@ -93,7 +75,8 @@ const Skills = () => {
         </p>
       </div>
 
-      <div className="flex justify-center items-center p-8">
+      {/* Icons grid */}
+      <div className="flex justify-center items-center">
         <div
           className="grid gap-2 sm:gap-3"
           style={{
@@ -101,29 +84,51 @@ const Skills = () => {
           }}
         >
           {techStack.map((icon, idx) => {
-            const row = Math.floor(idx / COLS);
             const col = idx % COLS;
+            const centerCol = Math.floor(COLS / 2);
 
-            const delay =
-              getDistance(row, col) * BASE_DELAY + Math.random() * NOISE;
+            // Dynamic X-offset based on distance from center
+            const offsetValues = Array.from({ length: COLS }, (_, i) => {
+              const dist = Math.abs(i - centerCol);
+              return 5 + dist * 180; // tweak min/max
+            });
 
-            const isOrigin = getDistance(row, col) === 0;
+            const initialX =
+              col < centerCol ? -offsetValues[col] : offsetValues[col];
+
+            // Dynamic Y-offset based on distance from center
+            const yOffsets = Array.from({ length: COLS }, (_, i) => {
+              const dist = Math.abs(i - centerCol);
+              return 5 - dist * 8; // produces [5,4,3,2,1,2,3,4,5] when scaled
+            });
+
+            const initialY = yOffsets[col] * 5;
+
+            // Animate X on scroll into view
+            const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+            // Animate X → 0
+            const animatedX = useTransform(progress, [0, 1], [initialX, 0]);
+
+            // Animate Y → 0
+            const animatedY = useTransform(progress, [0, 1], [initialY, 0]);
+
+            // Random initial rotation per icon
+            const initialRotation = Math.random() * 90 - 180; // 180-270
+            const animatedRotation = useTransform(
+              progress,
+              [0, 1],
+              [initialRotation, 0]
+            );
 
             return (
               <motion.div
-                className="bg-muted/50 border border-muted-foreground/50 rounded-2xl flex justify-center items-center p-4"
                 key={idx}
-                style={{ backgroundColor: isOrigin ? "orange" : "" }}
-                initial={{
-                  opacity: isOrigin ? 1 : 0,
-                  scale: isOrigin ? 1 : 0.3,
-                }}
+                className="bg-muted border border-muted-foreground/50 rounded-lg flex justify-center items-center p-2 h-14 w-14"
+                style={{ x: animatedX, y: animatedY, rotate: animatedRotation }}
+                initial={{ opacity: 0.5, scale: 0.8 }}
                 animate={{ opacity: 0.8, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  bounce: 0.5,
-                  delay: delay,
-                }}
+                transition={{ type: "spring", stiffness: 100, damping: 10 }}
               >
                 {icon.icon}
               </motion.div>
