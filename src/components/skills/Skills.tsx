@@ -13,7 +13,7 @@ const Skills = () => {
   useEffect(() => {
     return scrollY.onChange((currentY) => {
       const delta = currentY - prevScroll.current;
-      rotation.set(rotation.get() + delta * 0.3); // adjust sensitivity
+      rotation.set(rotation.get() + delta * 0.2); // adjust sensitivity
       prevScroll.current = currentY;
     });
   }, [scrollY, rotation]);

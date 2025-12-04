@@ -44,6 +44,7 @@ const badgeVariants: Variants = {
 export const StickyScroll = ({
   content,
   contentClassName,
+  seemoreLink,
 }: {
   content: {
     title: string;
@@ -58,6 +59,7 @@ export const StickyScroll = ({
     }[];
   }[];
   contentClassName?: string;
+  seemoreLink?: boolean;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
   const ref = useRef<any>(null);
@@ -240,9 +242,7 @@ export const StickyScroll = ({
           </motion.div>
         </motion.div>
       </motion.div>
-      <motion.div
-        className="flex justify-center w-full xl:hidden px-4"
-      >
+      <motion.div className="flex justify-center w-full xl:hidden px-4">
         <div>
           <div className="w-xs xs:w-sm sm:w-md md:w-xl lg:w-3xl space-y-20 my-10">
             {content.map((item, index) => (
@@ -289,7 +289,9 @@ export const StickyScroll = ({
                     <h4 className="block font-semibold font-instrument text-2xl tracking-wider">
                       {item.title}
                     </h4>
-                    <h3 className="block text-lg text-muted-foreground">{item.subtitle}</h3>
+                    <h3 className="block text-lg text-muted-foreground">
+                      {item.subtitle}
+                    </h3>
                   </div>
                   <div>
                     <Button variant={"outline"} size={"icon-sm"}>
@@ -300,7 +302,7 @@ export const StickyScroll = ({
                 <div className="flex flex-wrap gap-2 px-1">
                   {item.techStack.map((list, idx) => (
                     <Badge
-                    key={idx}
+                      key={idx}
                       variant="outline"
                       className="flex items-center gap-1 rounded-sm"
                     >
@@ -314,24 +316,26 @@ export const StickyScroll = ({
           </div>
         </div>
       </motion.div>
-                  <div className="mt-5 py-2 flex items-center justify-center">
-              <a
-                className="group flex w-fit items-center justify-center gap-2 font-mono text-neutral-500 transition-colors hover:text-neutral-800  dark:hover:text-neutral-200 dark:text-neutral-400 lg:justify-start"
-                href="/about#experience"
-              >
-               See more projects
-                <div className="size-[25px] overflow-hidden rounded-full border border-neutral-300 bg-white-1/50 transition-all duration-500 group-hover:bg-neutral-200 dark:border-white/10 dark:bg-white/5 dark:group-hover:bg-white/10">
-                  <div className="-translate-x-1/2 flex w-12 transition-transform duration-500 ease-in-out group-hover:translate-x-0">
-                    <span className="flex size-6 items-center">
-                      <ArrowRight/>
-                    </span>
-                    <span className="flex size-6">
-                      <ArrowRight/>
-                    </span>
-                  </div>
-                </div>
-              </a>
+      <div className={ cn("mt-5 py-2 flex items-center justify-center"
+      , seemoreLink ? "relative" : "hidden"
+      )}>
+        <a
+          className="group flex w-fit items-center justify-center gap-2 font-mono text-neutral-500 transition-colors hover:text-neutral-800  dark:hover:text-neutral-200 dark:text-neutral-400 lg:justify-start"
+          href="/about#experience"
+        >
+          See more projects
+          <div className="size-[25px] overflow-hidden rounded-full border border-neutral-300 bg-white-1/50 transition-all duration-500 group-hover:bg-neutral-200 dark:border-white/10 dark:bg-white/5 dark:group-hover:bg-white/10">
+            <div className="-translate-x-1/2 flex w-12 transition-transform duration-500 ease-in-out group-hover:translate-x-0">
+              <span className="flex size-6 items-center">
+                <ArrowRight />
+              </span>
+              <span className="flex size-6">
+                <ArrowRight />
+              </span>
             </div>
+          </div>
+        </a>
+      </div>
     </div>
   );
 };

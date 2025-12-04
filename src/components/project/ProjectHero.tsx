@@ -28,7 +28,7 @@ const ProjectHero = () => {
           </p>
         </div>
         <div className="w-full">
-          <StickyScroll content={projects} contentClassName="" />
+          <StickyScroll content={projects} contentClassName="" seemoreLink={true}/>
         </div>
       </div>
     </>
