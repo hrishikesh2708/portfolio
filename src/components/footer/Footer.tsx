@@ -8,12 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Globe,
-  Instagram,
-  Moon,
-  Sun,
-} from "lucide-react";
+import { Globe, Instagram, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { openNewTab, socials } from "../utils/uitility";
 
@@ -39,7 +34,9 @@ export default function AnimatedWaveFooter() {
           </div>
           <div className="flex flex-row gap-10">
             <div className="text-center md:text-left">
-              <h3 className="mb-4 text-lg font-semibold tracking-widest text-muted-foreground font-mono">Quick Links</h3>
+              <h3 className="mb-4 text-lg font-semibold tracking-widest text-muted-foreground font-mono">
+                Quick Links
+              </h3>
               <nav className="space-y-2 text-sm">
                 <Link
                   to="/"
@@ -71,13 +68,16 @@ export default function AnimatedWaveFooter() {
               </nav>
             </div>
             <div className="relative flex flex-col items-center md:items-start">
-              <h3 className="mb-4 text-lg font-semibold tracking-widest text-muted-foreground font-mono">Follow Me</h3>
+              <h3 className="mb-4 text-lg font-semibold tracking-widest text-muted-foreground font-mono">
+                Follow Me
+              </h3>
               <div className="mb-6 flex space-x-4">
-                {socials.map((social) => (
-                  <TooltipProvider>
+                {socials.map((social, idx) => (
+                  <TooltipProvider key={idx}>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Button
+                          key={idx}
                           variant="outline"
                           size="icon"
                           className="rounded-full"
@@ -100,7 +100,11 @@ export default function AnimatedWaveFooter() {
                         variant="outline"
                         size="icon"
                         className="rounded-full"
-                        onClick={() => openNewTab("https://www.instagram.com/hrishikesh_thakur_/")}
+                        onClick={() =>
+                          openNewTab(
+                            "https://www.instagram.com/hrishikesh_thakur_/"
+                          )
+                        }
                       >
                         <Instagram className="h-4 w-4" />
                         <span className="sr-only">Instagram</span>

@@ -1,6 +1,3 @@
-"use client";
-
-import type { Day as WeekDay } from "date-fns";
 import {
   differenceInCalendarDays,
   eachDayOfInterval,
@@ -11,6 +8,7 @@ import {
   nextDay,
   parseISO,
   subWeeks,
+  type Day as WeekDay,
 } from "date-fns";
 import {
   type CSSProperties,

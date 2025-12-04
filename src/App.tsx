@@ -1,4 +1,3 @@
-import "./App.css";
 import Contact from "@/components/contact/Contact.tsx";
 import { Routes, Route } from "react-router-dom";
 import Project from "@/components/project/Project.tsx";

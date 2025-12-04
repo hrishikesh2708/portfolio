@@ -1,10 +1,9 @@
 "use client";
 import React, { useRef } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { motion, type Variants } from "motion/react";
+import { useMotionValueEvent, useScroll, motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Minus, Sparkle } from "lucide-react";
-import { Badge } from "./badge";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
 
 const rightPanelVariants: Variants = {

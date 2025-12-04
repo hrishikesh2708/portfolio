@@ -1,9 +1,9 @@
 "use client";
 import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
-import GradientText from "./GradientText";
+import GradientText from "@/components/ui/GradientText";
 import { Briefcase, MapPin, Sparkle } from "lucide-react";
-import { Badge } from "./badge";
+import { Badge } from "@/components/ui/badge";
 import { useTheme } from "next-themes";
 
 interface Skill {

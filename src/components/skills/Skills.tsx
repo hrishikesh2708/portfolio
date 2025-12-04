@@ -1,6 +1,6 @@
 import GradientText from "@/components/ui/GradientText";
 import { techStack } from "@/components/utils/uitility";
-import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
 import { useRef, useEffect } from "react";
 
 const Skills = () => {
@@ -10,13 +10,15 @@ const Skills = () => {
   const prevScroll = useRef(0);
   const rotation = useMotionValue(0);
 
-  useEffect(() => {
-    return scrollY.onChange((currentY) => {
-      const delta = currentY - prevScroll.current;
-      rotation.set(rotation.get() + delta * 0.2); // adjust sensitivity
-      prevScroll.current = currentY;
-    });
-  }, [scrollY, rotation]);
+useEffect(() => {
+  const unsubscribe = scrollY.on("change", (currentY) => {
+    const delta = currentY - prevScroll.current;
+    rotation.set(rotation.get() + delta * 0.2);
+    prevScroll.current = currentY;
+  });
+
+  return () => unsubscribe();
+}, [scrollY, rotation]);
 
   // Icons animation on entering viewport
   const containerRef = useRef<HTMLDivElement>(null);
