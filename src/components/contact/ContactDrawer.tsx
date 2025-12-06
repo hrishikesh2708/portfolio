@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Drawer,
   DrawerContent,
@@ -35,6 +36,7 @@ import { openNewTab, socials, openEmail } from "@/components/utils/uitility";
 import GradientText from "@/components/ui/GradientText";
 
 const ContactDrawer = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -104,7 +106,7 @@ const ContactDrawer = () => {
         >
           Connect
         </GradientText>
-        
+
       </DrawerTrigger>
       <DrawerContent className="sm:w-sm md:w-lg mx-auto">
         <DrawerHeader className="gap-4">
@@ -140,7 +142,7 @@ const ContactDrawer = () => {
                 className="grid grid-cols-1 gap-4 sm:grid-cols-2"
               >
                 <Card
-                  className="p-0 gap-0"
+                  className="p-0 gap-0 cursor-pointer"
                   onClick={() =>
                     openEmail(
                       "hrishikesh@gmail.com",
@@ -164,7 +166,7 @@ const ContactDrawer = () => {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="p-0 gap-0">
+                <Card className="p-0 gap-0 cursor-pointer" onClick={() => navigate("/contact")}>
                   <CardHeader className="w-full flex flex-row justify-start items-center bg-linear-to-r to-transparent border-neutral-200 dark:border-neutral-700/30 from-fuchsia-900/20 border-b py-4">
                     <Calendar color="#e12afb" size={32} />
                     <CardTitle className="text-lg font-semibold">
