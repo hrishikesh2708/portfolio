@@ -1,8 +1,8 @@
 import Contact from "@/components/contact/Contact.tsx";
 import { Routes, Route } from "react-router-dom";
 import Project from "@/components/project/Project.tsx";
-import Layout from "@/Layout";
-import HomePage from "@/Homepage";
+import Layout from "@/layouts/Layout";
+import HomePage from "@/pages/HomePage";
 import { Analytics, type BeforeSendEvent } from "@vercel/analytics/react";
 import AboutMe from "@/components/about/AboutMe";
 

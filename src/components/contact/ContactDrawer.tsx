@@ -32,7 +32,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
-import { openNewTab, socials, openEmail } from "@/components/utils/uitility";
+import { openNewTab, socials, openEmail } from "@/utils/uitility";
 import GradientText from "@/components/ui/GradientText";
 
 const ContactDrawer = () => {

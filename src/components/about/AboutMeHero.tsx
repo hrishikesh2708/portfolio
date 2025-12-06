@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { openNewTab, socials } from "@/components/utils/uitility";
+import { openNewTab, socials } from "@/utils/uitility";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 

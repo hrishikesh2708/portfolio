@@ -1,6 +1,6 @@
 import GradientText from "@/components/ui/GradientText";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-import { projects } from "@/components/utils/uitility";
+import { projects } from "@/utils/uitility";
 
 const Project = () => {
   return (

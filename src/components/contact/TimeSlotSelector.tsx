@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { formatTime } from "./utils/timeUtils";
+import { formatTime } from "@/utils/contact/timeUtils";
 
 interface TimeSlotSelectorProps {
     date: Date;

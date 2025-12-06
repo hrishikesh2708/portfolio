@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Globe, Instagram, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
-import { openNewTab, socials } from "../utils/uitility";
+import { openNewTab, socials } from "@/utils/uitility";
 
 export default function AnimatedWaveFooter() {
   const [isDarkMode, setIsDarkMode] = React.useState(true);

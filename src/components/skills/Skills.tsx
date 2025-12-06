@@ -1,5 +1,5 @@
 import GradientText from "@/components/ui/GradientText";
-import { techStack } from "@/components/utils/uitility";
+import { techStack } from "@/utils/uitility";
 import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
 import { useRef, useEffect } from "react";
 

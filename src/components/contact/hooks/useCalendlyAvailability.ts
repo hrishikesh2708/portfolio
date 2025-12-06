@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchTwoWeekAvailability } from "../utils/calendlyApi";
-import { utcToTimeZone } from "../utils/timeUtils";
+import { fetchTwoWeekAvailability } from "@/utils/contact/calendlyApi";
+import { utcToTimeZone } from "@/utils/contact/timeUtils";
 
 interface CalendlySlot {
     start_time: string;

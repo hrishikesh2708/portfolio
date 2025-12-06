@@ -5,7 +5,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { openNewTab, socials } from "@/components/utils/uitility";
+import { openNewTab, socials } from "@/utils/uitility";
 
 /**
  * Social media links component

@@ -1,6 +1,6 @@
 import GradientText from "@/components/ui/GradientText";
 import { EducationCard } from "@/components/ui/expandable-card";
-import { educationData } from "@/components/utils/uitility";
+import { educationData } from "@/utils/uitility";
 const Education = () => {
   return (
     <div>

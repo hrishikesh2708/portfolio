@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { experience, openNewTab, socials } from "@/components/utils/uitility";
+import { experience, openNewTab, socials } from "@/utils/uitility";
 import { Button } from "@/components/ui/button";
 import { Timeline } from "@/components/ui/timeline";
 import {
@@ -18,7 +18,7 @@ import {
 } from "@/components/about/ContributionGraph";
 import { eachDayOfInterval, endOfYear, formatISO, startOfYear } from "date-fns";
 import { Book, Code, Eye, NotebookPen } from "lucide-react";
-import { useGithubStats, useLeetCodeStats } from "@/components/utils/api";
+import { useGithubStats, useLeetCodeStats } from "@/utils/api";
 import Education from "@/components/about/Education";
 const maxCount = 20;
 const maxLevel = 4;

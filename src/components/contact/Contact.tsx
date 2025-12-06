@@ -15,8 +15,8 @@ import ConfirmationForm from "./ConfirmationForm";
 import { useCalendlyAvailability } from "./hooks/useCalendlyAvailability";
 import { useTimeFormatter } from "./hooks/useTimeFormatter";
 import { useTimezoneManager } from "./hooks/useTimezoneManager";
-import { createCalendlyEvent } from "./utils/calendlyApi";
-import { combineDateTimeInTimeZone } from "./utils/timeUtils";
+import { createCalendlyEvent } from "@/utils/contact/calendlyApi";
+import { combineDateTimeInTimeZone } from "@/utils/contact/timeUtils";
 
 const Contact = () => {
   const { timezone, timezones, setTimezone } = useTimezoneManager();

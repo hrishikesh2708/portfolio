@@ -8,8 +8,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Tag, Clock, Calendar1, Globe } from "lucide-react";
-import { getGMTOffset } from "@/components/utils/uitility";
-import { formatTime, add30Minutes } from "./utils/timeUtils";
+import { getGMTOffset } from "@/utils/uitility";
+import { formatTime, add30Minutes } from "@/utils/contact/timeUtils";
 
 interface MeetingDetailsProps {
     date: Date;
