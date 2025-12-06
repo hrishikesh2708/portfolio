@@ -37,6 +37,7 @@ import GradientText from "@/components/ui/GradientText";
 
 const ContactDrawer = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -96,7 +97,7 @@ const ContactDrawer = () => {
   }
 
   return (
-    <Drawer>
+    <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger className="">
         <GradientText
           colors={["#F27121", "#E94057", "#8A2387", "#E94057", "#F27121"]}
@@ -166,7 +167,10 @@ const ContactDrawer = () => {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="p-0 gap-0 cursor-pointer" onClick={() => navigate("/contact")}>
+                <Card className="p-0 gap-0 cursor-pointer" onClick={() => {
+                  setOpen(false);
+                  navigate("/contact");
+                }}>
                   <CardHeader className="w-full flex flex-row justify-start items-center bg-linear-to-r to-transparent border-neutral-200 dark:border-neutral-700/30 from-fuchsia-900/20 border-b py-4">
                     <Calendar color="#e12afb" size={32} />
                     <CardTitle className="text-lg font-semibold">
