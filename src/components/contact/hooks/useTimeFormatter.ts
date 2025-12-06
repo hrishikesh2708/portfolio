@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
 /**
  * Hook for managing time formatting (12hr/24hr)
