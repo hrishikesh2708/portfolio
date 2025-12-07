@@ -1,28 +1,20 @@
-import LiquidEther from "@/components/ui/LiquidEther";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
-import { Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { useTheme } from "next-themes";
 
 const Introduction = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="h-[calc(100vh)] max-h-[1000px] min-h-[800px] w-full relative">
-      <LiquidEther
-        colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
-        mouseForce={20}
-        cursorSize={100}
-        isViscous={true}
-        viscous={30}
-        iterationsViscous={32}
-        iterationsPoisson={32}
-        resolution={0.5}
-        isBounce={true}
-        autoDemo={true}
-        autoSpeed={0.5}
-        autoIntensity={2.2}
-        takeoverDuration={0.25}
-        autoResumeDelay={100}
-        autoRampDuration={0.6}
+    <section
+      className="relative flex h-screen max-h-[1000px] min-h-[800px] w-full flex-col items-center justify-center overflow-hidden py-pagebuilder"
+    >
+      <div
+        aria-hidden="true"
+        className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-0 h-[500px] w-4xl rounded-full bg-indigo-700/20 blur-[150px] dark:bg-[#0b0218]"
       />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-5 pointer-events-none gap-8">
         <div className="">
@@ -137,41 +129,53 @@ const Introduction = () => {
             <span className="absolute inset-0 translate-x-full scale-0 rounded-full bg-black opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100 dark:bg-white"></span>
 
             <span className="z-10 relative flex items-center justify-center overflow-hidden rounded-full bg-black p-4 transition-colors duration-300 group-hover:bg-transparent md:p-4 dark:bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="absolute text-white transition-all duration-300 group-hover:translate-x-5 group-hover:opacity-0 dark:text-black"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="absolute -translate-x-5 opacity-0 text-white transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 dark:text-black"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
+              <ArrowRight className="absolute text-white transition-all duration-300 group-hover:translate-x-5 group-hover:opacity-0 dark:text-black" />
+              <ArrowRight className="absolute -translate-x-5 opacity-0 text-white transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 dark:text-black" />
             </span>
           </Button>
-          <Button variant={"ghost"} size={"sm"}className="pointer-events-auto">
+          <Button variant={"ghost"} size={"sm"} className="pointer-events-auto">
             <Download />
             <p>Download Resume</p>
           </Button>
         </div>
       </div>
-    </div>
+
+      {/* Canvas wrapper */}
+      <div
+        id="_r_l_"
+        className="absolute inset-0 bottom-0 z-0 size-full mask-[radial-gradient(100%_50%,white,transparent_90%)]"
+      >
+        <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={30}
+          className="w-full h-full"
+          particleColor={
+            theme === "dark"
+              ? "#FFFFFF"
+              : theme === "light"
+                ? "#000000"
+                : window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "#FFFFFF"
+                  : "#000000"
+          }
+        />
+      </div>
+
+      {/* Bottom decorative area */}
+      <div className="absolute inset-x-0 bottom-0 h-56">
+        <div className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 transform h-[500px] w-[1200px] mask-[linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
+          <div className="absolute bottom-[167px] left-1/2 -translate-x-1/2 transform h-[111px] w-[800px] blur-[80px] bg-[linear-gradient(90deg,#06b6d4,#7c3aed,#4f46e5,#38bdf8,#06b6d4)] bg-size-[300%_100%]"
+            style={{ transform: "translateX(99.9459px) scaleX(1.19995)", backgroundPosition: "99.973% 50%" }}></div>
+          <div className="absolute -bottom-[753px] -left-[454px] -right-[432px] h-[955px] rounded-[100%] bg-linear-to-b from-indigo-500/40 to-transparent dark:from-neutral-50"></div>
+          <div className="absolute -bottom-[759px] -left-[532px] -right-[510px] h-[956px] aspect-[2.346/1] rounded-[100%] bg-neutral-50 dark:bg-black shadow-[inset_0_2px_20px_#4f46e510,0_-10px_50px_1px_#4f46e520] dark:shadow-[inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] [--s1:inset_0_2px_20px_#4f46e510,0_-10px_50px_1px_#4f46e520] dark:[--s1:inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] [--s2:inset_0_2px_30px_#4f46e530,0_-10px_60px_1px_#4f46e540] dark:[--s2:inset_0_2px_30px_#fff,0_-10px_60px_1px_#ffffffa2]"
+            style={{ boxShadow: "rgb(255, 255, 255) 0px 2px 20.0066px inset, rgba(255, 255, 255, 0.49) 0px -10px 50.0066px 1px;" }}></div>
+        </div>
+      </div>
+    </section >
+
   );
 };
 
