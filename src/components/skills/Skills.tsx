@@ -27,7 +27,7 @@ const Skills = () => {
     offset: ["start end", "center center"],
   });
 
-  const COLS = 12;
+  const COLS = 13;
 
   return (
     <div

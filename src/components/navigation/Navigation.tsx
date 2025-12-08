@@ -1,4 +1,4 @@
-import { Command, Globe } from "lucide-react";
+import { Command } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,7 +11,7 @@ import {
 import ContactDrawer from "@/components/contact/ContactDrawer";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import GlassSurface from "@/components/ui/GlassSurface";
-
+import { useTheme } from "next-themes";
 import { Link } from "react-router-dom";
 
 function ListItem({
@@ -35,10 +35,14 @@ function ListItem({
 }
 
 function Navigation() {
+  const { theme, systemTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const logoSrc = currentTheme === "dark" ? "/logo-dark.png" : "/logo-light.png";
+
   return (
     <div className="flex flex-row items-center justify-center md:justify-between px-6 align-middle">
       <div className="hidden md:block">
-        <Globe />
+        <img src={logoSrc} alt="logo" height={50} width={50} />
       </div>
       <div>
         <GlassSurface
@@ -111,15 +115,26 @@ function Navigation() {
                 <NavigationMenuContent>
                   <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] z-100">
                     <li className="row-span-3">
-                      <NavigationMenuLink asChild>
+                      <NavigationMenuLink asChild className="group">
                         <a
-                          className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
+                          className="group relative overflow-hidden from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
                           href="/"
                         >
-                          <div className="mb-2 text-lg font-medium sm:mt-4">
+                          {/* Background Image */}
+                          <div
+                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style={{ backgroundImage: "url('/globe.png')" }}
+                          ></div>
+
+                          {/* Dark overlay */}
+                          <div className="absolute inset-0 bg-black/70 transition-opacity duration-500 group-hover:opacity-80"></div>
+
+                          <div className="mb-2 text-lg font-medium sm:mt-4 translate-y-1 transition-all duration-300 group-hover:translate-y-0 text-neutral-100">
                             Through My Lens
                           </div>
-                          <p className="text-muted-foreground text-sm leading-tight">
+
+                          <p
+                            className="text-neutral-50 text-sm leading-tight opacity-0 translate-y-2 max-h-0 overflow-hidden transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-20">
                             Glimpses of places and moods I capture.
                           </p>
                         </a>

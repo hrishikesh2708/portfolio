@@ -8,12 +8,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Globe, Instagram, Moon, Sun } from "lucide-react";
+import { Globe, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { openNewTab, socials } from "@/utils/uitility";
+import { useTheme } from "next-themes";
 
 export default function AnimatedWaveFooter() {
   const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const { theme, systemTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const logoSrc = currentTheme === "dark" ? "/logo-dark.png" : "/logo-light.png";
   React.useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -26,7 +30,7 @@ export default function AnimatedWaveFooter() {
       <div className="container relative z-10 mx-auto px-4 py-12 md:px-6 lg:px-8 max-w-[1440px]">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between items-center justify-center">
           <div className="relative max-w-xs flex flex-col items-center md:items-start text-center md:text-left space-y-5">
-            <Globe />
+            <img src={logoSrc} alt="logo" height={50} width={50} />
             <p className="mb-6 text-muted-foreground text-pretty">
               I'm Hrishikesh Thakur - a software engineer, freelancer and
               problem solver. Thanks for checking out my portfolio!
