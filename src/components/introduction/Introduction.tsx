@@ -171,7 +171,7 @@ const Introduction = () => {
             style={{ transform: "translateX(99.9459px) scaleX(1.19995)", backgroundPosition: "99.973% 50%" }}></div>
           <div className="absolute -bottom-[753px] -left-[454px] -right-[432px] h-[955px] rounded-[100%] bg-linear-to-b from-indigo-500/40 to-transparent dark:from-neutral-50"></div>
           <div className="absolute -bottom-[759px] -left-[532px] -right-[510px] h-[956px] aspect-[2.346/1] rounded-[100%] bg-neutral-50 dark:bg-black shadow-[inset_0_2px_20px_#4f46e510,0_-10px_50px_1px_#4f46e520] dark:shadow-[inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] [--s1:inset_0_2px_20px_#4f46e510,0_-10px_50px_1px_#4f46e520] dark:[--s1:inset_0_2px_20px_#fff,0_-10px_50px_1px_#ffffff7d] [--s2:inset_0_2px_30px_#4f46e530,0_-10px_60px_1px_#4f46e540] dark:[--s2:inset_0_2px_30px_#fff,0_-10px_60px_1px_#ffffffa2]"
-            style={{ boxShadow: "rgb(255, 255, 255) 0px 2px 20.0066px inset, rgba(255, 255, 255, 0.49) 0px -10px 50.0066px 1px;" }}></div>
+            style={{ boxShadow: "rgb(255, 255, 255) 0px 2px 20.0066px inset, rgba(255, 255, 255, 0.49) 0px -10px 50.0066px 1px" }}></div>
         </div>
       </div>
     </section >

@@ -13,43 +13,6 @@ import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/t
 import GlassSurface from "@/components/ui/GlassSurface";
 
 import { Link } from "react-router-dom";
-// const components: { title: string; href: string; description: string }[] = [
-//   {
-//     title: 'Skills',
-//     href: '/docs/primitives/alert-dialog',
-//     description:
-//       'A modal dialog that interrupts the user with important content and expects a response.',
-//   },
-//   {
-//     title: 'Project',
-//     href: '/docs/primitives/hover-card',
-//     description:
-//       'For sighted users to preview content available behind a link.',
-//   },
-//   {
-//     title: '',
-//     href: '/docs/primitives/progress',
-//     description:
-//       'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-//   },
-//   {
-//     title: 'Scroll-area',
-//     href: '/docs/primitives/scroll-area',
-//     description: 'Visually or semantically separates content.',
-//   },
-//   {
-//     title: 'Tabs',
-//     href: '/docs/primitives/tabs',
-//     description:
-//       'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-//   },
-//   {
-//     title: 'Tooltip',
-//     href: '/docs/primitives/tooltip',
-//     description:
-//       'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-//   },
-// ];
 
 function ListItem({
   title,
@@ -59,12 +22,12 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
+      <NavigationMenuLink asChild className="bg-muted rounded-xl px-4 py-2">
         <Link to={href}>
-        <div className="text-sm leading-none font-medium">{title}</div>
-        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-          {children}
-        </p>
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+            {children}
+          </p>
         </Link>
       </NavigationMenuLink>
     </li>
@@ -154,27 +117,25 @@ function Navigation() {
                           href="/"
                         >
                           <div className="mb-2 text-lg font-medium sm:mt-4">
-                            World from my lens
+                            Through My Lens
                           </div>
                           <p className="text-muted-foreground text-sm leading-tight">
-                            Beautifully designed components built with Tailwind
-                            CSS.
+                            Glimpses of places and moods I capture.
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <ListItem href="/about#experience" title="Experience">
-                      Re-usable components built using Radix UI and Tailwind
-                      CSS.
+                      A snapshot of my work and impact.
                     </ListItem>
                     <ListItem href="/about#education" title="Education">
-                      How to install dependencies and structure your app.
+                      The academic roots of my skills.
                     </ListItem>
                     <ListItem
                       href="/Contact"
                       title="Hire Me"
                     >
-                      Styles for headings, paragraphs, lists...etc
+                      Let's make your vision come alive.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
