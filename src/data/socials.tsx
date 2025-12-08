@@ -1,4 +1,4 @@
-import { Github, Linkedin, Globe } from "lucide-react";
+import { Github, Linkedin, Instagram } from "lucide-react";
 
 export const socials = [
     {
@@ -14,9 +14,9 @@ export const socials = [
         tooltip: "Follow me on GitHub",
     },
     {
-        name: "Website",
-        icon: <Globe />,
-        url: "https://www.hrishikeshthakur.com/",
-        tooltip: "Feel free to explore my Portfolio",
+        name: "Instagram",
+        icon: <Instagram />,
+        url: "https://www.instagram.com/hrishikeshthakur/",
+        tooltip: "Follow me on Instagram",
     },
 ];

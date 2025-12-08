@@ -10,15 +10,15 @@ const Skills = () => {
   const prevScroll = useRef(0);
   const rotation = useMotionValue(0);
 
-useEffect(() => {
-  const unsubscribe = scrollY.on("change", (currentY) => {
-    const delta = currentY - prevScroll.current;
-    rotation.set(rotation.get() + delta * 0.2);
-    prevScroll.current = currentY;
-  });
+  useEffect(() => {
+    const unsubscribe = scrollY.on("change", (currentY) => {
+      const delta = currentY - prevScroll.current;
+      rotation.set(rotation.get() + delta * 0.2);
+      prevScroll.current = currentY;
+    });
 
-  return () => unsubscribe();
-}, [scrollY, rotation]);
+    return () => unsubscribe();
+  }, [scrollY, rotation]);
 
   // Icons animation on entering viewport
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,7 +80,7 @@ useEffect(() => {
       {/* Icons grid */}
       <div className="flex justify-center items-center">
         <div
-          className="grid gap-2 sm:gap-3"
+          className="grid gap-2 sm:gap-4 space-y-2"
           style={{
             gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))`,
           }}
@@ -126,10 +126,10 @@ useEffect(() => {
             return (
               <motion.div
                 key={idx}
-                className="bg-muted border border-muted-foreground/50 rounded-lg flex justify-center items-center p-2 h-14 w-14"
+                className="bg-muted border border-muted-foreground/30 rounded-lg flex justify-center items-center p-2 h-14 w-14"
                 style={{ x: animatedX, y: animatedY, rotate: animatedRotation }}
                 initial={{ opacity: 0.5, scale: 0.8 }}
-                animate={{ opacity: 0.8, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 100, damping: 10 }}
               >
                 {icon.icon}

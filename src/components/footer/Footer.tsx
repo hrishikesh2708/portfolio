@@ -102,16 +102,16 @@ export default function AnimatedWaveFooter() {
                         className="rounded-full"
                         onClick={() =>
                           openNewTab(
-                            "https://www.instagram.com/hrishikesh_thakur_/"
+                            "https://www.hrishikeshthakur.com/"
                           )
                         }
                       >
-                        <Instagram className="h-4 w-4" />
-                        <span className="sr-only">Instagram</span>
+                        <Globe className="h-4 w-4" />
+                        <span className="sr-only">Portfolio</span>
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Follow me on Instagram</p>
+                      <p>Feel free to explore my Portfolio</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
