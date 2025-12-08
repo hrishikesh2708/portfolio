@@ -27,7 +27,7 @@ export async function getTotalContributions(username: string) {
     `,
   };
 
- const res = await fetch("https://api.github.com/graphql", {
+  const res = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,51 +67,52 @@ export function useGithubStats() {
 // Leetcode Stats
 
 export async function getLeetCodeStats(username: string) {
-  const endpoint = "https://leetcode.com/graphql";
+  // Use Vercel Serverless Function proxy
+  // Local: requires `vercel dev` or manual proxy config
+  // Prod: /api/leetcode
+  const endpoint = "/api/leetcode";
 
-  // 1) Stats Query
-  const statsQuery = {
-    query: `
-      query getStats($username: String!) {
-        matchedUser(username: $username) {
-          submitStats {
-            acSubmissionNum {
-              difficulty
-              count
-            }
-          }
-          profile {
-            views
-          }
-        }
-      }
-    `,
-    variables: { username }
-  };
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username }),
+    });
 
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(statsQuery),
-  });
+    if (!res.ok) {
+      console.error("LeetCode API Proxy Error: ", res.status, res.statusText);
+      return { totalSolved: 0, profileViews: 0 };
+    }
 
-  const json = await res.json();
+    const json = await res.json();
 
-  const submissions = json.data.matchedUser.submitStats.acSubmissionNum;
+    if (json.errors) {
+      console.error("LeetCode GraphQL Errors:", json.errors);
+      return { totalSolved: 0, profileViews: 0 };
+    }
 
-  const totalSolved = submissions.reduce((sum: number, item: any) => sum + item.count, 0);
+    const matchedUser = json.data?.matchedUser;
+    if (!matchedUser) {
+      return { totalSolved: 0, profileViews: 0 };
+    }
 
-  const profileViews = json.data.matchedUser.profile.views;
+    const submissions = matchedUser.submitStats.acSubmissionNum;
+    const totalSolved = submissions.reduce((sum: number, item: { count: number }) => sum + item.count, 0);
+    const profileViews = matchedUser.profile.views;
 
-  return {
-    totalSolved,
-    profileViews,
-  };
+    return {
+      totalSolved,
+      profileViews,
+    };
+  } catch (error) {
+    console.error("Failed to fetch LeetCode stats:", error);
+    return { totalSolved: 0, profileViews: 0 };
+  }
 }
 
 
 export function useLeetCodeStats() {
-    const username = import.meta.env.VITE_LEETCODE_USERNAME;
+  const username = import.meta.env.VITE_LEETCODE_USERNAME;
   const [stats, setStats] = useState({
     totalSolved: 0,
     profileViews: 0,

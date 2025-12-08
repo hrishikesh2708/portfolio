@@ -117,7 +117,7 @@ const AboutMe = () => {
             handle="hrishith27@gmail.com"
             status="Online"
             contactText="Contact Me"
-            avatarUrl="public/Subject 2.png"
+            avatarUrl="/profile-picture.png"
             showUserInfo={false}
             enableTilt={true}
             enableMobileTilt={true}
