@@ -1,7 +1,7 @@
 import GradientText from "@/components/ui/GradientText";
 import { techStack } from "@/utils/uitility";
 import { motion, useScroll, useTransform, useMotionValue } from "motion/react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const Skills = () => {
   // Steel-flower rotation
@@ -27,7 +27,22 @@ const Skills = () => {
     offset: ["start end", "center center"],
   });
 
-  const COLS = 15;
+  const [cols, setCols] = useState(15); // default for desktop
+
+  useEffect(() => {
+    const updateCols = () => {
+      const width = window.innerWidth;
+      if (width < 640) setCols(5);
+      else if (width < 1024) setCols(7);
+      else setCols(15);
+      console.log("Cols updated:", cols, "Window width:", width);
+    };
+
+    updateCols(); // initial check
+    window.addEventListener("resize", updateCols);
+
+    return () => window.removeEventListener("resize", updateCols);
+  }, [cols]);
 
   return (
     <div
@@ -82,15 +97,15 @@ const Skills = () => {
         <div
           className="grid gap-2 sm:gap-4 space-y-2"
           style={{
-            gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))`,
+            gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
         >
           {techStack.map((icon, idx) => {
-            const col = idx % COLS;
-            const centerCol = Math.floor(COLS / 2);
+            const col = idx % cols;
+            const centerCol = Math.floor(cols / 2);
 
             // Dynamic X-offset based on distance from center
-            const offsetValues = Array.from({ length: COLS }, (_, i) => {
+            const offsetValues = Array.from({ length: cols }, (_, i) => {
               const dist = Math.abs(i - centerCol);
               return 5 + dist * 180; // tweak min/max
             });
@@ -99,7 +114,7 @@ const Skills = () => {
               col < centerCol ? -offsetValues[col] : offsetValues[col];
 
             // Dynamic Y-offset based on distance from center
-            const yOffsets = Array.from({ length: COLS }, (_, i) => {
+            const yOffsets = Array.from({ length: cols }, (_, i) => {
               const dist = Math.abs(i - centerCol);
               return 5 - dist * 8; // produces [5,4,3,2,1,2,3,4,5] when scaled
             });

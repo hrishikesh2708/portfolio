@@ -98,7 +98,7 @@ export async function getLeetCodeStats(username: string) {
 
     const submissions = matchedUser.submitStats.acSubmissionNum;
     const totalSolved = submissions.reduce((sum: number, item: { count: number }) => sum + item.count, 0);
-    const profileViews = matchedUser.profile.views;
+    const profileViews = 0; // matchedUser.profile?.views; (Field removed from API)
 
     return {
       totalSolved,
