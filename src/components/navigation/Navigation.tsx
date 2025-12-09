@@ -135,7 +135,7 @@ function Navigation() {
 
                           <p
                             className="text-neutral-50 text-sm leading-tight opacity-0 translate-y-2 max-h-0 overflow-hidden transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-20">
-                            Glimpses of places and moods I capture.
+                            Glimpses of places and moods I capture. (coming soon !)
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -167,6 +167,7 @@ function Navigation() {
           variant={"ghost"}
           size={"lg"}
           direction={"rtl"}
+          modes={["light", "dark"]}
           className="rounded-full bg-transparent border-none outline-none ring-0"
         />
       </div>

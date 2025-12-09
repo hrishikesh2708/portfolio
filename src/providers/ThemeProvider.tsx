@@ -7,8 +7,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"           // use `.dark`
-      defaultTheme="system"       // default = auto
-      enableSystem={true}         // respect OS setting
+      defaultTheme="dark"       // default = auto
+      enableSystem={false}         // respect OS setting
       storageKey="theme"          // saves preference in localStorage
       enableColorScheme={true}    // improves first-render behavior
     >

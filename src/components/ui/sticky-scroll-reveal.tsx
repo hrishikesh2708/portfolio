@@ -144,7 +144,7 @@ export const StickyScroll = ({
                         <h3 className="text-lg xl:text-2xl">{item.subtitle}</h3>
                       </div>
                       <div>
-                        <Button variant={"outline"} size={"icon-sm"}>
+                        <Button variant={"outline"} size={"icon-sm"} className="bg-transparent">
                           <ArrowRight />
                         </Button>
                       </div>
@@ -341,7 +341,7 @@ export const StickyScroll = ({
                     </h3>
                   </div>
                   <div>
-                    <Button variant={"outline"} size={"icon-sm"}>
+                    <Button variant={"outline"} size={"icon-sm"} className="bg-transparent">
                       <ArrowRight />
                     </Button>
                   </div>

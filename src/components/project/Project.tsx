@@ -5,7 +5,7 @@ import { projects } from "@/utils/uitility";
 const Project = () => {
   return (
     <div>
-      <div className="realtive top-0 flex flex-col mx-auto gap-4 w-full my-10 mb-40">
+      <div className="realtive top-0 flex flex-col mx-auto gap-4 w-full my-50 mb-40">
         <div>
           <p className=" text-center uppercase tracking-widest text-muted-foreground text-sm font-mono mb-1">
             Project Showcase
@@ -28,7 +28,7 @@ const Project = () => {
           </p>
         </div>
         <div className="w-full">
-          <StickyScroll content={projects} contentClassName="" seemoreLink={false}/>
+          <StickyScroll content={projects} contentClassName="" seemoreLink={false} />
         </div>
       </div>
     </div>

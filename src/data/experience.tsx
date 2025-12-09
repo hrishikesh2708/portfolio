@@ -54,37 +54,30 @@ export const experience = [
     companyLogoHeight: 55,
     tenure: "August 2025 - Present",
     role: "Software Engineer",
-    location: "Los Angeles, California",
+    location: "Sunnyvale, California",
     workType: "Voluntary",
     points: [
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Spearheaded C# /.NET Core backend microservices and RESTful APIs to
-        ingest real-time telemetry and implementing asynchronous JSON streaming
-        and back pressure controls
+        Built and maintained interactive UI screens and multi-screen navigation flows in Unity using C#.
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Drove significant performance enhancements by optimizing a critical C++
-        data processing module and revamping PostgreSQL query logic , cutting
-        memory usage by 40% and reducing query times from 2 seconds to under
-        100ms.
+        Implemented data-integration tasks with .NET services to support core game features efficiently.
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Implemented automated anomaly detection algorithms in Python within the
-        data ingestion pipelines , improving system observability and reducing
-        debugging time by 20%.
+        Designed and maintained the automated testing framework for EditMode and PlayMode feature validation.
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Engineered a suite of backend microservices using Java and Spring Boot
-        with RESTful APIs, reducing real-time data ingestion latency by 60%
-        across 5 distributed systems.
+        Collaborated with designers and engineers to ensure high-quality user experience and functional gameplay.
       </p>,
     ],
     skills: [
+      { name: "Unity", icon: <Code /> },
       { name: "C#", icon: <Code /> },
-      { name: "Python", icon: <Code /> },
-      { name: "Java", icon: <Code /> },
-      { name: "RESTful APIs", icon: <Code /> },
+      { name: ".NET", icon: <Code /> },
+      { name: "Visual Studio", icon: <Code /> },
+      { name: "Git", icon: <Code /> },
       { name: "Postgress SQL", icon: <Code /> },
+      { name: "RESTful APIs", icon: <Code /> },
     ],
   },
   {
