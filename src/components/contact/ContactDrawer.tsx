@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Drawer,
@@ -56,6 +56,14 @@ const ContactDrawer = () => {
     const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    useEffect(() => {
+      console.log("EmailJS ENV:", {
+        serviceID,
+        templateID,
+        publicKey,
+      });
+    }, []);
 
     try {
       const pacificTime = new Intl.DateTimeFormat("en-US", {

@@ -51,6 +51,7 @@ export function useGithubStats() {
   const username = import.meta.env.VITE_GITHUB_USERNAME;
 
   useEffect(() => {
+    console.log("GitHub ENV:", { username, token: import.meta.env.VITE_GITHUB_TOKEN });
     async function fetchStats() {
       const repos = await getTotalRepos(username);
       const contributions = await getTotalContributions(username);
@@ -119,6 +120,7 @@ export function useLeetCodeStats() {
   });
 
   useEffect(() => {
+    console.log("LeetCode ENV:", { username });
     async function load() {
       const data = await getLeetCodeStats(username);
       setStats(data);
