@@ -1,12 +1,15 @@
 import { Button } from "@/components/animate-ui/components/buttons/button";
 import { Magnetic } from "@/components/animate-ui/components/buttons/magnetic";
 import { TextRoll } from "@/components/motion-primitives/text-roll";
-import { Globe } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useNavigate } from "react-router-dom";
 
 const ContactHero = () => {
   const springOptions = { bounce: 0.1 };
   const navigate = useNavigate();
+  const { theme, systemTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const logoSrc = currentTheme === "dark" ? "/logo-dark.png" : "/logo-light.png";
   return (
     <div className="relative z-0 mt-pagebuilder flex w-full justify-center overflow-x-hidden 
     bg-[url('/cta.avif')] bg-center bg-cover px-4 py-20 
@@ -20,7 +23,7 @@ const ContactHero = () => {
             alt="wings svg"
             className="select-none opacity-100"
           />
-          <Globe className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-50 w-8 md:w-10" />
+          <img src={logoSrc} alt="logo" className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-50 w-12 md:w-16" />
         </div>
         <div className="mt-4 font-light text-2xl text-black tracking-wide sm:text-4xl lg:text-5xl dark:text-white">
           <h3>
