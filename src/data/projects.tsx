@@ -2,91 +2,109 @@ import { Code } from "lucide-react";
 
 export const projects = [
   {
-    title: "AI Privacy Policy Summarizer",
+    title: "Hrishikesh Thakur – Engineering Portfolio",
     color: "pink",
-    subtitle: "Real-time policy analysis in plain English",
-    url: "/demo.jpg",
+    subtitle: "A polished developer portfolio highlighting modern web engineering and thoughtful UI design.",
+    demoImage: "/demo.jpg",
+    demoVideo: "",
+    github: "https://github.com/hrishikesh2708/portfolio",
+    liveDemo: "https://www.hrishikeshthakur.com/",
+    projectDetails: "https://github.com/hrishikesh2708/portfolio/blob/version-1/README.md",
     description:
-      "An AI-powered web application that condenses complex privacy policies into readable summaries. Highlights risky clauses, permissions, and data-sharing patterns.",
+      "A lightweight, responsive portfolio website built with React, Vite, and TypeScript to showcase my projects, skills, and contact info.",
     points: [
-      "Implemented a transformer-based summarization pipeline optimized for long-form legal text.",
-      "Built a rule-based detection layer to flag red-flag terms and sensitive data permissions.",
-      "Designed a clean, responsive UI with category-level risk indicators.",
-      "Implemented secure backend processing with rate-limited API access.",
+      "Set up React + Vite + TypeScript project with clean configuration and tooling.",
+      "Implemented project listing, skillcards and responsive navigation UI components.",
+      "Configured CSS + TypeScript + ESLint/tsconfig for maintainable, type-safe frontend.",
+      "Deployed site via Vercel with automated build on GitHub changes."
+    ],
+    techStack: [
+      { name: "TypeScript", icon: <Code /> },
+      { name: "React", icon: <Code /> },
+      { name: "Vite", icon: <Code /> },
+      { name: "Varcel", icon: <Code /> },
+      { name: "TailwindCSS", icon: <Code /> },
+      { name: "Docker", icon: <Code /> },
+      { name: "MongoDB", icon: <Code /> },
+      { name: "PostgreSQL", icon: <Code /> },
+    ],
+  },
+
+  {
+    title: "Transcribe AI",
+    color: "blue",
+    subtitle: "Real-Time Audio Transcription Chrome Extension",
+    demoImage: "/demo.jpg",
+    demoVideo: "",
+    github: "https://github.com/hrishikesh2708/transcribe-ai",
+    liveDemo: "https://github.com/hrishikesh2708/transcribe-ai",
+    projectDetails: "https://github.com/hrishikesh2708/transcribe-ai/blob/main/README.md",
+    description: "A real-time transcription Chrome extension using Google Cloud Speech-to-Text, offering fast audio capture, responsive UI, and seamless export tools.",
+    points: [
+      "Built real-time tab audio capture pipeline with Web Audio and WebSockets.",
+      "Implemented accurate streaming transcription using Google Cloud Speech-to-Text.",
+      "Designed responsive sidepanel interface supporting live text updates and exports.",
+      "Created robust extension architecture with background, content, and UI integration."
     ],
     techStack: [
       { name: "React", icon: <Code /> },
-      { name: "Node.js", icon: <Code /> },
-      { name: "Python", icon: <Code /> },
-      { name: "OpenAI API", icon: <Code /> },
-      { name: "TailwindCSS", icon: <Code /> },
-    ],
-  },
-
-  {
-    title: "Freelance Pricing Calculator",
-    color: "blue",
-    subtitle: "Fair pricing engine for freelancers",
-    url: "/demo.jpg",
-    description:
-      "A full-stack platform that helps freelancers estimate project fees using historical market data, complexity scoring, and AI-backed recommendations.",
-    points: [
-      "Developed pricing heuristics using regression insights from a custom dataset.",
-      "Integrated GPT-driven suggestions for negotiation strategy and scope definition.",
-      "Implemented dashboards to visualize pricing history and competitive benchmarks.",
-      "Designed scalable MongoDB schemas for user projects and pricing templates.",
-    ],
-    techStack: [
-      { name: "Next.js", icon: <Code /> },
-      { name: "MongoDB", icon: <Code /> },
-      { name: "OpenAI API", icon: <Code /> },
       { name: "TypeScript", icon: <Code /> },
-      { name: "Vercel", icon: <Code /> },
+      { name: "Node.js", icon: <Code /> },
+      { name: "Express", icon: <Code /> },
+      { name: "Google Cloud Speech-to-Text", icon: <Code /> },
+      { name: "WebSocket", icon: <Code /> },
     ],
   },
 
   {
-    title: "Game of Life — Wormhole Edition",
+    title: "Regularization Techniques for Image Classification",
     color: "fuchsia",
-    subtitle:
-      "Extended cellular automata with teleport-linked grids, Extended cellular automata with teleport-linked grids",
-    url: "/demo.jpg",
+    subtitle: "Improving CNN generalization using L2, Dropout, and augmentation",
+    demoImage: "/demo.jpg",
+    demoVideo: "",
+    github: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project",
+    liveDemo: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project",
+    projectDetails: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project/blob/main/CSCI_567_Project_Report%202.pdf",
     description:
-      "An experimental simulation engine that merges Conway's Game of Life with wormholes. Cells can connect across non-adjacent regions using tunnel-mapped teleport links.",
+      "An empirical study testing multiple regularization strategies on CNN models to reduce overfitting and improve validation performance on limited image datasets.",
     points: [
-      "Built a high-performance simulation engine with pixel-level tunneling.",
-      "Implemented deterministic wormhole mapping using color-<code/>d tunnel images.",
-      "Created an automated test harness comparing outputs across 1/10/100/1000 iterations.",
-      "Optimized matrix traversal logic to avoid TLE on large grid sizes.",
+      "Evaluated L2, Dropout, and augmentations achieving notable validation loss reduction.",
+      "Designed custom CNN architectures tailored for regularization and stability improvements.",
+      "Built an ensemble using L2, Dropout, and five augmentations doubling dataset size.",
+      "Benchmarked generalization effects through controlled experiments and performance tracking."
     ],
     techStack: [
       { name: "Python", icon: <Code /> },
+      { name: "PyTorch", icon: <Code /> },
       { name: "NumPy", icon: <Code /> },
-      { name: "Pillow", icon: <Code /> },
-      { name: "FastAPI", icon: <Code /> },
-      { name: "Docker", icon: <Code /> },
+      { name: "Matplotlib", icon: <Code /> },
+      { name: "CNNs", icon: <Code /> }
     ],
   },
 
   {
-    title: "Sales Demand Forecasting Engine",
+    title: "Differentiable Symbolic Reasoning on Language Models",
     color: "teal",
-    subtitle: "MAPE-optimized ML pipeline for retail forecasting",
-    url: "/demo.jpg",
-    description:
-      "A machine learning system built for a HackerRank challenge to predict product-level sales using features like location, price, and seasonality.",
+    subtitle: "Hybrid neural-symbolic system for logical reasoning on kinship tasks",
+    demoImage: "/demo.jpg",
+    demoVideo: "",
+    github: "https://github.com/hrishikesh2708/CSCI544_NLP_Project",
+    liveDemo: "https://github.com/hrishikesh2708/CSCI544_NLP_Project",
+    projectDetails: "https://github.com/hrishikesh2708/CSCI544_NLP_Project/blob/main/Final_Project_Report__NLP_.pdf",
+    description: "A neural-symbolic reasoning project evaluating DSR-LM's ability to generalize logical relations and improve kinship inference accuracy on limited data.",
     points: [
-      "Engineered over 25 feature transformations including lag variables and price elasticity.",
-      "Trained gradient boosting and light-weight deep learning models tuned for MAPE.",
-      "Developed a notebook pipeline for reproducible training and evaluation.",
-      "Produced a final prediction CSV integrated with CI-based validation.",
+      "Fine-tuned DSR-LM with custom classifiers significantly boosting kinship prediction accuracy.",
+      "Benchmarked symbolic reasoning generalization using CLUTRR's controlled relational tasks pipeline.",
+      "Implemented experiments probing data efficiency and robustness under limited supervision settings.",
+      "Analyzed reasoning traces to evaluate neural-symbolic consistency and relational inference quality."
     ],
     techStack: [
       { name: "Python", icon: <Code /> },
-      { name: "Pandas", icon: <Code /> },
-      { name: "scikit-learn", icon: <Code /> },
-      { name: "XGBoost", icon: <Code /> },
-      { name: "Jupyter", icon: <Code /> },
+      { name: "PyTorch", icon: <Code /> },
+      { name: "Transformers", icon: <Code /> },
+      { name: "CLUTRR Dataset", icon: <Code /> },
+      { name: "DSR-LM", icon: <Code /> },
+      { name: "HuggingFace", icon: <Code /> }
     ],
   },
 ];

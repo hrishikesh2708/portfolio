@@ -2,9 +2,10 @@
 import React, { useRef } from "react";
 import { useMotionValueEvent, useScroll, motion, type Variants } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Minus, Sparkle } from "lucide-react";
+import { ArrowRight, EyeIcon, GitBranchIcon, Minus, Radio, Sparkle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
+import { openNewTab } from "@/utils/uitility";
 
 const rightPanelVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -48,7 +49,11 @@ export const StickyScroll = ({
   content: {
     title: string;
     color: string;
-    url: string;
+    demoImage: string;
+    demoVideo?: string;
+    github?: string;
+    liveDemo?: string;
+    projectDetails?: string;
     subtitle: string;
     description: string;
     points: string[];
@@ -106,16 +111,13 @@ export const StickyScroll = ({
         className="relative hidden xl:flex justify-center w-full space-x-5"
         ref={ref}
       >
-        <div className="w-6xl flex items-start px-4">
+        <div className="w-4xl flex items-start px-4">
           <div className="w-full">
             {content.map((item, index) => (
               <div
                 key={item.title + index}
                 className={cn(
                   "flex items-center mb-20 mt-10"
-                  // index === content.length - 1
-                  //   ? "min-h-[100vh] items-start mt-20"
-                  //   : "min-h-[80vh]"
                 )}
               >
                 <div className="relative w-full rounded-2xl border bg-muted/40 overflow-hidden">
@@ -124,7 +126,7 @@ export const StickyScroll = ({
                   bg-[linear-gradient(90deg,rgba(0,0,0,0)_5%,rgba(255,255,255,0.8)_35%,#fff_50%,rgba(255,255,255,0.8)_65%,rgba(0,0,0,0)_95%)]"
                   />
 
-                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-video min-h-140 max-h-160">
+                  <div className="relative m-1.5 rounded-lg overflow-hidden aspect-video min-h-110 max-h-125">
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -158,7 +160,7 @@ export const StickyScroll = ({
                             data-nimg="1"
                             className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:rotate-0 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
                             style={{ color: "transparent" }}
-                            src={item.url}
+                            src={item.demoImage}
                           ></img>
                         </div>
                       </div>
@@ -239,6 +241,52 @@ export const StickyScroll = ({
               </motion.div>
             ))}
           </motion.div>
+          <motion.div
+            variants={rightPanelVariants}
+            className={cn("mt-6 pl-6 flex flex-wrap gap-4 pb-5",
+              seemoreLink ? "hidden" : "relative"
+            )}
+          >
+            {content[activeCard].github ? (
+              <motion.div variants={badgeVariants}>
+                <Button
+                  variant="default"
+                  size={"sm"}
+                  className="rounded-full"
+                  onClick={() => openNewTab(content[activeCard].github!)}
+                >
+                  <GitBranchIcon />
+                  Github Repo
+                </Button>
+              </motion.div>
+            ) : null}
+            {content[activeCard].projectDetails ? (
+              <motion.div variants={badgeVariants}>
+                <Button
+                  variant="default"
+                  size={"sm"}
+                  className="rounded-full"
+                  onClick={() => openNewTab(content[activeCard].projectDetails!)}
+                >
+                  <EyeIcon />
+                  View details
+                </Button>
+              </motion.div>
+            ) : null}
+            {content[activeCard].liveDemo ? (
+              <motion.div variants={badgeVariants}>
+                <Button
+                  variant="default"
+                  size={"sm"}
+                  className="rounded-full"
+                  onClick={() => openNewTab(content[activeCard].github!)}
+                >
+                  <Radio />
+                  Live Demo
+                </Button>
+              </motion.div>
+            ) : null}
+          </motion.div>
         </motion.div>
       </motion.div>
       <motion.div className="flex justify-center w-full xl:hidden px-4">
@@ -276,7 +324,7 @@ export const StickyScroll = ({
                             data-nimg="1"
                             className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
                             style={{ color: "transparent" }}
-                            src={item.url}
+                            src={item.demoImage}
                           ></img>
                         </div>
                       </div>
@@ -315,8 +363,8 @@ export const StickyScroll = ({
           </div>
         </div>
       </motion.div>
-      <div className={ cn("mt-5 py-2 flex items-center justify-center"
-      , seemoreLink ? "relative" : "hidden"
+      <div className={cn("mt-5 py-2 flex items-center justify-center"
+        , seemoreLink ? "relative" : "hidden"
       )}>
         <a
           className="group flex w-fit items-center justify-center gap-2 font-mono text-neutral-500 transition-colors hover:text-neutral-800  dark:hover:text-neutral-200 dark:text-neutral-400 lg:justify-start"
