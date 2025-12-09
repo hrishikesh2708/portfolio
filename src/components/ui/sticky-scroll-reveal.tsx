@@ -158,7 +158,7 @@ export const StickyScroll = ({
                             height="800"
                             decoding="async"
                             data-nimg="1"
-                            className="w-full max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:rotate-0 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
+                            className="w-full object-cover max-w-[85%] translate-y-5 rounded-t-lg will-change-transform lg:block transition-transform duration-500 ease-in-out -rotate-3 lg:rotate-0 lg:group-hover:-rotate-3 lg:group-hover:scale-[1.08] shadow-[0px_40px_50px_10px_rgba(0,0,0,0.22)]"
                             style={{ color: "transparent" }}
                             src={item.demoImage}
                           ></img>

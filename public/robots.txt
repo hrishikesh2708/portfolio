@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://portfolio-l8bfynkbu-hrishikesh-thakurs-projects.vercel.app/sitemap.xml
+Sitemap: https://www.hrishikeshthakur.com/sitemap.xml

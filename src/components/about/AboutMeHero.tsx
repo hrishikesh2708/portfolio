@@ -65,6 +65,7 @@ const AboutMeHero = () => {
                       variant="outline"
                       size="sm"
                       className="rounded-full"
+                      ariaLabel={social.name}
                       onClick={() => openNewTab(social.url)}
                     >
                       {social.icon}

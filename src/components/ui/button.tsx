@@ -41,10 +41,12 @@ function Button({
   variant,
   size,
   asChild = false,
+  ariaLabel, // optional for text buttons
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    ariaLabel?: string // optional for text buttons
   }) {
   const Comp = asChild ? Slot : "button"
 
@@ -52,6 +54,7 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      aria-label={ariaLabel}
       {...props}
     />
   )

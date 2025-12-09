@@ -121,6 +121,7 @@ const ContactDrawer = () => {
                         variant="outline"
                         size="icon"
                         className="rounded-full"
+                        ariaLabel={social.name}
                         onClick={() => openNewTab(social.url)}
                       >
                         {social.icon}

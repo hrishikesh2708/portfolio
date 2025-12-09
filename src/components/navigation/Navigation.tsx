@@ -168,6 +168,7 @@ function Navigation() {
           size={"lg"}
           direction={"rtl"}
           modes={["light", "dark"]}
+          aria-label="Toggle Theme"
           className="rounded-full bg-transparent border-none outline-none ring-0"
         />
       </div>

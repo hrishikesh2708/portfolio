@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 // Absolute path to public folder
 const publicDir = path.resolve(__dirname, "../public");
 
-const hostname = "https://portfolio-l8bfynkbu-hrishikesh-thakurs-projects.vercel.app";
+const hostname = "https://www.hrishikeshthakur.com";
 
 // List of your website routes
 const links = [
