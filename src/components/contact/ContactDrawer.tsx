@@ -57,14 +57,6 @@ const ContactDrawer = () => {
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    useEffect(() => {
-      console.log("EmailJS ENV:", {
-        serviceID,
-        templateID,
-        publicKey,
-      });
-    }, []);
-
     try {
       const pacificTime = new Intl.DateTimeFormat("en-US", {
         timeZone: "America/Los_Angeles",
