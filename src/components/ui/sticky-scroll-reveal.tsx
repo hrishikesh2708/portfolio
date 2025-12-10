@@ -368,7 +368,7 @@ export const StickyScroll = ({
       )}>
         <a
           className="group flex w-fit items-center justify-center gap-2 font-mono text-neutral-500 transition-colors hover:text-neutral-800  dark:hover:text-neutral-200 dark:text-neutral-400 lg:justify-start"
-          href="/about#experience"
+          href="/projects"
         >
           See more projects
           <div className="size-[25px] overflow-hidden rounded-full border border-neutral-300 bg-white-1/50 transition-all duration-500 group-hover:bg-neutral-200 dark:border-white/10 dark:bg-white/5 dark:group-hover:bg-white/10">

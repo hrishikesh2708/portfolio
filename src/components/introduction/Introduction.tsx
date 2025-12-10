@@ -4,9 +4,17 @@ import { ArrowRight, Download } from "lucide-react";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { useTheme } from "next-themes";
+import { useNavigate } from 'react-router-dom';
 
 const Introduction = () => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Hrishikesh_Thakur_Resume.pdf';
+    link.click();
+  };
 
   return (
     <section
@@ -120,6 +128,7 @@ const Introduction = () => {
           <Button
             variant="default"
             size={"lg"}
+            onClick={() => navigate('/contact')}
             className="pointer-events-auto group relative inline-flex cursor-pointer items-center justify-between overflow-hidden rounded-full border border-black/30 bg-black/20 py-[3px] pr-[3px] pl-2 font-medium text-base opacity-85 backdrop-blur-xs transition-all hover:bg-transparent md:py-1 md:pr-1 md:pl-3 dark:border-white/10 dark:bg-white/10"
           >
             <span className="z-10 px-1 text-black transition-colors duration-300 group-hover:text-white dark:text-white dark:group-hover:text-black">
@@ -133,7 +142,7 @@ const Introduction = () => {
               <ArrowRight className="absolute -translate-x-5 opacity-0 text-white transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 dark:text-black" />
             </span>
           </Button>
-          <Button variant={"ghost"} size={"sm"} className="pointer-events-auto">
+          <Button variant={"ghost"} size={"sm"} className="pointer-events-auto" onClick={handleDownload}>
             <Download />
             <p>Download Resume</p>
           </Button>
