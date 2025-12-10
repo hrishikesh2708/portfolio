@@ -15,7 +15,6 @@ export function openEmail(to: string, subject = "", body = ""): void {
     )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     const opened = window.open(mailto, "_self");
-    console.log("email");
 
     // If no mail client is configured or blocked by browser
     if (!opened) {

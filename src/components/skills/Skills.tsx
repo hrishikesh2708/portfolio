@@ -35,7 +35,6 @@ const Skills = () => {
       if (width < 640) setCols(5);
       else if (width < 1024) setCols(7);
       else setCols(15);
-      console.log("Cols updated:", cols, "Window width:", width);
     };
 
     updateCols(); // initial check
