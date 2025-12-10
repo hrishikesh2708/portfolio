@@ -17,7 +17,13 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
-  const { username } = req.body || req.query;
+  // Handle both JSON body (POST) and Query params (GET/POST)
+  let username = req.query.username;
+  if (!username && req.body) {
+    // If req.body is a string (sometimes happens with raw bodies), parse it
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    username = body.username;
+  }
 
   if (!username) {
     return res.status(400).json({ error: "Username is required" });

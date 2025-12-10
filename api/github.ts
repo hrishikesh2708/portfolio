@@ -61,9 +61,16 @@ export default async function handler(req: any, res: any) {
                 body: JSON.stringify(query),
             });
 
-            if (!response.ok) throw new Error("Failed to fetch contributions");
+            if (!response.ok) throw new Error(`Failed to fetch contributions: ${response.status} ${response.statusText}`);
             const data = await response.json();
-            const contributions = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+
+            const user = data.data?.user;
+            if (!user) {
+                console.error("GitHub API: User not found or error in response", JSON.stringify(data));
+                return res.status(404).json({ error: "User not found" });
+            }
+
+            const contributions = user.contributionsCollection?.contributionCalendar?.totalContributions || 0;
             return res.status(200).json({ count: contributions });
         }
 

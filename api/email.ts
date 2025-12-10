@@ -59,6 +59,12 @@ export default async function handler(req: any, res: any) {
         return res.status(200).json({ success: true });
     } catch (error: any) {
         console.error('Email API Error:', error);
-        return res.status(500).json({ error: 'Failed to send email' });
+        // Check for specific EmailJS error regarding non-browser apps
+        if (error.message && error.message.includes("API calls are disabled")) {
+            return res.status(500).json({
+                error: 'EmailJS Configuration Error: Security setting blocking server-side calls. Please enable "Allow API calls from non-browser applications" in your EmailJS Dashboard > Account > Security.'
+            });
+        }
+        return res.status(500).json({ error: error.message || 'Failed to send email' });
     }
 }
