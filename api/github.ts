@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
                 }
             );
             if (!response.ok) throw new Error("Failed to fetch repos");
-            const data = await response.json();
+            const data: any = await response.json();
             return res.status(200).json({ count: data.length });
         }
 
@@ -62,7 +62,7 @@ export default async function handler(req: any, res: any) {
             });
 
             if (!response.ok) throw new Error(`Failed to fetch contributions: ${response.status} ${response.statusText}`);
-            const data = await response.json();
+            const data: any = await response.json();
 
             const user = data.data?.user;
             if (!user) {

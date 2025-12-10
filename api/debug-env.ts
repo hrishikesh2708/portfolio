@@ -1,4 +1,4 @@
-export default function handler(req: any, res: any) {
+export default function handler(_req: any, res: any) {
     const envVars = [
         "GITHUB_USERNAME",
         "GITHUB_TOKEN",
