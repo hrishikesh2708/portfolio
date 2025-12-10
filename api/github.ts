@@ -24,7 +24,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=1`, {
             headers: { Authorization: `Bearer ${token}` },
         });
-        const reposData = await reposRes.json();
+        const reposData: any = await reposRes.json();
 
         // Check Link header for pagination
         const linkHeader = reposRes.headers.get("Link");
@@ -35,7 +35,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public`, {
             headers: { Authorization: `Bearer ${token}` },
         });
-        const eventsData = await eventsRes.json();
+        const eventsData: any = await eventsRes.json();
         const totalContributions = Array.isArray(eventsData) ? eventsData.length : 0;
 
         return res.status(200).json({
