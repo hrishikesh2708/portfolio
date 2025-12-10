@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,8 +17,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Send } from "lucide-react";
-import emailjs from "@emailjs/browser";
-import { toast } from "sonner";
+import { useContactForm } from "@/hooks/useContactForm";
 
 interface MessageFormProps {
     initialName?: string;
@@ -35,62 +33,25 @@ const MessageForm = ({
     initialEmail = "",
     initialMessage = "",
 }: MessageFormProps) => {
-    const [name, setName] = useState(initialName);
-    const [email, setEmail] = useState(initialEmail);
-    const [message, setMessage] = useState(initialMessage);
-    const [isSending, setIsSending] = useState(false);
+    const {
+        name,
+        setName,
+        email,
+        setEmail,
+        message,
+        setMessage,
+        isSending,
+        handleSend,
+        isFormValid,
+        isEmailValid,
+    } = useContactForm({
+        name: initialName,
+        email: initialEmail,
+        message: initialMessage
+    });
 
-    const isEmailValid = (email: string) =>
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    const isFormValid =
-        name.trim() !== "" && isEmailValid(email) && message.trim() !== "";
-
-    async function handleSend() {
-        if (!isFormValid) return;
-        setIsSending(true);
-
-        const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-        const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-        try {
-            const pacificTime = new Intl.DateTimeFormat("en-US", {
-                timeZone: "America/Los_Angeles",
-                month: "2-digit",
-                day: "2-digit",
-                year: "numeric",
-                weekday: "long",
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: true,
-            }).format(new Date());
-
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                message: message,
-                to_email: "hrishith27@gmail.com",
-                time: pacificTime,
-            };
-
-            await emailjs.send(serviceID, templateID, templateParams, publicKey);
-
-            toast.success("Message sent successfully! 🎉", {
-                description: "I'll get back to you soon.",
-            });
-
-            setName("");
-            setEmail("");
-            setMessage("");
-        } catch (error) {
-            console.error(error);
-            toast.error("Failed to send message.", {
-                description: "Please schedule a call, I'll get back to you.",
-            });
-        } finally {
-            setIsSending(false);
-        }
-    }
+    // If we really need initial state sync, we'd do it in useEffect, 
+    // but typically these forms are clean or refilled by the hook logic.
 
     return (
         <Card>

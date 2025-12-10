@@ -2,43 +2,25 @@ import { useEffect, useState } from "react";
 
 // github stats
 export async function getTotalRepos(username: string) {
-  const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`, // for Vite
-    },
-  });
-
-  const data = await res.json();
-  return data.length;
+  try {
+    const res = await fetch(`/api/github?type=repos&username=${username}`);
+    const data = await res.json();
+    return data.count || 0;
+  } catch (e) {
+    console.error(e);
+    return 0;
+  }
 }
 
 export async function getTotalContributions(username: string) {
-  const query = {
-    query: `
-      {
-        user(login: "${username}") {
-          contributionsCollection {
-            contributionCalendar {
-              totalContributions
-            }
-          }
-        }
-      }
-    `,
-  };
-
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-    },
-    body: JSON.stringify(query),
-  });
-
-  const data = await res.json();
-
-  return data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+  try {
+    const res = await fetch(`/api/github?type=contributions&username=${username}`);
+    const data = await res.json();
+    return data.count || 0;
+  } catch (e) {
+    console.error(e);
+    return 0;
+  }
 }
 
 

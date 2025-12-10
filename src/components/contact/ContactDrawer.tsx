@@ -30,71 +30,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import emailjs from "@emailjs/browser";
-import { toast } from "sonner";
 import { openNewTab, socials, openEmail } from "@/utils/uitility";
 import GradientText from "@/components/ui/GradientText";
+import { useContactForm } from "@/hooks/useContactForm";
 
 const ContactDrawer = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSending, setIsSending] = useState(false);
-
-  const isEmailValid = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const isFormValid =
-    name.trim() !== "" && isEmailValid(email) && message.trim() !== "";
-
-  async function handleSend() {
-    if (!isFormValid) return;
-    setIsSending(true);
-
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    try {
-      const pacificTime = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Los_Angeles",
-        month: "2-digit",
-        day: "2-digit",
-        year: "numeric",
-        weekday: "long",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }).format(new Date());
-
-      const templateParams = {
-        from_name: name,
-        from_email: email,
-        message: message,
-        to_email: "hrishith27@gmail.com",
-        time: pacificTime, // add Pacific time
-      };
-
-      await emailjs.send(serviceID, templateID, templateParams, publicKey);
-
-      toast.success("Message sent successfully! 🎉", {
-        description: "I'll get back to you soon.",
-      });
-
-      setName("");
-      setEmail("");
-      setMessage("");
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to send message.", {
-        description: "Please schedule a call, I'll get back to you.",
-      });
-    } finally {
-      setIsSending(false);
-    }
-  }
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    message,
+    setMessage,
+    isSending,
+    handleSend,
+    isFormValid,
+    isEmailValid,
+  } = useContactForm();
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
