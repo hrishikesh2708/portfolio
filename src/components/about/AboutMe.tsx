@@ -17,8 +17,8 @@ import {
   ContributionGraphTotalCount,
 } from "@/components/about/ContributionGraph";
 import { eachDayOfInterval, endOfYear, formatISO, startOfYear } from "date-fns";
-import { Book, Code, Eye, NotebookPen } from "lucide-react";
-import { useGithubStats, useLeetCodeStats } from "@/utils/api";
+import { Book, NotebookPen } from "lucide-react";
+import { useGithubStats } from "@/utils/api";
 import Education from "@/components/about/Education";
 const maxCount = 20;
 const maxLevel = 4;
@@ -41,9 +41,7 @@ const calData = days.map((date) => {
 });
 
 const AboutMe = () => {
-  const stats = useGithubStats();
-  const { totalSolved, profileViews } = useLeetCodeStats();
-
+  const github_stats = useGithubStats();
   return (
     <div className="py-10 w-full mt-30 flex flex-col items-center justify-center gap-10">
       <div className="flex lg:max-h-[1300px] flex-col items-center justify-center lg:flex-row gap-2 lg:gap-8 xl:gap-50">
@@ -142,7 +140,7 @@ const AboutMe = () => {
           </p>
           <h2 className="text-center font-instrument text-4xl xs:text-5xl md:text-6xl mb-8">
             <span className="inline">
-              Github & Leetcode{" "}
+              Github {" "}
               <GradientText
                 colors={["#F27121", "#E94057", "#8A2387", "#E94057", "#F27121"]}
                 animationSpeed={5}
@@ -182,7 +180,7 @@ const AboutMe = () => {
                   GitHub Contributions
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  {stats.contributions || 1100}
+                  {github_stats.contributions || 1100}
                 </p>
               </div>
             </div>
@@ -197,12 +195,12 @@ const AboutMe = () => {
                   GitHub Repositories
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  {stats.repos || 1}
+                  {github_stats.repos || 1}
                 </p>
               </div>
             </div>
           </div>
-          <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
+          {/* <div className="shadow-border dark:bg-zinc-900/50 bg-white-2 md:p-4 col-span-1">
             <div className="flex items-center gap-3 md:gap-4">
               <div className="rounded-lg p-3 dark:bg-green-900/20 bg-green-500/20">
                 <Code className="lucide lucide-book-open h-6 w-6 text-green-400" />
@@ -231,7 +229,7 @@ const AboutMe = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

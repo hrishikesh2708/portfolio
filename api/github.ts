@@ -30,6 +30,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const linkHeader = reposRes.headers.get("Link");
         const totalRepos =
             linkHeader?.match(/&page=(\d+)>; rel="last"/)?.[1] || reposData.length || 0;
+        console.log("repo data", reposData, linkHeader, totalRepos)
 
         // Fetch contributions (approximation via recent public events)
         const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public`, {
@@ -37,6 +38,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
         const eventsData: any = await eventsRes.json();
         const totalContributions = Array.isArray(eventsData) ? eventsData.length : 0;
+        console.log("events data", eventsData, totalContributions, eventsRes)
 
         return res.status(200).json({
             repos: Number(totalRepos),
