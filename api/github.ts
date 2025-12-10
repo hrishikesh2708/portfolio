@@ -7,7 +7,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-    // Handle preflight requests
     if (req.method === "OPTIONS") {
         return res.status(200).end();
     }
@@ -20,8 +19,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-        // Fetch total repos (using headers to get last page count if more than 100)
-        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=1`, {
+        // Fetch total repos
+        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
             headers: { Authorization: `Bearer ${token}` },
         });
         const reposData: any = await reposRes.json();
@@ -30,20 +29,41 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const linkHeader = reposRes.headers.get("Link");
         const totalRepos =
             linkHeader?.match(/&page=(\d+)>; rel="last"/)?.[1] || reposData.length || 0;
-        console.log("repo data", reposData, linkHeader, totalRepos)
 
-        // Fetch contributions (approximation via recent public events)
-        const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public`, {
-            headers: { Authorization: `Bearer ${token}` },
+        // Fetch total contributions using GitHub GraphQL
+        const query = {
+            query: `
+                {
+                    user(login: "${username}") {
+                        contributionsCollection {
+                            contributionCalendar {
+                                totalContributions
+                            }
+                        }
+                    }
+                }
+            `
+        };
+
+        const graphRes = await fetch("https://api.github.com/graphql", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(query),
         });
-        const eventsData: any = await eventsRes.json();
-        const totalContributions = Array.isArray(eventsData) ? eventsData.length : 0;
-        console.log("events data", eventsData, totalContributions, eventsRes)
+
+        if (!graphRes.ok) throw new Error("Failed to fetch contributions via GraphQL");
+
+        const graphData: any = await graphRes.json();
+        const totalContributions = graphData.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions || 0;
 
         return res.status(200).json({
             repos: Number(totalRepos),
             contributions: totalContributions,
         });
+
     } catch (err) {
         console.error(err);
         return res.status(500).json({ error: "Failed to fetch GitHub stats" });
