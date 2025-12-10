@@ -26,6 +26,10 @@ export default async function handler(req: any, res: any) {
   }
 
   if (!username) {
+    username = process.env.LEETCODE_USERNAME;
+  }
+
+  if (!username) {
     return res.status(400).json({ error: "Username is required" });
   }
 

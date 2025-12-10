@@ -182,7 +182,7 @@ const AboutMe = () => {
                   GitHub Contributions
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  {stats.contributions || 110}
+                  {stats.contributions || 1100}
                 </p>
               </div>
             </div>
@@ -197,7 +197,7 @@ const AboutMe = () => {
                   GitHub Repositories
                 </p>
                 <p className="font-bold text-xl dark:text-zinc-100 text-zinc-600 md:text-2xl">
-                  {stats.repos || 110}
+                  {stats.repos || 1}
                 </p>
               </div>
             </div>

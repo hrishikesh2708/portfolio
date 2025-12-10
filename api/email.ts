@@ -25,7 +25,7 @@ export default async function handler(req: any, res: any) {
     const serviceId = process.env.EMAILJS_SERVICE_ID;
     const templateId = process.env.EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-    const privateKey = process.env.EMAILJS_PRIVATE_KEY; // New env var
+    const privateKey = process.env.EMAILJS_PRIVATE_KEY;
     const targetEmail = "hrishith27@gmail.com";
 
     if (!serviceId || !templateId || !publicKey || !privateKey) {

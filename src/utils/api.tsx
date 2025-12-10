@@ -1,43 +1,21 @@
 import { useEffect, useState } from "react";
 
 // github stats
-export async function getTotalRepos(username: string) {
-  try {
-    const res = await fetch(`/api/github?type=repos&username=${username}`);
-    const data = await res.json();
-    return data.count || 0;
-  } catch (e) {
-    console.error(e);
-    return 0;
-  }
-}
-
-export async function getTotalContributions(username: string) {
-  try {
-    const res = await fetch(`/api/github?type=contributions&username=${username}`);
-    const data = await res.json();
-    return data.count || 0;
-  } catch (e) {
-    console.error(e);
-    return 0;
-  }
-}
-
-
 export function useGithubStats() {
-  const [stats, setStats] = useState({
-    contributions: 0,
-    repos: 0,
-  });
-
-  const username = import.meta.env.VITE_GITHUB_USERNAME;
+  const [stats, setStats] = useState({ repos: 0, contributions: 0 });
 
   useEffect(() => {
     async function fetchStats() {
-      const repos = await getTotalRepos(username);
-      const contributions = await getTotalContributions(username);
-
-      setStats({ repos, contributions });
+      try {
+        const res = await fetch("/api/github");
+        const data = await res.json();
+        setStats({
+          repos: data.repos || 0,
+          contributions: data.contributions || 0,
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     fetchStats();
@@ -48,7 +26,7 @@ export function useGithubStats() {
 
 // Leetcode Stats
 
-export async function getLeetCodeStats(username: string) {
+export async function getLeetCodeStats(username?: string) {
   // Use Vercel Serverless Function proxy
   // Local: requires `vercel dev` or manual proxy config
   // Prod: /api/leetcode
@@ -58,7 +36,7 @@ export async function getLeetCodeStats(username: string) {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify(username ? { username } : {}),
     });
 
     if (!res.ok) {
@@ -94,7 +72,7 @@ export async function getLeetCodeStats(username: string) {
 
 
 export function useLeetCodeStats() {
-  const username = import.meta.env.VITE_LEETCODE_USERNAME;
+  const username = import.meta.env.VITE_LEETCODE_USERNAME; // Might be undefined
   const [stats, setStats] = useState({
     totalSolved: 0,
     profileViews: 0,
@@ -106,7 +84,7 @@ export function useLeetCodeStats() {
       setStats(data);
     }
     load();
-  }, []);
+  }, [username]);
 
   return stats;
 }

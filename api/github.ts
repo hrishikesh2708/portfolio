@@ -1,82 +1,49 @@
-export default async function handler(req: any, res: any) {
-    // Add CORS headers
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-    );
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    );
+// api/github.ts
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+    // Minimal CORS headers
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+    // Handle preflight requests
     if (req.method === "OPTIONS") {
-        res.status(200).end();
-        return;
+        return res.status(200).end();
     }
 
-    const { type, username } = req.query;
-    const targetUsername = username || process.env.GITHUB_USERNAME; // Helper usage, though usually passed from frontend
+    const username = process.env.GITHUB_USERNAME;
+    const token = process.env.GITHUB_TOKEN;
 
-    if (!process.env.GITHUB_TOKEN) {
-        return res.status(500).json({ error: "Missing GITHUB_TOKEN" });
+    if (!username || !token) {
+        return res.status(500).json({ error: "Missing GitHub credentials" });
     }
 
     try {
-        if (type === "repos") {
-            const response = await fetch(
-                `https://api.github.com/users/${targetUsername}/repos?per_page=100`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-                    },
-                }
-            );
-            if (!response.ok) throw new Error("Failed to fetch repos");
-            const data: any = await response.json();
-            return res.status(200).json({ count: data.length });
-        }
+        // Fetch total repos (using headers to get last page count if more than 100)
+        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=1`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        const reposData = await reposRes.json();
 
-        if (type === "contributions") {
-            const query = {
-                query: `
-              {
-                user(login: "${targetUsername}") {
-                  contributionsCollection {
-                    contributionCalendar {
-                      totalContributions
-                    }
-                  }
-                }
-              }
-            `,
-            };
-            const response = await fetch("https://api.github.com/graphql", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-                },
-                body: JSON.stringify(query),
-            });
+        // Check Link header for pagination
+        const linkHeader = reposRes.headers.get("Link");
+        const totalRepos =
+            linkHeader?.match(/&page=(\d+)>; rel="last"/)?.[1] || reposData.length || 0;
 
-            if (!response.ok) throw new Error(`Failed to fetch contributions: ${response.status} ${response.statusText}`);
-            const data: any = await response.json();
+        // Fetch contributions (approximation via recent public events)
+        const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        const eventsData = await eventsRes.json();
+        const totalContributions = Array.isArray(eventsData) ? eventsData.length : 0;
 
-            const user = data.data?.user;
-            if (!user) {
-                console.error("GitHub API: User not found or error in response", JSON.stringify(data));
-                return res.status(404).json({ error: "User not found" });
-            }
-
-            const contributions = user.contributionsCollection?.contributionCalendar?.totalContributions || 0;
-            return res.status(200).json({ count: contributions });
-        }
-
-        return res.status(400).json({ error: "Invalid type parameter" });
-    } catch (error: any) {
-        console.error(error);
-        return res.status(500).json({ error: error.message });
+        return res.status(200).json({
+            repos: Number(totalRepos),
+            contributions: totalContributions,
+        });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Failed to fetch GitHub stats" });
     }
 }
