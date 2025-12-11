@@ -2,10 +2,10 @@ import { Code } from "lucide-react";
 
 export const projects = [
   {
-    title: "Hrishikesh Thakur – Engineering Portfolio",
+    title: "Hrishikesh Thakur's Portfolio",
     color: "pink",
     subtitle: "A polished developer portfolio highlighting modern web engineering and thoughtful UI design.",
-    demoImage: "/demo.jpg",
+    demoImage: "/portfolio.png",
     demoVideo: "",
     github: "https://github.com/hrishikesh2708/portfolio",
     liveDemo: "https://www.hrishikeshthakur.com/",
@@ -55,15 +55,37 @@ export const projects = [
       { name: "WebSocket", icon: <Code /> },
     ],
   },
-
+  {
+    title: "ClimaView",
+    color: "teal",
+    subtitle: "Real-Time Weather Insights with Smart Location Search",
+    demoImage: "/demo.jpg",
+    demoVideo: "",
+    github: "https://github.com/hrishikesh2708/ClimaView",
+    liveDemo: "https://clima-view-jo4ajx133-hrishikesh-thakurs-projects.vercel.app/",
+    projectDetails: "https://github.com/hrishikesh2708/ClimaView",
+    description: "A real-time weather insights app with smart location search using Tomorrow.io and Google Places APIs.",
+    points: [
+      "Responsive fullstack app with React + Node.js, integrating Tomorrow.io and Google Places APIs for live weather and geolocation",
+      "Leveraged MongoDB and GCP for scalable storage and deployment, enabling multi-device support and robust error handling.",
+    ],
+    techStack: [
+      { name: "React", icon: <Code /> },
+      { name: "TypeScript", icon: <Code /> },
+      { name: "Node.js", icon: <Code /> },
+      { name: "MongoDB", icon: <Code /> },
+      { name: "Tomorrow.io", icon: <Code /> },
+      { name: "Google Places API", icon: <Code /> },
+    ],
+  },
   {
     title: "Regularization Techniques for Image Classification",
     color: "fuchsia",
     subtitle: "Improving CNN generalization using L2, Dropout, and augmentation",
-    demoImage: "/demo.jpg",
+    demoImage: "/regularization.png",
     demoVideo: "",
     github: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project",
-    liveDemo: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project",
+    // liveDemo: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project",
     projectDetails: "https://github.com/hrishikesh2708/CSCI567_Machine_Learning_Project/blob/main/CSCI_567_Project_Report%202.pdf",
     description:
       "An empirical study testing multiple regularization strategies on CNN models to reduce overfitting and improve validation performance on limited image datasets.",
@@ -86,10 +108,10 @@ export const projects = [
     title: "Differentiable Symbolic Reasoning on Language Models",
     color: "teal",
     subtitle: "Hybrid neural-symbolic system for logical reasoning on kinship tasks",
-    demoImage: "/demo.jpg",
+    demoImage: "/dsrlm.png",
     demoVideo: "",
     github: "https://github.com/hrishikesh2708/CSCI544_NLP_Project",
-    liveDemo: "https://github.com/hrishikesh2708/CSCI544_NLP_Project",
+    // liveDemo: "https://github.com/hrishikesh2708/CSCI544_NLP_Project",
     projectDetails: "https://github.com/hrishikesh2708/CSCI544_NLP_Project/blob/main/Final_Project_Report__NLP_.pdf",
     description: "A neural-symbolic reasoning project evaluating DSR-LM's ability to generalize logical relations and improve kinship inference accuracy on limited data.",
     points: [
