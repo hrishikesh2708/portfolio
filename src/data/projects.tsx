@@ -59,7 +59,7 @@ export const projects = [
     title: "ClimaView",
     color: "teal",
     subtitle: "Real-Time Weather Insights with Smart Location Search",
-    demoImage: "/demo.jpg",
+    demoImage: "/climaview.png",
     demoVideo: "",
     github: "https://github.com/hrishikesh2708/ClimaView",
     liveDemo: "https://clima-view-jo4ajx133-hrishikesh-thakurs-projects.vercel.app/",
