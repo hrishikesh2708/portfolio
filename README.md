@@ -18,6 +18,35 @@ The application serves as a central hub for my professional identity, integratin
 -   **Animations**: Smooth page transitions and component animations with **Framer Motion**.
 -   **Project Showcase**: organized display of projects with filtering and detailed views.
 
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./public/portfolio.png" width="400" />
+      <br />
+      <sub><b>Figure 1:</b> Home Screen</sub>
+    </td>
+    <td align="center">
+      <img src="./public/portfolio_3.png" width="400" />
+      <br />
+      <sub><b>Figure 2:</b> Contact Screen</sub>
+    </td>
+  </tr>
+<tr>
+    <td align="center">
+      <img src="./public/portfolio_1.png" width="400" />
+      <br />
+      <sub><b>Figure 3:</b>Projects Screen</sub>
+    </td>
+    <td align="center">
+      <img src="./public/portfolio_2.png" width="400" />
+      <br />
+      <sub><b>Figure 4:</b>About Screen</sub>
+    </td>
+  </tr>
+</table>
+
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -119,36 +148,6 @@ To fully utilize the contacting and GitHub stats features, you need to configure
 -   **`src/data/`**: Centralized logic for content management. Edit files here (e.g., `projects.tsx`, `experience.tsx`) to update portfolio content without touching UI code.
 -   **`api/email.ts`**: A secure endpoint that proxies requests to EmailJS. It verifies inputs and safeguards your private keys.
 -   **`src/components/ui/`**: Contains atomic design components (buttons, cards, inputs) styled with Tailwind and Radix UI primitives.
-
-## 📸 Screenshots
-
-> *Add screenshots of your portfolio here (e.g., Home, Projects, Contact).*
-<table>
-  <tr>
-    <td align="center">
-      <img src="./public/portfolio.png" width="400" />
-      <br />
-      <sub><b>Figure 1:</b> Home Screen</sub>
-    </td>
-    <td align="center">
-      <img src="./public/portfolio_3.png" width="400" />
-      <br />
-      <sub><b>Figure 2:</b> Contact Screen</sub>
-    </td>
-  </tr>
-<tr>
-    <td align="center">
-      <img src="./public/portfolio_1.png" width="400" />
-      <br />
-      <sub><b>Figure 3:</b>Projects Screen</sub>
-    </td>
-    <td align="center">
-      <img src="./public/portfolio_2.png" width="400" />
-      <br />
-      <sub><b>Figure 4:</b>About Screen</sub>
-    </td>
-  </tr>
-</table>
 
 ## 🚢 Deployment
 

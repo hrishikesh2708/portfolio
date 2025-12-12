@@ -33,17 +33,17 @@ export const projects = [
     title: "Transcribe AI",
     color: "blue",
     subtitle: "Real-Time Audio Transcription Chrome Extension",
-    demoImage: "/demo.jpg",
+    demoImage: "/transcribeai.png",
     demoVideo: "",
     github: "https://github.com/hrishikesh2708/transcribe-ai",
-    liveDemo: "https://github.com/hrishikesh2708/transcribe-ai",
+    liveDemo: "https://youtu.be/b3H2Qy6V5bc",
     projectDetails: "https://github.com/hrishikesh2708/transcribe-ai/blob/main/README.md",
-    description: "A real-time transcription Chrome extension using Google Cloud Speech-to-Text, offering fast audio capture, responsive UI, and seamless export tools.",
+    description: "Chrome extension delivering low-latency, real-time audio transcription with clean UI and export features.",
     points: [
-      "Built real-time tab audio capture pipeline with Web Audio and WebSockets.",
-      "Implemented accurate streaming transcription using Google Cloud Speech-to-Text.",
-      "Designed responsive sidepanel interface supporting live text updates and exports.",
-      "Created robust extension architecture with background, content, and UI integration."
+      "Engineered real-time tab audio capture with Web Audio and WebSockets pipeline.",
+      "Implemented streaming transcription using Google Cloud Speech-to-Text API for high accuracy.",
+      "Designed responsive sidepanel UI with live updates and multi-format export support.",
+      "Developed robust extension architecture integrating background, content scripts, and frontend logic."
     ],
     techStack: [
       { name: "React", icon: <Code /> },
@@ -52,7 +52,10 @@ export const projects = [
       { name: "Express", icon: <Code /> },
       { name: "Google Cloud Speech-to-Text", icon: <Code /> },
       { name: "WebSocket", icon: <Code /> },
-    ],
+      { name: "Tailwind CSS", icon: <Code /> },
+      { name: "Chrome Extension APIs", icon: <Code /> },
+      { name: "Vite", icon: <Code /> },
+    ]
   },
   {
     title: "ClimaView",
