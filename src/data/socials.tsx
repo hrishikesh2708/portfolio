@@ -16,7 +16,7 @@ export const socials = [
     {
         name: "Instagram",
         icon: <Instagram />,
-        url: "https://www.instagram.com/hrishikeshthakur/",
+        url: "https://www.instagram.com/hrishikesh_thakur_/",
         tooltip: "Follow me on Instagram",
     },
 ];
