@@ -6,6 +6,7 @@ import { ArrowRight, EyeIcon, GitBranchIcon, Minus, Radio, Sparkle } from "lucid
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/animate-ui/components/buttons/button";
 import { openNewTab } from "@/utils/uitility";
+import { useNavigate } from "react-router-dom";
 
 const rightPanelVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -66,6 +67,7 @@ export const StickyScroll = ({
   seemoreLink?: boolean;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
+  const navigate = useNavigate();
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
@@ -144,7 +146,7 @@ export const StickyScroll = ({
                         <h3 className="text-lg xl:text-2xl">{item.subtitle}</h3>
                       </div>
                       <div>
-                        <Button variant={"outline"} size={"icon-sm"} className="bg-transparent">
+                        <Button variant={"outline"} size={"icon-sm"} className={cn("bg-transparent", seemoreLink ? "relative" : "hidden")} onClick={() => navigate("/projects")}>
                           <ArrowRight />
                         </Button>
                       </div>
