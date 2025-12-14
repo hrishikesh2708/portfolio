@@ -51,7 +51,7 @@ The application serves as a central hub for my professional identity, integratin
       <br />
       <sub><b>Figure 5:</b>lighthouse Report</sub>
     </td>
-  </tr
+  </tr>
 </table>
 
 ## 🛠 Tech Stack
