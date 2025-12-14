@@ -45,6 +45,13 @@ The application serves as a central hub for my professional identity, integratin
       <sub><b>Figure 4:</b>About Screen</sub>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <img src="./public/lighthouse.png" width="400" />
+      <br />
+      <sub><b>Figure 5:</b>lighthouse Report</sub>
+    </td>
+  </tr
 </table>
 
 ## 🛠 Tech Stack
