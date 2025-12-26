@@ -92,23 +92,11 @@ export const experience = [
     workType: "Part-time",
     points: [
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Extracted and managed donor and alumni data using Salesforce CRM,
-        providing actionable insights to optimize event attendance and campaign
-        performance.
+        Analyzed donor and alumni data in Salesforce CRM to produce insights that optimized engagement and event planning
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Designed and executed outreach campaigns for alumni and donor events,
-        leveraging data-driven strategies that improved engagement and
-        fundraising outcomes.
-      </p>,
-      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Collected and analyzed participation and engagement data for university
-        events, creating interactive dashboards and reports to track KPIs and
-        inform decision making.
-      </p>,
-      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Coordinated event logistics and tracked stakeholder interactions,
-        ensuring seamless execution of high-profile university initiatives.
+        Designed and tracked data-driven outreach campaigns and created interactive dashboards to monitor KPIs, improving alumni
+        and donor participation and enabling informed fundraising decisions.
       </p>,
     ],
     skills: [
@@ -119,7 +107,6 @@ export const experience = [
       { name: "Data Analysis", icon: <Code /> },
       { name: "Data Visualization", icon: <Code /> },
       { name: "Analytical Reporting", icon: <Code /> },
-      { name: "Project Coordination", icon: <Code /> },
     ],
   },
   {
@@ -134,22 +121,28 @@ export const experience = [
     workType: "Part-time",
     points: [
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Coordinated major university events, improving alumni engagement and
-        donor participation through strategic communication.
+        Fine-tuned RoBERTa on 349k+ forensic interview questions, classifying four legal question types and generating data-driven insights that improved research evaluation frameworks
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Analyzed donor datasets using Salesforce CRM and built Excel dashboards
-        to track fundraising performance.
+        Engineered scalable Python/PyTorch pipelines to preprocess, tokenize, and batch-process 300k+ records, accelerating experimentation and ensuring robust model comparisons
       </p>,
       <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-        Designed email campaigns, invitations, and promotional materials using
-        HTML and graphic design tools.
+        Diagnosed and corrected class imbalance via targeted oversampling and curriculum-style training, improving minority-class recall and reliability of downstream behavioral analyses
+      </p>,
+      <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        Evaluated zero-shot and few-shot prompting strategies as alternative levers to reduce dependence on hand-labeled data, quantifying tradeoffs and informing next-phase model investment decisions
       </p>,
     ],
     skills: [
-      { name: "Salesforce", icon: <Code /> },
-      { name: "Excel", icon: <Code /> },
-      { name: "Data Analysis", icon: <Code /> },
+      { name: "Python", icon: <Code /> },
+      { name: "PyTorch", icon: <Code /> },
+      { name: "Scikit-Learn", icon: <Code /> },
+      { name: "Natural Language Processing", icon: <Code /> },
+      { name: "Machine Learning", icon: <Code /> },
+      { name: "Hugging Face / Transformers", icon: <Code /> },
+      { name: "Large Language Models (LLM)", icon: <Code /> },
+      { name: "Data Preprocessing", icon: <Code /> },
+      { name: "Model Evaluation", icon: <Code /> },
     ],
   },
   {
